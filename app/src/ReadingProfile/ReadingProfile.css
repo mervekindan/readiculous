@@ -1,0 +1,29 @@
+.reading-profile {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-form label {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-form input {
+  padding: 0.5rem;
+}
+
+.profile-form button {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.profile-summary {
+  margin-top: 1rem;
+}
