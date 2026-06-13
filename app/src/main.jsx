@@ -7,25 +7,22 @@ import TestPage from "./components/TestPage/TestPage.jsx";
 import "./main.css";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      // This route can be removed and replaced with your own page
-      {
-        path: "nested",
-        element: <TestPage />,
-      },
-    ],
-  },
+    {
+        path: "/",
+        element: <Layout />,
+        children: [
+            { index: true, element: <HomePage /> },
+            { path: "/profile", element: <TestPage /> },
+            { path: "/library", element: <TestPage /> },
+            { path: "/progress", element: <TestPage /> },
+            { path: "/daily-streak", element: <TestPage /> },
+            { path: "/challenges", element: <TestPage /> },
+        ],
+    },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>,
 );
