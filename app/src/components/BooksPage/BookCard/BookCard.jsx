@@ -1,53 +1,6 @@
 import { useState, useEffect } from "react";
 import "./BookCard.css";
-
-const ALLOWED_GENRES = [
-  // Fiction & Literature
-  "detective",
-  "mystery",
-  "thriller",
-  "crime",
-  "suspense",
-  "fantasy",
-  "fiction",
-  "sci-fi",
-  "science fiction",
-  "dystopia",
-  "cyberpunk",
-  "horror",
-  "gothic",
-  "ghost stories",
-  "romance",
-  "love story",
-  "historical fiction",
-  "drama",
-  "adventure",
-  "action",
-  "western",
-
-  // Kids & Teens
-  "children",
-  "comics",
-  "manga",
-  "teen",
-
-  // Non-Fiction & Science
-  "biography",
-  "autobiography",
-  "memoir",
-  "history",
-  "politics",
-  "philosophy",
-  "religion",
-  "science",
-  "psychology",
-  "sociology",
-  "economics",
-  "business",
-  "technology",
-  "computers",
-  "programming",
-];
+import { ALLOWED_GENRES } from "../../../utils/genres";
 
 function extractCleanGenres(apiSubjects) {
   if (!apiSubjects || !Array.isArray(apiSubjects)) return ["Other"];
