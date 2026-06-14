@@ -9,6 +9,7 @@ const ALLOWED_GENRES = [
   "crime",
   "suspense",
   "fantasy",
+  "fiction",
   "sci-fi",
   "science fiction",
   "dystopia",
@@ -23,7 +24,12 @@ const ALLOWED_GENRES = [
   "adventure",
   "action",
   "western",
-  "war",
+
+  // Kids & Teens
+  "children",
+  "comics",
+  "manga",
+  "teen",
 
   // Non-Fiction & Science
   "biography",
@@ -41,11 +47,6 @@ const ALLOWED_GENRES = [
   "technology",
   "computers",
   "programming",
-
-  // Kids & Teens
-  "children",
-  "comics",
-  "manga",
 ];
 
 function extractCleanGenres(apiSubjects) {
@@ -80,15 +81,25 @@ function extractCleanGenres(apiSubjects) {
 }
 
 export default function BookCard({ book, onAdd }) {
+  const hasCover = window.navigator.onLine && book.cover_i;
   const coverUrl = book.cover_i
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
-    : "https://via.placeholder.com/150x220?text=No+Cover";
+    : null;
 
   const genres = extractCleanGenres(book.subject);
 
   return (
     <div className="book-card">
-      <img src={coverUrl} alt={book.title} />
+      <div className="book-cover-wrapper">
+        {hasCover ? (
+          <img src={coverUrl} alt={book.title} />
+        ) : (
+          <div className="no-cover-placeholder">
+            <span className="no-cover-icon">📖</span>
+            <span className="no-cover-text">No Cover</span>
+          </div>
+        )}
+      </div>
       <div className="book-card-info">
         <h3>{book.title}</h3>
         <p>Author: {book.author_name?.[0] || "Unknown Author"}</p>
