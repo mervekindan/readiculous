@@ -22,6 +22,9 @@ function Layout() {
         <Link to="/nested" className="nav-link">
           Nested page
         </Link>
+        <Link to="/profile" className="nav-link">
+          Profile
+        </Link>
       </nav>
       <main>
         <Outlet />
