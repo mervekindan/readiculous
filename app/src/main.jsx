@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout/Layout.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import TestPage from "./components/TestPage/TestPage.jsx";
+import ReadingProfile from "./components/ReadingProfile/ReadingProfile.jsx";
 import "./main.css";
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "nested",
         element: <TestPage />,
+      },
+      {
+        path: "profile",
+        element: <ReadingProfile />,
       },
     ],
   },
