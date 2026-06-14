@@ -86,11 +86,18 @@ export default function BookCard({ book, onAdd }) {
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
     : null;
 
+  const isBestseller = book.subject?.some((s) =>
+    s.toLowerCase().includes("bestseller"),
+  );
+
   const genres = extractCleanGenres(book.subject);
 
   return (
-    <div className="book-card">
+    <div className={`book-card ${isBestseller ? "bestseller-card" : ""}`}>
       <div className="book-cover-wrapper">
+        {isBestseller && (
+          <span className="bestseller-badge">Bestseller 🔥</span>
+        )}
         {hasCover ? (
           <img src={coverUrl} alt={book.title} />
         ) : (

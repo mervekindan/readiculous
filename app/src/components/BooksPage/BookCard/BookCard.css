@@ -25,6 +25,18 @@
   object-fit: contain;
 }
 
+.book-cover-wrapper {
+  position: relative;
+  width: calc(100% - 2rem);
+  height: 260px;
+  margin: 0 auto;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .book-card-info {
   padding: 1.25rem;
   display: flex;
@@ -110,4 +122,24 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #888888;
+}
+
+.bestseller-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: #111111;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.book-card.bestseller-card {
+  border-color: #111111;
 }
