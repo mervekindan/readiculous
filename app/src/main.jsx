@@ -7,6 +7,7 @@ import TestPage from "./components/TestPage/TestPage.jsx";
 import ReadingProfile from "./components/ReadingProfile/Profile.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import "./main.css";
+import BooksPage from "./components/BooksPage/BooksPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
+      {
+        path: "books",
+        element: <BooksPage />,
+      },
+      // This route can be removed and replaced with your own page
       {
         path: "nested",
         element: <TestPage />,
