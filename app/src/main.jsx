@@ -5,20 +5,28 @@ import Layout from "./components/Layout/Layout.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import TestPage from "./components/TestPage/TestPage.jsx";
 import "./main.css";
+import BooksPage from "./components/BooksPage/BooksPage.jsx";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Layout />,
-        children: [
-            { index: true, element: <HomePage /> },
-            { path: "/profile", element: <TestPage /> },
-            { path: "/library", element: <TestPage /> },
-            { path: "/progress", element: <TestPage /> },
-            { path: "/daily-streak", element: <TestPage /> },
-            { path: "/challenges", element: <TestPage /> },
-        ],
-    },
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "books",
+        element: <BooksPage />,
+      },
+      // This route can be removed and replaced with your own page
+      {
+        path: "nested",
+        element: <TestPage />,
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
