@@ -3,7 +3,7 @@ import "./Footer.css";
 
 export function Footer() {
     return (
-        <footer className="footer">
+        <div className="footer">
             <div className="footer-description">
                 <h3>Readiculous</h3>
                 <p>Read more. Become more.</p>
@@ -20,20 +20,20 @@ export function Footer() {
                     <SocialMediaItem
                         url="https://facebook.com"
                         title="Facebook"
-                        icon="../../public/socialmedia/Facebook.png"
+                        icon="/socialmedia/Facebook.png"
                     />
                     <SocialMediaItem
                         url="https://instagram.com"
                         title="Instagram"
-                        icon="../../public/socialmedia/Instagram.png"
+                        icon="/socialmedia/Instagram.png"
                     />
                     <SocialMediaItem
                         url="https://linkedin.com"
                         title="LinkedIn"
-                        icon="../../public/socialmedia/LinkedIn.png"
+                        icon="/socialmedia/LinkedIn.png"
                     />
                 </ul>
             </div>
-        </footer>
+        </div>
     );
 }
