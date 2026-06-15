@@ -5,6 +5,7 @@ import Layout from "./components/Layout/Layout.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import TestPage from "./components/TestPage/TestPage.jsx";
 import "./main.css";
+import BooksPage from "./components/BooksPage/BooksPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: "books",
+        element: <BooksPage />,
       },
       // This route can be removed and replaced with your own page
       {
