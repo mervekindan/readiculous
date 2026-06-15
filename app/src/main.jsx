@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout/Layout.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import TestPage from "./components/TestPage/TestPage.jsx";
-import ReadingProfile from "./components/ReadingProfile/ReadingProfile.jsx";
+import ReadingProfile from "./components/ReadingProfile/Profile.jsx";
 import "./main.css";
 
 const router = createBrowserRouter([
