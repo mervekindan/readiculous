@@ -5,8 +5,17 @@ const BookContext = createContext();
 
 export function BookProvider({ children }) {
   const [inProgressBooks, setInProgressBooks] = useState([]);
-
   const [finishedBooks, setFinishedBooks] = useState([]);
+
+  const [notification, setNotification] = useState(null);
+
+  const showPopup = (message, type = "success") => {
+    setNotification({ message, type });
+
+    setTimeout(() => {
+      setNotification(null);
+    }, 3000);
+  };
 
   const addToProgress = (book) => {
     const alreadyReading = inProgressBooks.some((b) => b.key === book.key);
@@ -14,9 +23,12 @@ export function BookProvider({ children }) {
 
     if (!alreadyReading && !alreadyFinished) {
       setInProgressBooks([...inProgressBooks, book]);
-      alert(`"${book.title}" added to your progress!`);
+      showPopup(`"${book.title}" added to progress!`, "success");
     } else {
-      alert("You are already reading this book or have finished it.");
+      showPopup(
+        "You are already reading this book or have finished it.",
+        "error",
+      );
     }
   };
 
@@ -26,11 +38,13 @@ export function BookProvider({ children }) {
       setInProgressBooks(inProgressBooks.filter((b) => b.key !== bookKey));
 
       setFinishedBooks([...finishedBooks, bookToFinish]);
+      showPopup("Book marked as finished! 🎉", "success");
     }
   };
 
   const removeFromProgress = (bookKey) => {
     setInProgressBooks(inProgressBooks.filter((b) => b.key !== bookKey));
+    showPopup("Book removed from progress.", "success");
   };
 
   return (
@@ -38,6 +52,8 @@ export function BookProvider({ children }) {
       value={{
         inProgressBooks,
         finishedBooks,
+        notification,
+        setNotification,
         addToProgress,
         finishBook,
         removeFromProgress,
