@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/Readiculous.png";
+import logo from "../../assets/readiculous2.png";
 import "./NavBar.css";
 
 export function NavBar() {
