@@ -3,7 +3,7 @@ import "./Footer.css";
 
 export function Footer() {
     return (
-        <div className="footer">
+        <footer className="footer">
             <div className="footer-description">
                 <h3>Readiculous</h3>
                 <p>Read more. Become more.</p>
@@ -34,6 +34,6 @@ export function Footer() {
                     />
                 </ul>
             </div>
-        </div>
+        </footer>
     );
 }
