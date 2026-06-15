@@ -5,7 +5,6 @@ function SignUp({ onSwitchToSignIn }) {
     name: "",
     email: "",
     password: "",
-    dailyGoalMinutes: "",
     yearlyGoalBooks: "",
   });
 
@@ -21,9 +20,16 @@ function SignUp({ onSwitchToSignIn }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    localStorage.setItem("readingUser", JSON.stringify(user));
-    alert("Account created! You can now sign in.");
+    const newUser = {
+      name: user.name,
+      email: user.email,
+      password: user.password,
+      yearlyGoalBooks: user.yearlyGoalBooks,
+    };
 
+    localStorage.setItem("readingUser", JSON.stringify(newUser));
+
+    alert("Account created! You can now sign in.");
     onSwitchToSignIn();
   }
 
@@ -53,17 +59,6 @@ function SignUp({ onSwitchToSignIn }) {
           name="password"
           type="password"
           value={user.password}
-          onChange={handleChange}
-          required
-        />
-      </label>
-
-      <label>
-        Daily reading goal (minutes)
-        <input
-          name="dailyGoalMinutes"
-          type="number"
-          value={user.dailyGoalMinutes}
           onChange={handleChange}
           required
         />
