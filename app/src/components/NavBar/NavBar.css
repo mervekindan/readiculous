@@ -1,0 +1,34 @@
+.nav-bar {
+    width: 100%;
+    max-width: 100vw;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary-500);
+    padding: 0 32px;
+    box-sizing: border-box;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: auto;
+}
+
+.link {
+    color: var(--background-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding-bottom: 2px;
+}
+
+.link.active {
+    color: var(--primary-500);
+    border-bottom: 2px solid currentColor;
+    transition: 0.2s ease;
+}
