@@ -1,5 +1,6 @@
 .item {
     list-style: none;
+    margin-bottom: 16px;
 }
 
 .item:hover {
