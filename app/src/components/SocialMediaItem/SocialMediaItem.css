@@ -1,0 +1,19 @@
+.item {
+    list-style: none;
+}
+
+.item:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.link {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
