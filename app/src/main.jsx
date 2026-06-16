@@ -8,6 +8,8 @@ import ReadingProfile from "./components/ReadingProfile/Profile.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import "./main.css";
 import BooksPage from "./components/BooksPage/BooksPage.jsx";
+import ProgressPage from "./components/ProgressPage/ProgressPage.jsx";
+import { BookProvider } from "./context/BookContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,10 +24,9 @@ const router = createBrowserRouter([
         path: "books",
         element: <BooksPage />,
       },
-      // This route can be removed and replaced with your own page
       {
-        path: "nested",
-        element: <TestPage />,
+        path: "progress",
+        element: <ProgressPage />,
       },
       {
         path: "profile",
@@ -38,7 +39,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <BookProvider>
+        <RouterProvider router={router} />
+      </BookProvider>
     </AuthProvider>
   </React.StrictMode>,
 );
