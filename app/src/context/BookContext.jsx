@@ -1,13 +1,19 @@
-import React, { createContext, useState, useContext } from "react";
-import PropTypes from "prop-types";
+import React, { createContext, useState, useEffect, useContext } from "react";
+import { LOCAL_STORAGE_KEY, INITIAL_APP_STATE } from "../utils/constants";
 
 const BookContext = createContext();
 
 export function BookProvider({ children }) {
-  const [inProgressBooks, setInProgressBooks] = useState([]);
-  const [finishedBooks, setFinishedBooks] = useState([]);
+  const [appData, setAppData] = useState(() => {
+    const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+    return savedData ? JSON.parse(savedData) : INITIAL_APP_STATE;
+  });
 
   const [notification, setNotification] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(appData));
+  }, [appData]);
 
   const showPopup = (message, type = "success") => {
     setNotification({ message, type });
@@ -18,11 +24,18 @@ export function BookProvider({ children }) {
   };
 
   const addToProgress = (book) => {
-    const alreadyReading = inProgressBooks.some((b) => b.key === book.key);
-    const alreadyFinished = finishedBooks.some((b) => b.key === book.key);
+    const alreadyReading = appData.inProgressBooks.some(
+      (b) => b.key === book.key,
+    );
+    const alreadyFinished = appData.finishedBooks.some(
+      (b) => b.key === book.key,
+    );
 
     if (!alreadyReading && !alreadyFinished) {
-      setInProgressBooks([...inProgressBooks, book]);
+      setAppData((prev) => ({
+        ...prev,
+        inProgressBooks: [...prev.inProgressBooks, book],
+      }));
       showPopup(`"${book.title}" added to progress!`, "success");
     } else {
       showPopup(
@@ -33,25 +46,31 @@ export function BookProvider({ children }) {
   };
 
   const finishBook = (bookKey) => {
-    const bookToFinish = inProgressBooks.find((b) => b.key === bookKey);
+    const bookToFinish = appData.inProgressBooks.find((b) => b.key === bookKey);
     if (bookToFinish) {
-      setInProgressBooks(inProgressBooks.filter((b) => b.key !== bookKey));
-
-      setFinishedBooks([...finishedBooks, bookToFinish]);
+      setAppData((prev) => ({
+        ...prev,
+        inProgressBooks: prev.inProgressBooks.filter((b) => b.key !== bookKey),
+        finishedBooks: [...prev.finishedBooks, bookToFinish],
+      }));
       showPopup("Book marked as finished! 🎉", "success");
     }
   };
 
   const removeFromProgress = (bookKey) => {
-    setInProgressBooks(inProgressBooks.filter((b) => b.key !== bookKey));
+    setAppData((prev) => ({
+      ...prev,
+      inProgressBooks: prev.inProgressBooks.filter((b) => b.key !== bookKey),
+    }));
     showPopup("Book removed from progress.", "success");
   };
 
   return (
     <BookContext.Provider
       value={{
-        inProgressBooks,
-        finishedBooks,
+        userProfile: appData.userProfile,
+        inProgressBooks: appData.inProgressBooks,
+        finishedBooks: appData.finishedBooks,
         notification,
         setNotification,
         addToProgress,
@@ -63,9 +82,5 @@ export function BookProvider({ children }) {
     </BookContext.Provider>
   );
 }
-
-BookProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export const useBooks = () => useContext(BookContext);
