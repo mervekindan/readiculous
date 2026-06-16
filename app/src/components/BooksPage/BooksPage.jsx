@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import SearchBar from "./SearchBar/SearchBar";
-import BookCard from "./BookCard/BookCard";
+import BookCard from "../BookCard/BookCard";
 import "./BooksPage.css";
+import { useBooks } from "../../context/BookContext";
 
 export default function BooksPage() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const { addToProgress } = useBooks();
 
   const fetchBooks = async (searchQuery) => {
     setLoading(true);
@@ -33,8 +36,7 @@ export default function BooksPage() {
   }, []);
 
   const handleAddBook = (book) => {
-    console.log("Future My Readings feature. Selected book key:", book.key);
-    alert(`"${book.title}" added! (Check console)`);
+    addToProgress(book);
   };
 
   return (
@@ -50,7 +52,12 @@ export default function BooksPage() {
         <div className="books-grid">
           {books.length > 0 ? (
             books.map((book) => (
-              <BookCard key={book.key} book={book} onAdd={handleAddBook} />
+              <BookCard
+                key={book.key}
+                book={book}
+                variant="catalog"
+                onAdd={handleAddBook}
+              />
             ))
           ) : (
             <p>No books found. Try another search.</p>

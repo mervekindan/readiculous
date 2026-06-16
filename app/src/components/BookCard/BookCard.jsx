@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./BookCard.css";
-import { ALLOWED_GENRES } from "../../../utils/genres";
+import { ALLOWED_GENRES } from "../../utils/genres";
 
 function extractCleanGenres(apiSubjects) {
   if (!apiSubjects || !Array.isArray(apiSubjects)) return ["Other"];
@@ -33,7 +33,13 @@ function extractCleanGenres(apiSubjects) {
     : ["Fiction"];
 }
 
-export default function BookCard({ book, onAdd }) {
+export default function BookCard({
+  book,
+  onAdd,
+  onFinish,
+  onRemove,
+  variant = "catalog",
+}) {
   const hasCover = window.navigator.onLine && book.cover_i;
   const coverUrl = book.cover_i
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
@@ -46,11 +52,23 @@ export default function BookCard({ book, onAdd }) {
   const genres = extractCleanGenres(book.subject);
 
   return (
-    <div className={`book-card ${isBestseller ? "bestseller-card" : ""}`}>
+    <div
+      className={`book-card ${isBestseller ? "bestseller-card" : ""} ${variant !== "catalog" ? "mini-card" : ""}`}
+    >
+      {variant === "progress" && (
+        <button
+          className="delete-cross-btn"
+          onClick={() => onRemove(book.key)}
+          title="Remove book"
+        >
+          ✕
+        </button>
+      )}
       <div className="book-cover-wrapper">
         {isBestseller && (
           <span className="bestseller-badge">Bestseller 🔥</span>
         )}
+
         {hasCover ? (
           <img src={coverUrl} alt={book.title} />
         ) : (
@@ -70,7 +88,20 @@ export default function BookCard({ book, onAdd }) {
             </span>
           ))}
         </div>
-        <button onClick={() => onAdd(book)}>Add ➕</button>
+
+        {variant === "catalog" && (
+          <button onClick={() => onAdd(book)}>Add ➕</button>
+        )}
+
+        {variant === "progress" && (
+          <button className="finish-btn" onClick={() => onFinish(book.key)}>
+            Finished ✓
+          </button>
+        )}
+
+        {variant === "finished" && (
+          <span className="completed-badge">Done 🎉</span>
+        )}
       </div>
     </div>
   );
