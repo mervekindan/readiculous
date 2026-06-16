@@ -47,6 +47,18 @@ input {
 ul,
 ol {
   list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+:root {
+    --background-color: #f7f7f2;
+    --primary-500: #a3b18a;
+    --secondary-500: #2c514c;
+    --accent-500: #773344;
+    --text-color: #020402;
 }
 
 main {
