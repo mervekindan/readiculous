@@ -10,38 +10,43 @@ import "./main.css";
 import BooksPage from "./components/BooksPage/BooksPage.jsx";
 import ProgressPage from "./components/ProgressPage/ProgressPage.jsx";
 import { BookProvider } from "./context/BookContext.jsx";
+import ChallengesPage from "./components/ChallengesPage/ChallengesPage.jsx";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "books",
-        element: <BooksPage />,
-      },
-      {
-        path: "progress",
-        element: <ProgressPage />,
-      },
-      {
-        path: "profile",
-        element: <ReadingProfile />,
-      },
-    ],
-  },
+    {
+        path: "/",
+        element: <Layout />,
+        children: [
+            {
+                index: true,
+                element: <HomePage />,
+            },
+            {
+                path: "books",
+                element: <BooksPage />,
+            },
+            {
+                path: "progress",
+                element: <ProgressPage />,
+            },
+            {
+                path: "profile",
+                element: <ReadingProfile />,
+            },
+            {
+                path: "challenges",
+                element: <ChallengesPage />,
+            },
+        ],
+    },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <AuthProvider>
-      <BookProvider>
-        <RouterProvider router={router} />
-      </BookProvider>
-    </AuthProvider>
-  </React.StrictMode>,
+    <React.StrictMode>
+        <AuthProvider>
+            <BookProvider>
+                <RouterProvider router={router} />
+            </BookProvider>
+        </AuthProvider>
+    </React.StrictMode>,
 );
