@@ -69,22 +69,40 @@ export function BookProvider({ children }) {
   function getTodayDate() {
     return new Date().toISOString().split("T")[0];
   }
-
+  function getTodayIndex() {
+    return new Date().getDay();
+  }
   function completeReadingToday() {
     const today = getTodayDate();
+    const todayIndex = getTodayIndex();
 
-    if (appData.readingStreak.lastCompletedDate === today) {
+    if (appData.readingStreak?.lastCompletedDate === today) {
       showPopup("You already completed today's reading goal.", "error");
       return;
     }
+    setAppData((prev) => {
+      const currentWeekProgress = prev.readingStreak?.currentWeekProgress || [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+      ];
 
-    setAppData((prev) => ({
-      ...prev,
-      readingStreak: {
-        currentStreak: prev.readingStreak.currentStreak + 1,
-        lastCompletedDate: today,
-      },
-    }));
+      const updatedWeekProgress = [...currentWeekProgress];
+      updatedWeekProgress[todayIndex] = true;
+
+      return {
+        ...prev,
+        readingStreak: {
+          currentStreak: (prev.readingStreak?.currentStreak || 0) + 1,
+          lastCompletedDate: today,
+          currentWeekProgress: updatedWeekProgress,
+        },
+      };
+    });
 
     showPopup("Today's reading goal completed!", "success");
   }

@@ -11,5 +11,6 @@ export const INITIAL_APP_STATE = {
   readingStreak: {
     currentStreak: 0,
     lastCompletedDate: null,
+    currentWeekProgress: [false, false, false, false, false, false, false],
   },
 };
