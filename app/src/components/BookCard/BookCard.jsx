@@ -39,6 +39,7 @@ export default function BookCard({
   onFinish,
   onRemove,
   variant = "catalog",
+  isAdded = false,
 }) {
   const hasCover = window.navigator.onLine && book.cover_i;
   const coverUrl = book.cover_i
@@ -90,7 +91,13 @@ export default function BookCard({
         </div>
 
         {variant === "catalog" && (
-          <button onClick={() => onAdd(book)}>Add ➕</button>
+          <button
+            onClick={() => onAdd(book)}
+            disabled={isAdded}
+            className={isAdded ? "added-btn" : ""}
+          >
+            {isAdded ? "Added ✓" : "Add ➕"}
+          </button>
         )}
 
         {variant === "progress" && (

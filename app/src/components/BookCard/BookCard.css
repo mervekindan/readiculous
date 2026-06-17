@@ -96,7 +96,7 @@
     color 0.2s ease;
 }
 
-.book-card button:hover {
+.book-card button:not(:disabled):hover {
   background: #111111;
   color: #ffffff;
 }
@@ -272,4 +272,15 @@
 
 .book-card.mini-card .bestseller-badge {
   display: none;
+}
+
+.added-btn {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.added-btn:hover {
+  cursor: not-allowed;
 }
