@@ -47,6 +47,7 @@ export function BookProvider({ children }) {
 
   const finishBook = (bookKey) => {
     const bookToFinish = appData.inProgressBooks.find((b) => b.key === bookKey);
+
     if (bookToFinish) {
       setAppData((prev) => ({
         ...prev,
@@ -65,17 +66,42 @@ export function BookProvider({ children }) {
     showPopup("Book removed from progress.", "success");
   };
 
+  function getTodayDate() {
+    return new Date().toISOString().split("T")[0];
+  }
+
+  function completeReadingToday() {
+    const today = getTodayDate();
+
+    if (appData.readingStreak.lastCompletedDate === today) {
+      showPopup("You already completed today's reading goal.", "error");
+      return;
+    }
+
+    setAppData((prev) => ({
+      ...prev,
+      readingStreak: {
+        currentStreak: prev.readingStreak.currentStreak + 1,
+        lastCompletedDate: today,
+      },
+    }));
+
+    showPopup("Today's reading goal completed!", "success");
+  }
+
   return (
     <BookContext.Provider
       value={{
         userProfile: appData.userProfile,
         inProgressBooks: appData.inProgressBooks,
         finishedBooks: appData.finishedBooks,
+        readingStreak: appData.readingStreak,
         notification,
         setNotification,
         addToProgress,
         finishBook,
         removeFromProgress,
+        completeReadingToday,
       }}
     >
       {children}
