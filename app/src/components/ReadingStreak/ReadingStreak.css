@@ -1,0 +1,32 @@
+.reading-streak {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.streak-card {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.streak-number {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 1rem 0 0;
+}
+
+.streak-info {
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.streak-card button {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+.streak-card button:disabled {
+  cursor: not-allowed;
+}
