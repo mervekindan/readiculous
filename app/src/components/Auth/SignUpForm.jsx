@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { createUser } from "../../api/authApi.js";
 
 function SignUpForm() {
   const { setUser } = useAuth();
 
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
+    password: "",
     dailyGoalMinutes: "",
     yearlyGoalBooks: "",
   });
@@ -21,18 +24,23 @@ function SignUpForm() {
     }));
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const newUser = {
       name: formData.name.trim(),
+      email: formData.email.trim().toLowerCase(),
+      password: formData.password,
       dailyGoalMinutes: Number(formData.dailyGoalMinutes),
       yearlyGoalBooks: Number(formData.yearlyGoalBooks),
     };
-
-    localStorage.setItem("readingUser", JSON.stringify(newUser));
-    setUser(newUser);
-    setMessage("Account created successfully!");
+    try {
+      const createdUser = await createUser(newUser);
+      setUser(createdUser);
+      setMessage("Account created successfully!");
+    } catch (error) {
+      setMessage("Something went wrong. Please try again.");
+    }
   }
 
   return (
@@ -46,6 +54,28 @@ function SignUpForm() {
           value={formData.name}
           onChange={handleChange}
           maxLength={50}
+          required
+        />
+      </label>
+      <label>
+        Email
+        <input
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+      </label>
+
+      <label>
+        Password
+        <input
+          name="password"
+          type="password"
+          minLength={6}
+          value={formData.password}
+          onChange={handleChange}
           required
         />
       </label>
