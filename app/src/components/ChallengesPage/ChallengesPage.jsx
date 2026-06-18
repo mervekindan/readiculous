@@ -19,7 +19,7 @@ function matchesGenre(book, targets) {
     });
 }
 
-function calculateBadgeProgress(badge, inProgressBooks, finishedBooks) {
+function calculateBadgeProgress(badge, inProgressBooks, finishedBooks, user) {
     switch (badge.type) {
         case "quantity":
             return finishedBooks.length;
@@ -45,6 +45,18 @@ function calculateBadgeProgress(badge, inProgressBooks, finishedBooks) {
                 inProgressBooks.length + finishedBooks.length > 0
                 ? badge.goal
                 : 0;
+        case "annual_goal_match": {
+            const goalBooks = Number(user?.yearlyGoalBooks) || 0;
+            return goalBooks > 0 && finishedBooks.length >= goalBooks ? 1 : 0;
+        }
+        // case "favorite_genre_match":
+        //     return finishedBooks.some((book) =>
+        //         matchesUserFavoriteGenre(book, user?.favoriteGenres || []),
+        //     )
+        //         ? 1
+        //         : 0;
+        case "settings_changed":
+            return user?.settingsChanged ? 1 : 0;
         default:
             return 0;
     }
@@ -79,17 +91,28 @@ export default function ChallengesPage() {
             </div>
 
             <div className="badges-grid">
-                {BADGES.map((badge) => (
-                    <Badge
-                        key={badge.id}
-                        badge={badge}
-                        progress={calculateBadgeProgress(
-                            badge,
-                            inProgressBooks,
-                            finishedBooks,
-                        )}
-                    />
-                ))}
+                {BADGES.map((badge) => {
+                    let userGoalForBadge;
+                    if (badge.type === "annual_goal_match") {
+                        userGoalForBadge = goalBooks;
+                    } else if (badge.type === "favorite_genre_match") {
+                        userGoalForBadge = 1;
+                    }
+
+                    return (
+                        <Badge
+                            key={badge.id}
+                            badge={badge}
+                            progress={calculateBadgeProgress(
+                                badge,
+                                inProgressBooks,
+                                finishedBooks,
+                                user,
+                            )}
+                            userGoal={userGoalForBadge}
+                        />
+                    );
+                })}
             </div>
         </div>
     );
