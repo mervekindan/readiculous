@@ -1,10 +1,13 @@
 import "./Badge.css";
 
-export default function Badge({ badge, progress }) {
-    const unlocked = progress >= badge.goal;
-    const percentage = badge.goal === 0
+export default function Badge({ badge, progress, userGoal }) {
+    const goalValue = typeof badge.goal === "number" ? badge.goal : (userGoal || 1);
+    const unlocked = progress >= goalValue;
+    const percentage = goalValue === 0
         ? unlocked ? 100 : 0
-        : Math.min(100, (progress / badge.goal) * 100);
+        : Math.min(100, (progress / goalValue) * 100);
+
+    const progressLabel = `${progress}/${goalValue}`;
 
     return (
         <div className="badge-card">
@@ -23,11 +26,7 @@ export default function Badge({ badge, progress }) {
                     style={{ width: `${percentage}%` }}
                 />
             </div>
-            <small>
-                {badge.goal === 0
-                    ? unlocked ? "Complete" : "Incomplete"
-                    : `${progress}/${badge.goal}`}
-            </small>
+            <small>{progressLabel}</small>
         </div>
     );
 }
