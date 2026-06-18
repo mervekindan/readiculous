@@ -1,20 +1,61 @@
 import Badge from "../Badge/Badge";
 import { BADGES } from "../../utils/badges";
+import { useBooks } from "../../context/BookContext";
+import { useAuth } from "../../context/AuthContext";
 import "./ChallengesPage.css";
 
+function isBestseller(book) {
+    return book.subject?.some((subject) =>
+        String(subject).toLowerCase().includes("bestseller"),
+    );
+}
+
+function matchesGenre(book, targets) {
+    if (!book.subject || !Array.isArray(book.subject)) return false;
+
+    return book.subject.some((subject) => {
+        const cleanSubject = String(subject).toLowerCase();
+        return targets.some((target) => cleanSubject.includes(target));
+    });
+}
+
+function calculateBadgeProgress(badge, inProgressBooks, finishedBooks) {
+    switch (badge.type) {
+        case "quantity":
+            return finishedBooks.length;
+        case "progress_count":
+            return Math.min(inProgressBooks.length, badge.goal);
+        case "bestseller":
+            return finishedBooks.filter(isBestseller).length;
+        case "genre": {
+            const genreRules = {
+                detective_master: ["detective", "mystery"],
+                scifi_master: ["sci-fi", "science fiction", "fantasy"],
+                realist_master: ["biography", "history"],
+            };
+
+            return finishedBooks.filter((book) =>
+                matchesGenre(book, genreRules[badge.id] || []),
+            ).length;
+        }
+        case "total_added":
+            return inProgressBooks.length + finishedBooks.length;
+        case "clearance":
+            return inProgressBooks.length === 0 &&
+                inProgressBooks.length + finishedBooks.length > 0
+                ? badge.goal
+                : 0;
+        default:
+            return 0;
+    }
+}
+
 export default function ChallengesPage() {
-    const userProgress = {
-        first_book: 1,
-        bookworm: 3,
-        marathon_runner: 2,
-        trendsetter: 0,
-        hype_beast: 1,
-        detective_master: 1,
-        scifi_master: 0,
-        realist_master: 0,
-        window_shopper: 7,
-        total_clearance: 0,
-    };
+    const { inProgressBooks, finishedBooks } = useBooks();
+    const { user } = useAuth();
+    const goalBooks = Number(user?.yearlyGoalBooks) || 0;
+    const finishedCount = finishedBooks.length;
+    const goalComplete = goalBooks > 0 && finishedCount >= goalBooks;
 
     return (
         <div className="challenges-page">
@@ -23,6 +64,18 @@ export default function ChallengesPage() {
                 <p>
                     Complete reading challenges and earn badges along the way.
                 </p>
+                {goalBooks > 0 ? (
+                    <div className="goal-summary">
+                        <strong>Yearly goal:</strong> {finishedCount} /{" "}
+                        {goalBooks} books
+                        {goalComplete ? " — Goal completed! 🎉" : ""}
+                    </div>
+                ) : (
+                    <div className="goal-summary">
+                        Set your yearly reading goal on your profile to track
+                        progress.
+                    </div>
+                )}
             </div>
 
             <div className="badges-grid">
@@ -30,7 +83,11 @@ export default function ChallengesPage() {
                     <Badge
                         key={badge.id}
                         badge={badge}
-                        progress={userProgress[badge.id] || 0}
+                        progress={calculateBadgeProgress(
+                            badge,
+                            inProgressBooks,
+                            finishedBooks,
+                        )}
                     />
                 ))}
             </div>
