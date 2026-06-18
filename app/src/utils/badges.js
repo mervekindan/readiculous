@@ -8,6 +8,9 @@ import scifiMaster from "/badges/scifiMaster.png";
 import realistMaster from "/badges/realistMaster.png";
 import windowShopper from "/badges/windowShopper.png";
 import totalClearance from "/badges/totalClearance.png";
+import realistPro from "/badges/realistPro.png";
+import genreLoyalty from "/badges/genreLoyalty.png";
+import architectOfHabits from "/badges/architectOfHabits.png";
 
 export const BADGES = [
     {
@@ -99,5 +102,32 @@ export const BADGES = [
         type: "clearance",
         icon: totalClearance,
         goal: 0,
+    },
+    {
+        id: "realist_pro",
+        title: "Realist Pro",
+        description:
+            "Complete your entire Annual Goal (number of books) that you set for yourself. Promise kept!",
+        type: "annual_goal_match",
+        icon: realistPro,
+        goal: "dynamic",
+    },
+    // {
+    //     id: "genre_loyalty",
+    //     title: "Genre Loyalty",
+    //     description:
+    //         'Finish a book that matches one of the "Favorite Genres" you selected during registration.',
+    //     type: "favorite_genre_match",
+    //     icon: genreLoyalty,
+    //     goal: 1,
+    // },
+    {
+        id: "architect_of_habits",
+        title: "Architect of Habits",
+        description:
+            "Maintain a streak of consistent reading habits by reading at least 20 minutes a day for 7 consecutive days.",
+        type: "habit_streak",
+        icon: architectOfHabits,
+        goal: 7,
     },
 ];
