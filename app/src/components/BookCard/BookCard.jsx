@@ -2,6 +2,16 @@ import { useState, useEffect } from "react";
 import "./BookCard.css";
 import { ALLOWED_GENRES } from "../../utils/genres";
 
+function formatDate(dateString) {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+}
+
 function extractCleanGenres(apiSubjects) {
   if (!apiSubjects || !Array.isArray(apiSubjects)) return ["Other"];
 
@@ -80,8 +90,26 @@ export default function BookCard({
         )}
       </div>
       <div className="book-card-info">
-        <h3>{book.title}</h3>
-        <p>Author: {book.author_name?.[0] || "Unknown Author"}</p>
+        <div className="book-details-text">
+          <h3>{book.title}</h3>
+          <p>Author: {book.author_name?.[0] || "Unknown Author"}</p>
+
+          {(variant === "progress" || variant === "finished") && (
+            <div className="book-dates-wrapper">
+              {book.startedAt && (
+                <p className="book-date">
+                  📅 Started: {formatDate(book.startedAt)}
+                </p>
+              )}
+              {variant === "finished" && book.finishedAt && (
+                <p className="book-date">
+                  🎉 Finished: {formatDate(book.finishedAt)}
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+
         <div className="tags">
           {genres.map((genre, idx) => (
             <span key={idx} className="tag">
