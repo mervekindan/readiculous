@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getUserByEmail } from "../../api/authApi.js";
 import { useAuth } from "../../context/AuthContext.jsx";
 
 function LoginForm() {
   const { setUser } = useAuth();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -47,8 +49,11 @@ function LoginForm() {
 
       setUser(savedUser);
       setSuccess("Logged in successfully!");
+      navigate("/profile");
     } catch (error) {
-      setError("Something went wrong. Please try again.");
+      setError(
+        "Oops! No account found with this email. Please create an account first.",
+      );
     }
   }
 

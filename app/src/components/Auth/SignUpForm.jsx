@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { createUser } from "../../api/authApi.js";
+import { useNavigate } from "react-router-dom";
 
 function SignUpForm() {
   const { setUser } = useAuth();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -38,8 +40,11 @@ function SignUpForm() {
       const createdUser = await createUser(newUser);
       setUser(createdUser);
       setMessage("Account created successfully!");
+      navigate("/profile");
     } catch (error) {
-      setMessage("Something went wrong. Please try again.");
+      setError(
+        "An account with this email already exists. Please log in instead.",
+      );
     }
   }
 
