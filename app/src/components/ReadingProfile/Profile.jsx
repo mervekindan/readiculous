@@ -52,12 +52,13 @@ function ReadingProfile() {
     return (
       <section className="reading-profile">
         <h1>Profile</h1>
-        <p>You're not logged in.</p>
-        <p>Please sign up or log in to view your profile.</p>
 
-        <Link to="/" className="profile-auth-link">
-          Go to Sign Up / Login
-        </Link>
+        <p>Please sign up or log in to view your profile.</p>
+        <div className="profile-auth-actions">
+          <Link to="/?auth=signup">Sign Up</Link>
+          <span> / </span>
+          <Link to="/?auth=login">Login</Link>
+        </div>
       </section>
     );
   }

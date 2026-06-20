@@ -1,17 +1,27 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import SignUpForm from "./SignUpForm.jsx";
 import LoginForm from "./LoginForm.jsx";
 import "./Auth.css";
 
 function AuthSection() {
-  const [activeTab, setActiveTab] = useState("signup");
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const initialTab = searchParams.get("auth") === "login" ? "login" : "signup";
+
+  const [activeTab, setActiveTab] = useState(initialTab);
+
+  function handleTabChange(tab) {
+    setActiveTab(tab);
+    setSearchParams({ auth: tab });
+  }
 
   return (
     <section className="auth-section">
       <div className="auth-tabs">
         <button
           type="button"
-          onClick={() => setActiveTab("signup")}
+          onClick={() => handleTabChange("signup")}
           className={activeTab === "signup" ? "active-tab" : ""}
         >
           Sign Up
@@ -19,7 +29,7 @@ function AuthSection() {
 
         <button
           type="button"
-          onClick={() => setActiveTab("login")}
+          onClick={() => handleTabChange("login")}
           className={activeTab === "login" ? "active-tab" : ""}
         >
           Login
