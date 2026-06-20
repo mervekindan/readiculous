@@ -24,17 +24,19 @@ export function BookProvider({ children }) {
   };
 
   const addToProgress = (book) => {
-    const alreadyReading = appData.inProgressBooks.some(
-      (b) => b.key === book.key,
-    );
-    const alreadyFinished = appData.finishedBooks.some(
-      (b) => b.key === book.key,
-    );
+    const isAdded =
+      appData.inProgressBooks.some((b) => b.key === book.key) ||
+      appData.finishedBooks.some((b) => b.key === book.key);
 
-    if (!alreadyReading && !alreadyFinished) {
+    if (!isAdded) {
+      const bookWithStart = {
+        ...book,
+        startedAt: new Date().toISOString(),
+      };
+
       setAppData((prev) => ({
         ...prev,
-        inProgressBooks: [...prev.inProgressBooks, book],
+        inProgressBooks: [...prev.inProgressBooks, bookWithStart],
       }));
       showPopup(`"${book.title}" added to progress!`, "success");
     } else {
@@ -48,10 +50,15 @@ export function BookProvider({ children }) {
   const finishBook = (bookKey) => {
     const bookToFinish = appData.inProgressBooks.find((b) => b.key === bookKey);
     if (bookToFinish) {
+      const finishedBook = {
+        ...bookToFinish,
+        finishedAt: new Date().toISOString(),
+      };
+
       setAppData((prev) => ({
         ...prev,
         inProgressBooks: prev.inProgressBooks.filter((b) => b.key !== bookKey),
-        finishedBooks: [...prev.finishedBooks, bookToFinish],
+        finishedBooks: [...prev.finishedBooks, finishedBook],
       }));
       showPopup("Book marked as finished! 🎉", "success");
     }
