@@ -1,9 +1,7 @@
 const API_URL = "http://localhost:3001/users";
 
 export async function getUserByEmail(email) {
-  const response = await fetch(
-    `http://localhost:3001/users?email=${encodeURIComponent(email)}`,
-  );
+  const response = await fetch(`${API_URL}?email=${encodeURIComponent(email)}`);
 
   if (!response.ok) {
     throw new Error("Failed to fetch user");

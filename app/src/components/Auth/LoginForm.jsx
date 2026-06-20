@@ -10,7 +10,8 @@ function LoginForm() {
     password: "",
   });
 
-  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -19,10 +20,15 @@ function LoginForm() {
       ...prevData,
       [name]: value,
     }));
+
+    setError("");
+    setSuccess("");
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setError("");
+    setSuccess("");
 
     try {
       const savedUser = await getUserByEmail(
@@ -30,19 +36,19 @@ function LoginForm() {
       );
 
       if (!savedUser) {
-        setMessage("No account found. Please sign up first.");
+        setError("No account found. Please sign up first.");
         return;
       }
 
       if (savedUser.password !== formData.password) {
-        setMessage("Incorrect password.");
+        setError("Incorrect password.");
         return;
       }
 
       setUser(savedUser);
-      setMessage("Logged in successfully!");
+      setSuccess("Logged in successfully!");
     } catch (error) {
-      setMessage("Something went wrong. Please try again.");
+      setError("Something went wrong. Please try again.");
     }
   }
 
@@ -74,7 +80,8 @@ function LoginForm() {
 
       <button type="submit">Login</button>
 
-      {message && <p className="success-message">{message}</p>}
+      {error && <p className="error-message">{error}</p>}
+      {success && <p className="success-message">{success}</p>}
     </form>
   );
 }
