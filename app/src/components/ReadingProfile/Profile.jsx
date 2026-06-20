@@ -3,6 +3,7 @@ import "./Profile.css";
 import { useAuth } from "../../context/AuthContext";
 import ProfileSummary from "./ProfileSummary.jsx";
 import ProfileForm from "./ProfileForm.jsx";
+import { Link } from "react-router-dom";
 
 function ReadingProfile() {
   const { user, setUser, logout } = useAuth();
@@ -53,6 +54,10 @@ function ReadingProfile() {
         <h1>Profile</h1>
         <p>You're not logged in.</p>
         <p>Please sign up or log in to view your profile.</p>
+
+        <Link to="/" className="profile-auth-link">
+          Go to Sign Up / Login
+        </Link>
       </section>
     );
   }

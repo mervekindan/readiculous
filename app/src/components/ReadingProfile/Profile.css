@@ -33,3 +33,7 @@
 .profile-summary {
   margin-top: 1rem;
 }
+.profile-auth-link {
+  display: inline-block;
+  margin-top: 1rem;
+}
