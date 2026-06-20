@@ -1,3 +1,5 @@
+import { ALLOWED_GENRES } from "../../utils/genres";
+
 function ProfileForm({ profile, onChange, onSubmit }) {
   return (
     <form className="profile-form" onSubmit={onSubmit}>
@@ -37,6 +39,22 @@ function ProfileForm({ profile, onChange, onSubmit }) {
           required
         />
       </label>
+      <fieldset>
+        <legend>Favorite Genres</legend>
+
+        {ALLOWED_GENRES.map((genre) => (
+          <label key={genre}>
+            <input
+              type="checkbox"
+              name="favoriteGenres"
+              value={genre}
+              checked={profile.favoriteGenres?.includes(genre)}
+              onChange={onChange}
+            />
+            {genre}
+          </label>
+        ))}
+      </fieldset>
 
       <button type="submit">Save Changes</button>
     </form>

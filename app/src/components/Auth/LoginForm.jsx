@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getUserByEmail } from "../../api/authApi.js";
 import { useAuth } from "../../context/AuthContext.jsx";
 
@@ -85,7 +85,18 @@ function LoginForm() {
 
       <button type="submit">Login</button>
 
-      {error && <p className="error-message">{error}</p>}
+      {error && (
+        <p className="error-message">
+          {error}
+
+          {error.includes("No account found") && (
+            <>
+              {" "}
+              <Link to="/?auth=signup">Sign Up</Link>
+            </>
+          )}
+        </p>
+      )}
       {success && <p className="success-message">{success}</p>}
     </form>
   );

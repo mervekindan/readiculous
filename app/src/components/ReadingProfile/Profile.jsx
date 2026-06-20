@@ -13,11 +13,26 @@ function ReadingProfile() {
   const [profile, setProfile] = useState(user);
 
   function handleChange(event) {
-    const { name, value } = event.target;
+    const { name, value, checked, type } = event.target;
+
+    if (name === "favoriteGenres") {
+      setProfile((prevProfile) => {
+        const currentGenres = prevProfile.favoriteGenres || [];
+
+        return {
+          ...prevProfile,
+          favoriteGenres: checked
+            ? [...currentGenres, value]
+            : currentGenres.filter((genre) => genre !== value),
+        };
+      });
+
+      return;
+    }
 
     setProfile((prevProfile) => ({
       ...prevProfile,
-      [name]: value,
+      [name]: type === "number" ? value : value,
     }));
   }
 
@@ -35,6 +50,7 @@ function ReadingProfile() {
       name: profile.name.trim(),
       dailyGoalMinutes: Number(profile.dailyGoalMinutes),
       yearlyGoalBooks: Number(profile.yearlyGoalBooks),
+      favoriteGenres: profile.favoriteGenres || [],
     };
 
     setUser(updatedProfile);

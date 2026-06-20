@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import SignUpForm from "./SignUpForm.jsx";
 import LoginForm from "./LoginForm.jsx";
@@ -15,6 +15,13 @@ function AuthSection() {
     setActiveTab(tab);
     setSearchParams({ auth: tab });
   }
+  useEffect(() => {
+    const authParam = searchParams.get("auth");
+
+    if (authParam === "login" || authParam === "signup") {
+      setActiveTab(authParam);
+    }
+  }, [searchParams]);
 
   return (
     <section className="auth-section">

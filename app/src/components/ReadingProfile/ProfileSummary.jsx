@@ -12,6 +12,12 @@ function ProfileSummary({ user, message, onEdit, onLogout }) {
       <p>
         <strong>Yearly goal:</strong> {user.yearlyGoalBooks} books
       </p>
+      <p>
+        <strong>Favorite Genres:</strong>{" "}
+        {user.favoriteGenres?.length
+          ? user.favoriteGenres.join(", ")
+          : "No favorite genres selected"}
+      </p>
 
       <div className="profile-actions">
         <button type="button" onClick={onEdit}>
