@@ -9,7 +9,7 @@ export default function BooksPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { addToProgress } = useBooks();
+  const { addToProgress, inProgressBooks, finishedBooks } = useBooks();
 
   const fetchBooks = async (searchQuery) => {
     setLoading(true);
@@ -32,7 +32,7 @@ export default function BooksPage() {
   };
 
   useEffect(() => {
-    fetchBooks("sherlock");
+    fetchBooks("potter");
   }, []);
 
   const handleAddBook = (book) => {
@@ -51,14 +51,21 @@ export default function BooksPage() {
       ) : (
         <div className="books-grid">
           {books.length > 0 ? (
-            books.map((book) => (
-              <BookCard
-                key={book.key}
-                book={book}
-                variant="catalog"
-                onAdd={handleAddBook}
-              />
-            ))
+            books.map((book) => {
+              const isAdded =
+                inProgressBooks.some((b) => b.key === book.key) ||
+                finishedBooks.some((b) => b.key === book.key);
+
+              return (
+                <BookCard
+                  key={book.key}
+                  book={book}
+                  variant="catalog"
+                  onAdd={handleAddBook}
+                  isAdded={isAdded}
+                />
+              );
+            })
           ) : (
             <p>No books found. Try another search.</p>
           )}
