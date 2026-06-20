@@ -10,6 +10,7 @@ import "./main.css";
 import BooksPage from "./components/BooksPage/BooksPage.jsx";
 import ProgressPage from "./components/ProgressPage/ProgressPage.jsx";
 import { BookProvider } from "./context/BookContext.jsx";
+import AboutPage from "./components/AboutPage/AboutPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <ReadingProfile />,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
       },
     ],
   },
