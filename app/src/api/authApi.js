@@ -1,4 +1,6 @@
-const API_URL = "http://localhost:3001/users";
+import api from "../api.js";
+
+const API_URL = api("/users");
 
 export async function getUserByEmail(email) {
   const response = await fetch(`${API_URL}?email=${encodeURIComponent(email)}`);
