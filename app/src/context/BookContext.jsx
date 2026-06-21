@@ -27,6 +27,11 @@ export function BookProvider({ children }) {
   const addToProgress = (book) => {
     const cleanGenres = book.cleanGenres || extractCleanGenres(book.subject);
 
+    const isBestseller =
+      book.isBestseller ??
+      (book.subject?.some((s) => s.toLowerCase().includes("bestseller")) ||
+        false);
+
     const isAdded =
       appData.inProgressBooks.some((b) => b.key === book.key) ||
       appData.finishedBooks.some((b) => b.key === book.key);
@@ -35,6 +40,7 @@ export function BookProvider({ children }) {
       const bookWithStart = {
         ...book,
         cleanGenres: cleanGenres,
+        isBestseller: isBestseller,
         startedAt: new Date().toISOString(),
       };
 
