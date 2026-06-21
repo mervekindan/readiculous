@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { LOCAL_STORAGE_KEY, INITIAL_APP_STATE } from "../utils/constants";
+import { extractCleanGenres } from "../components/BookCard/BookCard";
 
 const BookContext = createContext();
 
@@ -24,17 +25,28 @@ export function BookProvider({ children }) {
   };
 
   const addToProgress = (book) => {
-    const alreadyReading = appData.inProgressBooks.some(
-      (b) => b.key === book.key,
-    );
-    const alreadyFinished = appData.finishedBooks.some(
-      (b) => b.key === book.key,
-    );
+    const cleanGenres = book.cleanGenres || extractCleanGenres(book.subject);
 
-    if (!alreadyReading && !alreadyFinished) {
+    const isBestseller =
+      book.isBestseller ??
+      (book.subject?.some((s) => s.toLowerCase().includes("bestseller")) ||
+        false);
+
+    const isAdded =
+      appData.inProgressBooks.some((b) => b.key === book.key) ||
+      appData.finishedBooks.some((b) => b.key === book.key);
+
+    if (!isAdded) {
+      const bookWithStart = {
+        ...book,
+        cleanGenres: cleanGenres,
+        isBestseller: isBestseller,
+        startedAt: new Date().toISOString(),
+      };
+
       setAppData((prev) => ({
         ...prev,
-        inProgressBooks: [...prev.inProgressBooks, book],
+        inProgressBooks: [...prev.inProgressBooks, bookWithStart],
       }));
       showPopup(`"${book.title}" added to progress!`, "success");
     } else {
@@ -48,10 +60,15 @@ export function BookProvider({ children }) {
   const finishBook = (bookKey) => {
     const bookToFinish = appData.inProgressBooks.find((b) => b.key === bookKey);
     if (bookToFinish) {
+      const finishedBook = {
+        ...bookToFinish,
+        finishedAt: new Date().toISOString(),
+      };
+
       setAppData((prev) => ({
         ...prev,
         inProgressBooks: prev.inProgressBooks.filter((b) => b.key !== bookKey),
-        finishedBooks: [...prev.finishedBooks, bookToFinish],
+        finishedBooks: [...prev.finishedBooks, finishedBook],
       }));
       showPopup("Book marked as finished! 🎉", "success");
     }
