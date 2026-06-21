@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { LOCAL_STORAGE_KEY, INITIAL_APP_STATE } from "../utils/constants";
+import { extractCleanGenres } from "../components/BookCard/BookCard";
 
 const BookContext = createContext();
 
@@ -24,6 +25,8 @@ export function BookProvider({ children }) {
   };
 
   const addToProgress = (book) => {
+    const cleanGenres = book.cleanGenres || extractCleanGenres(book.subject);
+
     const isAdded =
       appData.inProgressBooks.some((b) => b.key === book.key) ||
       appData.finishedBooks.some((b) => b.key === book.key);
@@ -31,6 +34,7 @@ export function BookProvider({ children }) {
     if (!isAdded) {
       const bookWithStart = {
         ...book,
+        cleanGenres: cleanGenres,
         startedAt: new Date().toISOString(),
       };
 
