@@ -1,4 +1,8 @@
-function ProfileSummary({ user, message, onEdit, onLogout }) {
+import { useAuth } from "../../context/AuthContext";
+
+function ProfileSummary({ message, onEdit, onLogout }) {
+  const { user } = useAuth();
+
   return (
     <div className="profile-summary">
       <p>

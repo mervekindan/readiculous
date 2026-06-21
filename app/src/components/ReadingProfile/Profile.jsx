@@ -85,7 +85,6 @@ function ReadingProfile() {
 
       {!isEditing ? (
         <ProfileSummary
-          user={user}
           message={message}
           onEdit={handleEdit}
           onLogout={handleLogout}
