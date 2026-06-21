@@ -12,7 +12,7 @@ function formatDate(dateString) {
   });
 }
 
-function extractCleanGenres(apiSubjects) {
+export function extractCleanGenres(apiSubjects) {
   if (!apiSubjects || !Array.isArray(apiSubjects)) return ["Other"];
 
   const foundGenres = new Set();
@@ -60,7 +60,7 @@ export default function BookCard({
     s.toLowerCase().includes("bestseller"),
   );
 
-  const genres = extractCleanGenres(book.subject);
+  const genres = book.cleanGenres || extractCleanGenres(book.subject);
 
   return (
     <div
