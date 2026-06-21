@@ -8,6 +8,34 @@ export default function AboutPage() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const instructionsData = [
+    {
+      title: "Set Your Targets",
+      description:
+        "Before jumping in, set your personal goals. Choose how many minutes per day you want to read and how many books per year you want to conquer. Your targets, your rules.",
+    },
+    {
+      title: "Hunt and Gather",
+      description:
+        "Head over to the Library tab. Search for your next obsession. Click Add to drop it into your reading queue.",
+    },
+    {
+      title: "Fire Up the Daily Streak",
+      description:
+        "Every day you sit down to read, start the built-in Reading Timer. Complete your daily goal in minutes to secure your Daily Streak and keep your current week green! Don't let the streak die.",
+    },
+    {
+      title: "Claim Your Glory",
+      description:
+        "Finished the final chapter? Hit Finished! Your book will move to the hall of fame, your annual stats will update instantly, and you’ll get closer to unlocking gaming achievements.",
+    },
+    {
+      title: "Collect Your Badges",
+      description:
+        "Head over to the dedicated. Challenges page to see your trophy cabinet. Turn those locked, gray achievements into shiny, colorized badges!",
+    },
+  ];
+
   const faqData = [
     {
       q: 'What is this "Daily Streak" and why should I care?',
@@ -48,34 +76,14 @@ export default function AboutPage() {
       <section className="how-it-works-section">
         <h2>How It Works</h2>
         <ol className="instructions-list">
-          <li>
-            <strong>1. Set Your Targets:</strong> Before jumping in, set your
-            personal goals. Choose how many minutes per day you want to read and
-            how many books per year you want to conquer. Your targets, your
-            rules.
-          </li>
-          <li>
-            <strong>2. Hunt and Gather:</strong> Head over to the Library tab.
-            Search for your next obsession. Click Add to drop it into your
-            reading queue.
-          </li>
-          <li>
-            <strong>3. Fire Up the Daily Streak:</strong> Every day you sit down
-            to read, start the built-in Reading Timer. Complete your daily goal
-            in minutes to secure your Daily Streak and keep your current week
-            green! Don't let the streak die.
-          </li>
-          <li>
-            <strong>4. Claim Your Glory:</strong> Finished the final chapter?
-            Hit Finished! Your book will move to the hall of fame, your annual
-            stats will update instantly, and you’ll get closer to unlocking
-            gaming achievements.
-          </li>
-          <li>
-            <strong>5. Collect Your Badges:</strong> Head over to the dedicated
-            Challenges page to see your trophy cabinet. Turn those locked, gray
-            achievements into shiny, colorized badges!
-          </li>
+          {instructionsData.map((item, index) => (
+            <li key={index}>
+              <strong>
+                {index + 1}. {item.title}:{" "}
+              </strong>
+              {item.description}
+            </li>
+          ))}
         </ol>
       </section>
 
