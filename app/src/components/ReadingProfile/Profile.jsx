@@ -10,34 +10,29 @@ function ReadingProfile() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState("");
-  const [profile, setProfile] = useState(user);
 
   function handleChange(event) {
     const { name, value, checked, type } = event.target;
 
     if (name === "favoriteGenres") {
-      setProfile((prevProfile) => {
-        const currentGenres = prevProfile.favoriteGenres || [];
-
-        return {
-          ...prevProfile,
-          favoriteGenres: checked
-            ? [...currentGenres, value]
-            : currentGenres.filter((genre) => genre !== value),
-        };
+      const currentGenres = user.favoriteGenres || [];
+      setUser({
+        ...user,
+        favoriteGenres: checked
+          ? [...currentGenres, value]
+          : currentGenres.filter((genre) => genre !== value),
       });
 
       return;
     }
 
-    setProfile((prevProfile) => ({
-      ...prevProfile,
+    setUser({
+      ...user,
       [name]: type === "number" ? value : value,
-    }));
+    });
   }
 
   function handleEdit() {
-    setProfile(user);
     setIsEditing(true);
     setMessage("");
   }
@@ -45,15 +40,15 @@ function ReadingProfile() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const updatedProfile = {
+    const updatedUser = {
       ...user,
-      name: profile.name.trim(),
-      dailyGoalMinutes: Number(profile.dailyGoalMinutes),
-      yearlyGoalBooks: Number(profile.yearlyGoalBooks),
-      favoriteGenres: profile.favoriteGenres || [],
+      name: user.name.trim(),
+      dailyGoalMinutes: Number(user.dailyGoalMinutes),
+      yearlyGoalBooks: Number(user.yearlyGoalBooks),
+      favoriteGenres: user.favoriteGenres || [],
     };
 
-    setUser(updatedProfile);
+    setUser(updatedUser);
     setIsEditing(false);
     setMessage("Profile updated successfully!");
   }
@@ -91,7 +86,7 @@ function ReadingProfile() {
         />
       ) : (
         <ProfileForm
-          profile={profile}
+          profile={user}
           onChange={handleChange}
           onSubmit={handleSubmit}
         />

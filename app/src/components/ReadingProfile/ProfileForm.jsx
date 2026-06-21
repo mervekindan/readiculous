@@ -1,13 +1,16 @@
 import { ALLOWED_GENRES } from "../../utils/genres";
+import { useAuth } from "../../context/AuthContext";
 
-function ProfileForm({ profile, onChange, onSubmit }) {
+function ProfileForm({ onChange, onSubmit }) {
+  const { user } = useAuth();
+
   return (
     <form className="profile-form" onSubmit={onSubmit}>
       <label>
         Name
         <input
           name="name"
-          value={profile.name}
+          value={user.name}
           onChange={onChange}
           maxLength={50}
           required
@@ -21,7 +24,7 @@ function ProfileForm({ profile, onChange, onSubmit }) {
           type="number"
           min="1"
           max="300"
-          value={profile.dailyGoalMinutes}
+          value={user.dailyGoalMinutes}
           onChange={onChange}
           required
         />
@@ -34,7 +37,7 @@ function ProfileForm({ profile, onChange, onSubmit }) {
           type="number"
           min="1"
           max="100"
-          value={profile.yearlyGoalBooks}
+          value={user.yearlyGoalBooks}
           onChange={onChange}
           required
         />
@@ -48,7 +51,7 @@ function ProfileForm({ profile, onChange, onSubmit }) {
               type="checkbox"
               name="favoriteGenres"
               value={genre}
-              checked={profile.favoriteGenres?.includes(genre)}
+              checked={user.favoriteGenres?.includes(genre)}
               onChange={onChange}
             />
             {genre}
