@@ -7,7 +7,7 @@ import detectiveMaster from "/badges/detectiveMaster.png";
 import scifiMaster from "/badges/scifiMaster.png";
 import realistMaster from "/badges/realistMaster.png";
 import windowShopper from "/badges/windowShopper.png";
-import totalClearance from "/badges/totalClearance.png";
+import firstMinutes from "/badges/firstMinutes.png";
 import realistPro from "/badges/realistPro.png";
 import genreLoyalty from "/badges/genreLoyalty.png";
 import architectOfHabits from "/badges/architectOfHabits.png";
@@ -95,13 +95,12 @@ export const BADGES = [
         goal: 10,
     },
     {
-        id: "total_clearance",
-        title: "Total Clearance",
-        description:
-            'Empty your "In Progress" list by finishing all added books. No trailing assignments!',
-        type: "clearance",
-        icon: totalClearance,
-        goal: 0,
+        id: 'first_minutes',
+        title: 'First Minutes',
+        description: 'Start and successfully complete your very first timed reading session.',
+        type: 'timer_first_run',
+        icon: firstMinutes,
+        goal: 1,
     },
     {
         id: "realist_pro",

@@ -3,9 +3,7 @@ import "./Badge.css";
 export default function Badge({ badge, progress, userGoal }) {
     const goalValue = typeof badge.goal === "number" ? badge.goal : (userGoal || 1);
     const unlocked = progress >= goalValue;
-    const percentage = goalValue === 0
-        ? unlocked ? 100 : 0
-        : Math.min(100, (progress / goalValue) * 100);
+    const percentage = Math.min(100, (progress / goalValue) * 100);
 
     const progressLabel = `${progress}/${goalValue}`;
 
