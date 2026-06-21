@@ -39,12 +39,9 @@ function calculateBadgeProgress(badge, inProgressBooks, finishedBooks, user) {
             ).length;
         }
         case "total_added":
-            return inProgressBooks.length + finishedBooks.length;
-        case "clearance":
-            return inProgressBooks.length === 0 &&
-                inProgressBooks.length + finishedBooks.length > 0
-                ? badge.goal
-                : 0;
+            return inProgressBooks.length + finishedBooks.length > 10 ? 10: inProgressBooks.length + finishedBooks.length;
+        case "timer_first_run":
+            return user?.completedTimedReadingSession ? 1 : 0;
         case "annual_goal_match": {
             const goalBooks = Number(user?.yearlyGoalBooks) || 0;
             return goalBooks > 0 && finishedBooks.length >= goalBooks ? 1 : 0;
@@ -55,6 +52,10 @@ function calculateBadgeProgress(badge, inProgressBooks, finishedBooks, user) {
         //     )
         //         ? 1
         //         : 0;
+				case "habit_streak": {
+            const streakDays = Number(user?.readingStreakDays) || 0;
+            return Math.min(streakDays, badge.goal);
+        }
         case "settings_changed":
             return user?.settingsChanged ? 1 : 0;
         default:
