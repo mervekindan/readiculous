@@ -13,8 +13,6 @@ export default function ChallengesPage() {
     const { inProgressBooks, finishedBooks } = useBooks();
     const { user } = useAuth();
     const goalBooks = Number(user?.yearlyGoalBooks) || 0;
-    const finishedCount = finishedBooks.length;
-    const goalComplete = goalBooks > 0 && finishedCount >= goalBooks;
 
     return (
         <div className="challenges-page">
@@ -23,18 +21,6 @@ export default function ChallengesPage() {
                 <p>
                     Complete reading challenges and earn badges along the way.
                 </p>
-                {goalBooks > 0 ? (
-                    <div className="goal-summary">
-                        <strong>Yearly goal:</strong> {finishedCount} /{" "}
-                        {goalBooks} books
-                        {goalComplete ? " — Goal completed! 🎉" : ""}
-                    </div>
-                ) : (
-                    <div className="goal-summary">
-                        Set your yearly reading goal on your profile to track
-                        progress.
-                    </div>
-                )}
             </div>
 
             <div className="badges-grid">
