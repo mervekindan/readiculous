@@ -1,4 +1,4 @@
-import { ALLOWED_GENRES } from "../../utils/genres";
+import { GENRE_CATEGORIES } from "../../utils/genres";
 import { useAuth } from "../../context/AuthContext";
 
 function ProfileForm({ onChange, onSubmit }) {
@@ -51,17 +51,25 @@ function ProfileForm({ onChange, onSubmit }) {
       <fieldset>
         <legend>Favorite Genres</legend>
 
-        {ALLOWED_GENRES.map((genre) => (
-          <label key={genre}>
-            <input
-              type="checkbox"
-              name="favoriteGenres"
-              value={genre}
-              checked={user.favoriteGenres?.includes(genre)}
-              onChange={onChange}
-            />
-            {genre}
-          </label>
+        {Object.entries(GENRE_CATEGORIES).map(([category, genres]) => (
+          <div key={category} className="genre-category">
+            <h4>{category}</h4>
+
+            <div>
+              {genres.map((genre) => (
+                <label key={genre}>
+                  <input
+                    type="checkbox"
+                    name="favoriteGenres"
+                    value={genre}
+                    checked={user.favoriteGenres?.includes(genre)}
+                    onChange={onChange}
+                  />
+                  {genre}
+                </label>
+              ))}
+            </div>
+          </div>
         ))}
       </fieldset>
 

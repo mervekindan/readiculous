@@ -37,3 +37,33 @@
   display: inline-block;
   margin-top: 1rem;
 }
+.profile-form fieldset {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.genre-category {
+  margin-bottom: 1rem;
+}
+
+.genre-category h4 {
+  margin: 0 0 0.5rem;
+}
+
+.genre-category > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem 1rem;
+}
+
+.genre-category label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+}
+.reading-profile {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
