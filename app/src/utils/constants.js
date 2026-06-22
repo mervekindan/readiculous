@@ -8,4 +8,9 @@ export const INITIAL_APP_STATE = {
   },
   inProgressBooks: [],
   finishedBooks: [],
+  readingStreak: {
+    currentStreak: 0,
+    lastCompletedDate: null,
+    currentWeekProgress: [false, false, false, false, false, false, false],
+  },
 };

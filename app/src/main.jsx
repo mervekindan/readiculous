@@ -6,10 +6,11 @@ import HomePage from "./components/HomePage/HomePage.jsx";
 import TestPage from "./components/TestPage/TestPage.jsx";
 import ReadingProfile from "./components/ReadingProfile/Profile.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
-import "./main.css";
 import BooksPage from "./components/BooksPage/BooksPage.jsx";
 import ProgressPage from "./components/ProgressPage/ProgressPage.jsx";
+import ReadingStreak from "./components/ReadingStreak/ReadingStreak.jsx";
 import { BookProvider } from "./context/BookContext.jsx";
+import "./main.css";
 import AboutPage from "./components/AboutPage/AboutPage.jsx";
 import ChallengesPage from "./components/ChallengesPage/ChallengesPage.jsx";
 
@@ -34,24 +35,16 @@ const router = createBrowserRouter([
         path: "profile",
         element: <ReadingProfile />,
       },
-			{
-        path: "challenges",
-        element: <ChallengesPage />,
-      },
-      {
-        path: "about",
-        element: <AboutPage />,
-      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-        <AuthProvider>
-            <BookProvider>
-                <RouterProvider router={router} />
-            </BookProvider>
-        </AuthProvider>
-    </React.StrictMode>,
+  <React.StrictMode>
+    <AuthProvider>
+      <BookProvider>
+        <RouterProvider router={router} />
+      </BookProvider>
+    </AuthProvider>
+  </React.StrictMode>,
 );
