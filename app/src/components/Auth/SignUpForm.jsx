@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { createUser } from "../../api/authApi.js";
 import { useNavigate } from "react-router-dom";
-
+import { sanitizeEmailInput, sanitizeTextInput } from "../../utils/forms.js";
 function convertTimeToMinutes(time) {
   const [hours, minutes] = time.split(":").map(Number);
   return hours * 60 + minutes;
