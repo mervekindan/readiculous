@@ -2,7 +2,12 @@ import { useState } from "react";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { createUser } from "../../api/authApi.js";
 import { useNavigate } from "react-router-dom";
-import { sanitizeEmailInput, sanitizeTextInput } from "../../utils/forms.js";
+import {
+  sanitizeEmailInput,
+  sanitizeNumberInput,
+  sanitizeTextInput,
+} from "../../utils/forms.js";
+
 function convertTimeToMinutes(time) {
   const [hours, minutes] = time.split(":").map(Number);
   return hours * 60 + minutes;
@@ -35,11 +40,13 @@ function SignUpForm() {
     event.preventDefault();
 
     const newUser = {
-      name: formData.name.trim(),
-      email: formData.email.trim().toLowerCase(),
+      name: sanitizeTextInput(formData.name),
+      email: sanitizeEmailInput(formData.email),
       password: formData.password,
-      dailyGoalMinutes: convertTimeToMinutes(formData.dailyGoalMinutes),
-      yearlyGoalBooks: Number(formData.yearlyGoalBooks),
+      dailyGoalMinutes: sanitizeNumberInput(
+        convertTimeToMinutes(formData.dailyGoalMinutes),
+      ),
+      yearlyGoalBooks: sanitizeNumberInput(formData.yearlyGoalBooks),
     };
 
     try {

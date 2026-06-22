@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { sanitizeTextInput } from "../../../utils/forms.js";
 import "./SearchBar.css";
 
 export default function SearchBar({ onSearch }) {
@@ -6,8 +7,11 @@ export default function SearchBar({ onSearch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query.trim()) {
-      onSearch(query);
+
+    const sanitizedQuery = sanitizeTextInput(query);
+
+    if (sanitizedQuery) {
+      onSearch(sanitizedQuery);
     }
   };
 
