@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import { BookProvider } from "./context/BookContext.jsx";
+
 import Layout from "./components/Layout/Layout.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
-import TestPage from "./components/TestPage/TestPage.jsx";
 import ReadingProfile from "./components/ReadingProfile/Profile.jsx";
-import { AuthProvider } from "./context/AuthContext.jsx";
 import BooksPage from "./components/BooksPage/BooksPage.jsx";
 import ProgressPage from "./components/ProgressPage/ProgressPage.jsx";
 import ReadingStreak from "./components/ReadingStreak/ReadingStreak.jsx";
-import { BookProvider } from "./context/BookContext.jsx";
-import "./main.css";
-import AboutPage from "./components/AboutPage/AboutPage.jsx";
 import ChallengesPage from "./components/ChallengesPage/ChallengesPage.jsx";
+import AboutPage from "./components/AboutPage/AboutPage.jsx";
+import "./main.css";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,11 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "books",
+        path: "profile",
+        element: <ReadingProfile />,
+      },
+      {
+        path: "library",
         element: <BooksPage />,
       },
       {
@@ -32,8 +36,16 @@ const router = createBrowserRouter([
         element: <ProgressPage />,
       },
       {
-        path: "profile",
-        element: <ReadingProfile />,
+        path: "daily-streak",
+        element: <ReadingStreak />,
+      },
+      {
+        path: "challenges",
+        element: <ChallengesPage />,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
       },
     ],
   },
