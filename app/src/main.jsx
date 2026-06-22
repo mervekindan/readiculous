@@ -11,6 +11,8 @@ import ProgressPage from "./components/ProgressPage/ProgressPage.jsx";
 import ReadingStreak from "./components/ReadingStreak/ReadingStreak.jsx";
 import { BookProvider } from "./context/BookContext.jsx";
 import "./main.css";
+import AboutPage from "./components/AboutPage/AboutPage.jsx";
+import ChallengesPage from "./components/ChallengesPage/ChallengesPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,10 +34,6 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <ReadingProfile />,
-      },
-      {
-        path: "daily-streak",
-        element: <ReadingStreak />,
       },
     ],
   },

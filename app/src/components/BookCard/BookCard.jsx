@@ -12,7 +12,7 @@ function formatDate(dateString) {
   });
 }
 
-function extractCleanGenres(apiSubjects) {
+export function extractCleanGenres(apiSubjects) {
   if (!apiSubjects || !Array.isArray(apiSubjects)) return ["Other"];
 
   const foundGenres = new Set();
@@ -56,11 +56,11 @@ export default function BookCard({
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
     : null;
 
-  const isBestseller = book.subject?.some((s) =>
-    s.toLowerCase().includes("bestseller"),
-  );
+  const isBestseller =
+    book.isBestseller ??
+    book.subject?.some((s) => s.toLowerCase().includes("bestseller"));
 
-  const genres = extractCleanGenres(book.subject);
+  const genres = book.cleanGenres || extractCleanGenres(book.subject);
 
   return (
     <div
