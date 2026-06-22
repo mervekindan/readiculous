@@ -5,7 +5,7 @@ export default function Badge({ badge, progress, userGoal }) {
     const unlocked = progress >= goalValue;
     const percentage = Math.min(100, (progress / goalValue) * 100);
 
-    const progressLabel = `${progress}/${goalValue}`;
+    const progressLabel = unlocked ? "Goal completed! 🎉" : `${progress}/${goalValue}`;
 
     return (
         <div className="badge-card">
