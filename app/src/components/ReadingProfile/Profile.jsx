@@ -5,6 +5,11 @@ import ProfileSummary from "./ProfileSummary.jsx";
 import ProfileForm from "./ProfileForm.jsx";
 import { Link } from "react-router-dom";
 
+function convertTimeToMinutes(time) {
+  const [hours, minutes] = time.split(":").map(Number);
+  return hours * 60 + minutes;
+}
+
 function ReadingProfile() {
   const { user, setUser, logout } = useAuth();
 
@@ -12,10 +17,11 @@ function ReadingProfile() {
   const [message, setMessage] = useState("");
 
   function handleChange(event) {
-    const { name, value, checked, type } = event.target;
+    const { name, value, checked } = event.target;
 
     if (name === "favoriteGenres") {
       const currentGenres = user.favoriteGenres || [];
+
       setUser({
         ...user,
         favoriteGenres: checked
@@ -28,7 +34,7 @@ function ReadingProfile() {
 
     setUser({
       ...user,
-      [name]: type === "number" ? value : value,
+      [name]: name === "dailyGoalMinutes" ? convertTimeToMinutes(value) : value,
     });
   }
 
@@ -65,6 +71,7 @@ function ReadingProfile() {
         <h1>Profile</h1>
 
         <p>Please sign up or log in to view your profile.</p>
+
         <div className="profile-auth-actions">
           <Link to="/?auth=signup">Sign Up</Link>
           <span> / </span>
@@ -85,11 +92,7 @@ function ReadingProfile() {
           onLogout={handleLogout}
         />
       ) : (
-        <ProfileForm
-          profile={user}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-        />
+        <ProfileForm onChange={handleChange} onSubmit={handleSubmit} />
       )}
     </section>
   );

@@ -3,6 +3,11 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { createUser } from "../../api/authApi.js";
 import { useNavigate } from "react-router-dom";
 
+function convertTimeToMinutes(time) {
+  const [hours, minutes] = time.split(":").map(Number);
+  return hours * 60 + minutes;
+}
+
 function SignUpForm() {
   const { setUser } = useAuth();
   const navigate = useNavigate();
@@ -33,18 +38,16 @@ function SignUpForm() {
       name: formData.name.trim(),
       email: formData.email.trim().toLowerCase(),
       password: formData.password,
-      dailyGoalMinutes: Number(formData.dailyGoalMinutes),
+      dailyGoalMinutes: convertTimeToMinutes(formData.dailyGoalMinutes),
       yearlyGoalBooks: Number(formData.yearlyGoalBooks),
     };
+
     try {
       const createdUser = await createUser(newUser);
       setUser(createdUser);
-      setMessage("Account created successfully!");
       navigate("/profile");
     } catch (error) {
-      setError(
-        "An account with this email already exists. Please log in instead.",
-      );
+      setMessage("Unable to create your account. Please try again.");
     }
   }
 
@@ -62,6 +65,7 @@ function SignUpForm() {
           required
         />
       </label>
+
       <label>
         Email
         <input
@@ -86,12 +90,10 @@ function SignUpForm() {
       </label>
 
       <label>
-        Daily reading goal (minutes)
+        Daily reading goal
         <input
           name="dailyGoalMinutes"
-          type="number"
-          min="1"
-          max="300"
+          type="time"
           value={formData.dailyGoalMinutes}
           onChange={handleChange}
           required
