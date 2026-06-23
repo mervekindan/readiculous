@@ -17,7 +17,7 @@ export function NavBar() {
           Profile
         </NavLink>
         <NavLink
-          to="/books"
+          to="/library"
           className={({ isActive }) => (isActive ? "link active" : "link")}
         >
           Library
