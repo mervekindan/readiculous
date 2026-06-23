@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { useBooks } from "../../context/BookContext";
+import { getTodayDate } from "../../utils/date.js";
 import "./ReadingStreak.css";
 
 function ReadingStreak() {
   const { userProfile, readingStreak, completeReadingToday } = useBooks();
 
-  const [goalMinutes, setGoalMinutes] = useState(
-    String(userProfile.dailyTargetMinutes || 20),
-  );
+  const goalMinutes =
+    userProfile.dailyGoalMinutes || userProfile.dailyTargetMinutes || 20;
 
   const initialTime = Number(goalMinutes || 0) * 60;
 
   const [timeLeft, setTimeLeft] = useState(initialTime);
   const [isRunning, setIsRunning] = useState(false);
 
-  const today = new Date().toISOString().split("T")[0];
+  const today = getTodayDate();
   const completedToday = readingStreak?.lastCompletedDate === today;
   const currentStreak = readingStreak?.currentStreak || 0;
 
@@ -64,7 +64,7 @@ function ReadingStreak() {
         <p>{currentStreak === 1 ? "day streak" : "days streak"}</p>
 
         <div className="week-progress">
-          {["S", "M", "T", "W", "T", "F", "S"].map((day, index) => (
+          {["M", "T", "W", "T", "F", "S", "S"].map((day, index) => (
             <div key={day + index} className="day-item">
               <span>{day}</span>
 
@@ -80,25 +80,8 @@ function ReadingStreak() {
         </div>
 
         <div className="streak-info">
-          <label className="timer-goal">
-            Set today's reading time
-            <input
-              type="number"
-              min="0"
-              max="300"
-              value={goalMinutes}
-              onChange={(event) => {
-                const newGoal = event.target.value;
-
-                setGoalMinutes(newGoal);
-                setTimeLeft(Number(newGoal || 0) * 60);
-              }}
-              disabled={isRunning || completedToday}
-            />
-          </label>
-
           <p>
-            <strong>Today's goal:</strong> {goalMinutes || 0} minutes
+            <strong>Today's reading goal:</strong> {goalMinutes || 0} minutes
           </p>
 
           <p>

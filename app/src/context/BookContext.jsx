@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { LOCAL_STORAGE_KEY, INITIAL_APP_STATE } from "../utils/constants";
 import { extractCleanGenres } from "../components/BookCard/BookCard";
+import { getTodayDate, getTodayIndex } from "../utils/date.js";
 
 const BookContext = createContext();
 
@@ -83,12 +84,6 @@ export function BookProvider({ children }) {
     showPopup("Book removed from progress.", "success");
   };
 
-  function getTodayDate() {
-    return new Date().toISOString().split("T")[0];
-  }
-  function getTodayIndex() {
-    return new Date().getDay();
-  }
   function completeReadingToday() {
     const today = getTodayDate();
     const todayIndex = getTodayIndex();

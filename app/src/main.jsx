@@ -35,6 +35,10 @@ const router = createBrowserRouter([
         path: "profile",
         element: <ReadingProfile />,
       },
+      {
+        path: "daily-streak",
+        element: <ReadingStreak />,
+      },
     ],
   },
 ]);
