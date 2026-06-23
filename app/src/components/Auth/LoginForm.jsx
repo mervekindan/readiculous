@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserByEmail } from "../../api/authApi.js";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { sanitizeEmailInput } from "../../utils/forms.js";
 
 function LoginForm() {
   const { setUser } = useAuth();
@@ -34,7 +35,7 @@ function LoginForm() {
 
     try {
       const savedUser = await getUserByEmail(
-        formData.email.trim().toLowerCase(),
+        sanitizeEmailInput(formData.email),
       );
 
       if (!savedUser) {

@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import ProfileSummary from "./ProfileSummary.jsx";
 import ProfileForm from "./ProfileForm.jsx";
 import { Link } from "react-router-dom";
+import { sanitizeNumberInput, sanitizeTextInput } from "../../utils/forms.js";
 
 function convertTimeToMinutes(time) {
   const [hours, minutes] = time.split(":").map(Number);
@@ -48,9 +49,9 @@ function ReadingProfile() {
 
     const updatedUser = {
       ...user,
-      name: user.name.trim(),
-      dailyGoalMinutes: Number(user.dailyGoalMinutes),
-      yearlyGoalBooks: Number(user.yearlyGoalBooks),
+      name: sanitizeTextInput(user.name),
+      dailyGoalMinutes: sanitizeNumberInput(user.dailyGoalMinutes),
+      yearlyGoalBooks: sanitizeNumberInput(user.yearlyGoalBooks),
       favoriteGenres: user.favoriteGenres || [],
     };
 
