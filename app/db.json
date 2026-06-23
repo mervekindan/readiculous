@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "user-1",
+      "name": "Alice",
+      "email": "alice@example.com",
+      "password": "password123",
+      "dailyGoalMinutes": 30,
+      "yearlyGoalBooks": 12,
+      "favoriteGenres": ["fantasy", "mystery"]
+    },
+    {
+      "id": "user-2",
+      "name": "Bob",
+      "email": "bob@example.com",
+      "password": "password123",
+      "dailyGoalMinutes": 60,
+      "yearlyGoalBooks": 25,
+      "favoriteGenres": ["science fiction", "technology"]
+    },
+    {
+      "id": "user-3",
+      "name": "Carla",
+      "email": "carla@example.com",
+      "password": "password123",
+      "dailyGoalMinutes": 15,
+      "yearlyGoalBooks": 6,
+      "favoriteGenres": ["romance", "historical fiction"]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+.reading-streak {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.streak-card {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.streak-number {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 1rem 0 0;
+}
+
+.week-progress {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.day-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.day-circle {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+}
+
+.day-circle.completed {
+  background-color: #000;
+}
+
+.streak-info {
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.timer {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.timer-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.timer-actions button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.timer-actions button:disabled {
+  cursor: not-allowed;
+}
+.timer-goal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.timer-goal input {
+  padding: 0.5rem;
+}

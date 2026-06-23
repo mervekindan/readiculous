@@ -1,0 +1,24 @@
+.challenges-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.challenges-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.challenges-header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.challenges-header p {
+    color: black;
+}
+
+.badges-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}

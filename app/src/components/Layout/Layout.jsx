@@ -1,31 +1,19 @@
-import { Outlet, Link } from "react-router-dom";
-import hyfLogo from "../../assets/hyf.svg";
+import { Outlet } from "react-router-dom";
+import { NavBar } from "../NavBar/NavBar.jsx";
+import { Footer } from "../Footer/Footer.jsx";
+import NotificationPopup from "../NotificationPopup/NotificationPopup.jsx";
 
 function Layout() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-      }}
-    >
-      <nav style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-        <a
-          href="https://www.hackyourfuture.dk/"
-          target="_blank"
-          className="logo-link"
-        >
-          <img src={hyfLogo} alt="HackYourFuture logo" className="logo" />
-        </a>
-        <Link to="/nested" className="nav-link">
-          Nested page
-        </Link>
-      </nav>
+    <div className="layout">
+      <NotificationPopup />
+      <header>
+        <NavBar />
+      </header>
       <main>
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 }
