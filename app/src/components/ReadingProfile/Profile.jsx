@@ -5,6 +5,7 @@ import ProfileSummary from "./ProfileSummary.jsx";
 import ProfileForm from "./ProfileForm.jsx";
 import { Link } from "react-router-dom";
 import { sanitizeNumberInput, sanitizeTextInput } from "../../utils/forms.js";
+import ReadingStreak from "../ReadingStreak/ReadingStreak.jsx";
 
 function ReadingProfile() {
   const { user, setUser, logout } = useAuth();
@@ -82,11 +83,15 @@ function ReadingProfile() {
       <h1>Profile</h1>
 
       {!isEditing ? (
-        <ProfileSummary
-          message={message}
-          onEdit={handleEdit}
-          onLogout={handleLogout}
-        />
+        <>
+          <ProfileSummary
+            message={message}
+            onEdit={handleEdit}
+            onLogout={handleLogout}
+          />
+
+          <ReadingStreak />
+        </>
       ) : (
         <ProfileForm onChange={handleChange} onSubmit={handleSubmit} />
       )}

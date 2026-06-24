@@ -10,7 +10,8 @@ function ProfileSummary({ message, onEdit, onLogout }) {
       </p>
 
       <p>
-        <strong>Daily goal:</strong> {user.dailyGoalMinutes} minutes
+        <strong>Daily goal:</strong> {user.dailyGoalMinutes}{" "}
+        {user.dailyGoalMinutes === 1 ? "minute" : "minutes"}
       </p>
 
       <p>
