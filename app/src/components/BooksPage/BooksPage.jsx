@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar/SearchBar";
 import BookCard from "../BookCard/BookCard";
 import "./BooksPage.css";
 import { useBooks } from "../../context/BookContext";
+import { useAuth } from "../../context/AuthContext";
 
 export default function BooksPage() {
   const [books, setBooks] = useState([]);
@@ -10,6 +11,7 @@ export default function BooksPage() {
   const [error, setError] = useState(null);
 
   const { addToProgress, inProgressBooks, finishedBooks } = useBooks();
+  const { user } = useAuth();
 
   const fetchBooks = async (searchQuery) => {
     setLoading(true);
@@ -36,11 +38,17 @@ export default function BooksPage() {
   }, []);
 
   const handleAddBook = (book) => {
+    if (!user) return;
     addToProgress(book);
   };
 
   return (
     <div className="books-page-container">
+      {!user && (
+        <div className="login-prompt-banner">
+          💡 Log in to add books to your reading progress.
+        </div>
+      )}
       <SearchBar onSearch={fetchBooks} />
       <h2>Book Catalog</h2>
 
@@ -63,6 +71,7 @@ export default function BooksPage() {
                   variant="catalog"
                   onAdd={handleAddBook}
                   isAdded={isAdded}
+                  isLoggedIn={!!user}
                 />
               );
             })

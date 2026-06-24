@@ -50,6 +50,7 @@ export default function BookCard({
   onRemove,
   variant = "catalog",
   isAdded = false,
+  isLoggedIn = true,
 }) {
   const hasCover = window.navigator.onLine && book.cover_i;
   const coverUrl = book.cover_i
@@ -118,7 +119,7 @@ export default function BookCard({
           ))}
         </div>
 
-        {variant === "catalog" && (
+        {variant === "catalog" && isLoggedIn && (
           <button
             onClick={() => onAdd(book)}
             disabled={isAdded}
