@@ -1,11 +1,26 @@
 import React from "react";
 import { useBooks } from "../../context/BookContext";
+import { useAuth } from "../../context/AuthContext";
 import "./ProgressPage.css";
 import BookCard from "../BookCard/BookCard";
 
 export default function ProgressPage() {
   const { inProgressBooks, finishedBooks, finishBook, removeFromProgress } =
     useBooks();
+
+  const { user } = useAuth();
+
+  if (!user) {
+    return (
+      <div className="progress-page-container">
+        <h2 className="page-title">Reading Progress</h2>
+        <div className="login-prompt-banner">
+          🔒 Access Restricted. Please log in or create an account to view and
+          track your personal reading progress and statistics.
+        </div>
+      </div>
+    );
+  }
 
   const totalBooks = inProgressBooks.length + finishedBooks.length;
   const completionPercentage =
