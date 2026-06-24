@@ -4,7 +4,7 @@ import SignUpForm from "./SignUpForm.jsx";
 import LoginForm from "./LoginForm.jsx";
 import "./Auth.css";
 
-function AuthSection() {
+function AuthSection({ onClose }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const initialTab = searchParams.get("auth") === "login" ? "login" : "signup";
@@ -25,6 +25,11 @@ function AuthSection() {
 
   return (
     <section className="auth-section">
+      {onClose && (
+        <button className="close-button" onClick={onClose}>
+          &times;
+        </button>
+      )}
       <div className="auth-tabs">
         <button
           type="button"
