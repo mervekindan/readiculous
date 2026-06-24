@@ -125,7 +125,7 @@ export default function BookCard({
             disabled={isAdded}
             className={isAdded ? "added-btn" : ""}
           >
-            {isAdded ? "Added ✓" : "Add ➕"}
+            {isAdded ? "Added ✓" : "Add +"}
           </button>
         )}
 
