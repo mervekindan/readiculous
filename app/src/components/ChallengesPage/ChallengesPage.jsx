@@ -28,10 +28,8 @@ export default function ChallengesPage() {
                     let userGoalForBadge;
                     if (badge.type === "annual_goal_match") {
                         userGoalForBadge = goalBooks;
-                    } else if (badge.type === "favorite_genre_match") {
-                        userGoalForBadge = 1;
-                    }
-
+                    } 
+                    
                     return (
                         <Badge
                             key={badge.id}
