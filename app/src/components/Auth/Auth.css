@@ -1,7 +1,34 @@
 .auth-section {
   max-width: 500px;
-  margin: 2rem auto;
+  margin: 0;
   padding: 1rem;
+  position: relative;
+  background: #fff;
+  border-radius: 0;
+}
+
+.auth-dialog {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  width: min(90vw, 540px);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.auth-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.auth-close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: transparent;
+  color: black;
+  font-size: 1.75rem;
+  cursor: pointer;
 }
 
 .auth-tabs {
