@@ -6,11 +6,6 @@ import ProfileForm from "./ProfileForm.jsx";
 import { Link } from "react-router-dom";
 import { sanitizeNumberInput, sanitizeTextInput } from "../../utils/forms.js";
 
-function convertTimeToMinutes(time) {
-  const [hours, minutes] = time.split(":").map(Number);
-  return hours * 60 + minutes;
-}
-
 function ReadingProfile() {
   const { user, setUser, logout } = useAuth();
 
@@ -35,7 +30,7 @@ function ReadingProfile() {
 
     setUser({
       ...user,
-      [name]: name === "dailyGoalMinutes" ? convertTimeToMinutes(value) : value,
+      [name]: value,
     });
   }
 

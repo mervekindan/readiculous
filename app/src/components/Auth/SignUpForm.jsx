@@ -8,11 +8,6 @@ import {
   sanitizeTextInput,
 } from "../../utils/forms.js";
 
-function convertTimeToMinutes(time) {
-  const [hours, minutes] = time.split(":").map(Number);
-  return hours * 60 + minutes;
-}
-
 function SignUpForm() {
   const { setUser } = useAuth();
   const navigate = useNavigate();
@@ -43,9 +38,7 @@ function SignUpForm() {
       name: sanitizeTextInput(formData.name),
       email: sanitizeEmailInput(formData.email),
       password: formData.password,
-      dailyGoalMinutes: sanitizeNumberInput(
-        convertTimeToMinutes(formData.dailyGoalMinutes),
-      ),
+      dailyGoalMinutes: sanitizeNumberInput(formData.dailyGoalMinutes),
       yearlyGoalBooks: sanitizeNumberInput(formData.yearlyGoalBooks),
     };
 
@@ -97,10 +90,13 @@ function SignUpForm() {
       </label>
 
       <label>
-        Daily reading goal
+        Daily reading goal (minutes)
         <input
           name="dailyGoalMinutes"
-          type="time"
+          type="number"
+          min="1"
+          max="300"
+          placeholder="30"
           value={formData.dailyGoalMinutes}
           onChange={handleChange}
           required

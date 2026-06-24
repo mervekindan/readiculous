@@ -3,14 +3,6 @@ import { useAuth } from "../../context/AuthContext";
 
 function ProfileForm({ onChange, onSubmit }) {
   const { user } = useAuth();
-  function minutesToTime(minutes) {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-
-    return `${hours.toString().padStart(2, "0")}:${mins
-      .toString()
-      .padStart(2, "0")}`;
-  }
 
   return (
     <form className="profile-form" onSubmit={onSubmit}>
@@ -29,8 +21,10 @@ function ProfileForm({ onChange, onSubmit }) {
         Daily reading goal
         <input
           name="dailyGoalMinutes"
-          type="time"
-          value={minutesToTime(user.dailyGoalMinutes)}
+          type="number"
+          min="1"
+          max="300"
+          value={user.dailyGoalMinutes}
           onChange={onChange}
           required
         />
