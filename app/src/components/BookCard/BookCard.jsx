@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./BookCard.css";
 import { ALLOWED_GENRES } from "../../utils/genres";
+import { useAuth } from "../../context/AuthContext";
 
 function formatDate(dateString) {
   if (!dateString) return "";
@@ -50,8 +51,9 @@ export default function BookCard({
   onRemove,
   variant = "catalog",
   isAdded = false,
-  isLoggedIn = true,
 }) {
+  const { user } = useAuth();
+
   const hasCover = window.navigator.onLine && book.cover_i;
   const coverUrl = book.cover_i
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
@@ -119,7 +121,7 @@ export default function BookCard({
           ))}
         </div>
 
-        {variant === "catalog" && isLoggedIn && (
+        {variant === "catalog" && user && (
           <button
             onClick={() => onAdd(book)}
             disabled={isAdded}

@@ -73,7 +73,6 @@ export default function BooksPage() {
                     variant="catalog"
                     onAdd={handleAddBook}
                     isAdded={isAdded}
-                    isLoggedIn={!!user}
                   />
                 );
               })
