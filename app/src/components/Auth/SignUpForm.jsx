@@ -40,6 +40,12 @@ function SignUpForm() {
       password: formData.password,
       dailyGoalMinutes: sanitizeNumberInput(formData.dailyGoalMinutes),
       yearlyGoalBooks: sanitizeNumberInput(formData.yearlyGoalBooks),
+      favoriteGenres: [],
+      readingStreak: {
+        currentStreak: 0,
+        lastCompletedDate: "",
+        currentWeekProgress: [false, false, false, false, false, false, false],
+      },
     };
 
     try {
