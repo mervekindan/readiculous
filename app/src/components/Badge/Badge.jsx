@@ -2,10 +2,11 @@ import "./Badge.css";
 
 export default function Badge({ badge, progress, userGoal }) {
     const goalValue = typeof badge.goal === "number" ? badge.goal : (userGoal || 1);
-    const unlocked = progress >= goalValue;
-    const percentage = Math.min(100, (progress / goalValue) * 100);
+    const hasProgress = typeof progress === "number";
+    const unlocked = hasProgress && progress >= goalValue;
+    const percentage = hasProgress ? Math.min(100, (progress / goalValue) * 100) : 0;
 
-    const progressLabel = unlocked ? "Goal completed! 🎉" : `${progress}/${goalValue}`;
+    const progressLabel = !hasProgress ? null : (unlocked ? "Goal completed! 🎉" : `${progress}/${goalValue}`);
 
     return (
         <div className="badge-card">
@@ -13,18 +14,22 @@ export default function Badge({ badge, progress, userGoal }) {
             <img
                 src={badge.icon}
                 alt={badge.title}
-                className={`badge-image ${unlocked ? "unlocked" : "locked"}`}
+                className={`badge-image ${hasProgress && unlocked ? "unlocked" : "locked"}`}
             />
 
             <h3 className="badge-title">{badge.title}</h3>
 
-            <div className="progress-bar">
-                <div
-                    className="progress-fill"
-                    style={{ width: `${percentage}%` }}
-                />
-            </div>
-            <small>{progressLabel}</small>
+            {hasProgress ? (
+                <>
+                <div className="progress-bar">
+                    <div
+                        className="progress-fill"
+                        style={{ width: `${percentage}%` }}
+                    />
+                </div>
+                <small>{progressLabel}</small>
+                </>
+            ) : null}
         </div>
     );
 }

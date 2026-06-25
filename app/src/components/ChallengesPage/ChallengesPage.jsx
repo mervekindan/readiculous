@@ -21,20 +21,23 @@ export default function ChallengesPage() {
                 <p>
                     Complete reading challenges and earn badges along the way.
                 </p>
+                {!user && (
+                  <p className="login-prompt">Log in to start earning badges.</p>
+                )}
             </div>
 
             <div className="badges-grid">
                 {BADGES.map((badge) => {
                     let userGoalForBadge;
                     if (badge.type === "annual_goal_match") {
-                        userGoalForBadge = goalBooks;
+                        userGoalForBadge = user ? goalBooks : undefined;
                     } 
                     
                     return (
                         <Badge
                             key={badge.id}
                             badge={badge}
-                            progress={getBadgeProgress(badge, inProgressBooks, finishedBooks, user, goalBooks)}
+                            progress={user ? getBadgeProgress(badge, inProgressBooks, finishedBooks, user, goalBooks) : null}
                             userGoal={userGoalForBadge}
                         />
                     );
