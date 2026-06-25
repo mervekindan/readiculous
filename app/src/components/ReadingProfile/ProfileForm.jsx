@@ -9,7 +9,7 @@ function ProfileForm({ onChange, onSubmit, completedToday }) {
   function handleDailyGoalChange(event) {
     if (completedToday) {
       setDailyGoalError(
-        "Daily goal cannot be changed after today's streak is completed.",
+        "Daily goal can't be changed after today's streak is completed.",
       );
       return;
     }
@@ -47,7 +47,7 @@ function ProfileForm({ onChange, onSubmit, completedToday }) {
               );
             }
           }}
-          disabled={completedToday}
+          readOnly={completedToday}
           className={completedToday ? "input-locked" : ""}
           required
         />
