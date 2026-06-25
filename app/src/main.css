@@ -3,7 +3,6 @@ body,
 #root {
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
   font-family: Roboto, sans-serif;
 }
@@ -12,10 +11,6 @@ body,
 *::after,
 *::before {
   box-sizing: border-box;
-}
-
-body {
-  margin: 0;
 }
 
 h1,
@@ -47,18 +42,17 @@ input {
 ul,
 ol {
   list-style: none;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 :root {
-    --background-color: #f7f7f2;
-    --primary-500: #a3b18a;
-    --secondary-500: #2c514c;
-    --accent-500: #773344;
-    --text-color: #020402;
+  --background-color: #f7f7f2;
+  --primary-500: #a3b18a;
+  --secondary-500: #2c514c;
+  --accent-500: #773344;
+  --text-color: #020402;
 }
 
 main {

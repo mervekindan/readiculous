@@ -7,9 +7,9 @@ function Layout() {
   return (
     <div className="layout">
       <NotificationPopup />
-      <header>
-        <NavBar />
-      </header>
+
+      <NavBar />
+
       <main>
         <Outlet />
       </main>
