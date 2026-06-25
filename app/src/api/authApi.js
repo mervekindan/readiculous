@@ -28,3 +28,19 @@ export async function createUser(user) {
 
   return response.json();
 }
+
+export async function updateUser(userId, updatedFields) {
+  const response = await fetch(`${API_URL}/${userId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedFields),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to update user");
+  }
+
+  return response.json();
+}
