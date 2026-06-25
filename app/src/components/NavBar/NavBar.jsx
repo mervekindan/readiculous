@@ -5,7 +5,7 @@ import "./NavBar.css";
 export function NavBar() {
   return (
     <nav className="nav-bar">
-      <Link to="/" className="link">
+      <Link to="/" className="logo-link">
         <img src={logo} alt="Readiculous logo" className="logo" />
       </Link>
 
