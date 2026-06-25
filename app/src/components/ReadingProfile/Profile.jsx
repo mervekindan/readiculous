@@ -4,16 +4,16 @@ import { useAuth } from "../../context/AuthContext";
 import ProfileSummary from "./ProfileSummary.jsx";
 import ProfileForm from "./ProfileForm.jsx";
 import { useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { updateUser } from "../../api/authApi.js";
+import { getTodayDate } from "../../utils/date.js";
 import { sanitizeNumberInput, sanitizeTextInput } from "../../utils/forms.js";
-
-function convertTimeToMinutes(time) {
-  const [hours, minutes] = time.split(":").map(Number);
-  return hours * 60 + minutes;
-}
 
 function ReadingProfile() {
   const { user, setUser, logout } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
+  const today = getTodayDate();
+  const completedToday = user?.readingStreak?.lastCompletedDate === today;
 
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState("");
@@ -44,7 +44,7 @@ function ReadingProfile() {
 
     setUser({
       ...user,
-      [name]: name === "dailyGoalMinutes" ? convertTimeToMinutes(value) : value,
+      [name]: value,
     });
   }
 
@@ -53,7 +53,7 @@ function ReadingProfile() {
     setMessage("");
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const updatedUser = {
@@ -64,9 +64,15 @@ function ReadingProfile() {
       favoriteGenres: user.favoriteGenres || [],
     };
 
-    setUser(updatedUser);
-    setIsEditing(false);
-    setMessage("Profile updated successfully!");
+    try {
+      const savedUser = await updateUser(user.id, updatedUser);
+
+      setUser(savedUser);
+      setIsEditing(false);
+      setMessage("Profile updated successfully!");
+    } catch (error) {
+      setMessage("Unable to update profile. Please try again.");
+    }
   }
 
   function handleLogout() {
@@ -101,7 +107,11 @@ function ReadingProfile() {
           onLogout={handleLogout}
         />
       ) : (
-        <ProfileForm onChange={handleChange} onSubmit={handleSubmit} />
+        <ProfileForm
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          completedToday={completedToday}
+        />
       )}
     </section>
   );

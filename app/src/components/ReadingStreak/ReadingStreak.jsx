@@ -1,14 +1,30 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext.jsx";
 import { useBooks } from "../../context/BookContext";
 import { getTodayDate } from "../../utils/date.js";
 import "./ReadingStreak.css";
 
 function ReadingStreak() {
-  const { userProfile, readingStreak, completeReadingToday } = useBooks();
+  const { readingStreak, completeReadingToday } = useBooks();
+  const { user } = useAuth();
+  if (!user) {
+    return (
+      <section className="reading-streak">
+        <h1>Daily Reading Streak</h1>
 
-  const goalMinutes =
-    userProfile.dailyGoalMinutes || userProfile.dailyTargetMinutes || 20;
+        <p>Please sign up or log in to track your reading streak.</p>
 
+        <div className="profile-auth-actions">
+          <Link to="/?auth=signup">Sign Up</Link>
+          <span> / </span>
+          <Link to="/?auth=login">Login</Link>
+        </div>
+      </section>
+    );
+  }
+
+  const goalMinutes = user?.dailyGoalMinutes || 20;
   const initialTime = Number(goalMinutes || 0) * 60;
 
   const [timeLeft, setTimeLeft] = useState(initialTime);
@@ -17,6 +33,10 @@ function ReadingStreak() {
   const today = getTodayDate();
   const completedToday = readingStreak?.lastCompletedDate === today;
   const currentStreak = readingStreak?.currentStreak || 0;
+
+  useEffect(() => {
+    setTimeLeft(initialTime);
+  }, [initialTime]);
 
   useEffect(() => {
     if (!isRunning || timeLeft <= 0) return;
@@ -81,7 +101,7 @@ function ReadingStreak() {
 
         <div className="streak-info">
           <p>
-            <strong>Today's reading goal:</strong> {goalMinutes || 0} minutes
+            <strong>Today's reading goal:</strong> {goalMinutes} minutes
           </p>
 
           <p>
