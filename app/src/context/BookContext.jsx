@@ -2,16 +2,28 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import { LOCAL_STORAGE_KEY, INITIAL_APP_STATE } from "../utils/constants";
 import { extractCleanGenres } from "../components/BookCard/BookCard";
 import { getTodayDate, getTodayIndex } from "../utils/date.js";
+import { useAuth } from "./AuthContext.jsx";
+import { updateUser } from "../api/authApi.js";
 
 const BookContext = createContext();
 
+const DEFAULT_READING_STREAK = {
+  currentStreak: 0,
+  lastCompletedDate: "",
+  currentWeekProgress: [false, false, false, false, false, false, false],
+};
+
 export function BookProvider({ children }) {
+  const { user, setUser } = useAuth();
+
   const [appData, setAppData] = useState(() => {
     const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
     return savedData ? JSON.parse(savedData) : INITIAL_APP_STATE;
   });
 
   const [notification, setNotification] = useState(null);
+
+  const readingStreak = user?.readingStreak || DEFAULT_READING_STREAK;
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(appData));
@@ -84,48 +96,54 @@ export function BookProvider({ children }) {
     showPopup("Book removed from progress.", "success");
   };
 
-  function completeReadingToday() {
+  async function completeReadingToday() {
+    if (!user) {
+      showPopup("Please log in to complete your reading goal.", "error");
+      return;
+    }
+
     const today = getTodayDate();
     const todayIndex = getTodayIndex();
 
-    if (appData.readingStreak?.lastCompletedDate === today) {
+    if (readingStreak.lastCompletedDate === today) {
       showPopup("You already completed today's reading goal.", "error");
       return;
     }
-    setAppData((prev) => {
-      const currentWeekProgress = prev.readingStreak?.currentWeekProgress || [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-      ];
 
-      const updatedWeekProgress = [...currentWeekProgress];
-      updatedWeekProgress[todayIndex] = true;
+    const updatedWeekProgress = [...readingStreak.currentWeekProgress];
+    updatedWeekProgress[todayIndex] = true;
 
-      return {
-        ...prev,
-        readingStreak: {
-          currentStreak: (prev.readingStreak?.currentStreak || 0) + 1,
-          lastCompletedDate: today,
-          currentWeekProgress: updatedWeekProgress,
-        },
-      };
-    });
+    const updatedReadingStreak = {
+      currentStreak: (readingStreak.currentStreak || 0) + 1,
+      lastCompletedDate: today,
+      currentWeekProgress: updatedWeekProgress,
+    };
 
-    showPopup("Today's reading goal completed!", "success");
+    const updatedUser = {
+      ...user,
+      readingStreak: updatedReadingStreak,
+    };
+
+    setUser(updatedUser);
+
+    try {
+      await updateUser(user.id, {
+        readingStreak: updatedReadingStreak,
+      });
+
+      showPopup("Today's reading goal completed!", "success");
+    } catch (error) {
+      showPopup("Unable to save reading streak. Please try again.", "error");
+    }
   }
 
   return (
     <BookContext.Provider
       value={{
-        userProfile: appData.userProfile,
+        userProfile: user,
         inProgressBooks: appData.inProgressBooks,
         finishedBooks: appData.finishedBooks,
-        readingStreak: appData.readingStreak,
+        readingStreak,
         notification,
         setNotification,
         addToProgress,
