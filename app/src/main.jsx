@@ -12,6 +12,8 @@ import ProgressPage from "./components/ProgressPage/ProgressPage.jsx";
 import ReadingStreak from "./components/ReadingStreak/ReadingStreak.jsx";
 import ChallengesPage from "./components/ChallengesPage/ChallengesPage.jsx";
 import AboutPage from "./components/AboutPage/AboutPage.jsx";
+import TeamPage from "./components/TeamPage/TeamPage.jsx";
+
 import "./main.css";
 
 const router = createBrowserRouter([
@@ -42,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "challenges",
         element: <ChallengesPage />,
+      },
+      {
+        path: "team",
+        element: <TeamPage />,
       },
       {
         path: "about",

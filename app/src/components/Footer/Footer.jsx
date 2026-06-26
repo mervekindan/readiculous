@@ -18,7 +18,9 @@ export function Footer() {
         </div>
         <div className="contact-us">
           <h3>Information</h3>
-          <p>About us</p>
+          <Link to="/team" className="footer-link">
+            About Us
+          </Link>
           <Link to="/about" className="footer-link">
             FAQ
           </Link>
