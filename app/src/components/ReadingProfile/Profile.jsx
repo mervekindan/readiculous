@@ -3,6 +3,7 @@ import "./Profile.css";
 import { useAuth } from "../../context/AuthContext";
 import ProfileSummary from "./ProfileSummary.jsx";
 import ProfileForm from "./ProfileForm.jsx";
+import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { updateUser } from "../../api/authApi.js";
 import { getTodayDate } from "../../utils/date.js";
@@ -10,11 +11,20 @@ import { sanitizeNumberInput, sanitizeTextInput } from "../../utils/forms.js";
 
 function ReadingProfile() {
   const { user, setUser, logout } = useAuth();
+  const [searchParams, setSearchParams] = useSearchParams();
   const today = getTodayDate();
   const completedToday = user?.readingStreak?.lastCompletedDate === today;
 
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState("");
+
+  function handleSignUp() {
+    setSearchParams({ auth: "signup" });
+  }
+
+  function handleLogin() {
+    setSearchParams({ auth: "login" });
+  }
 
   function handleChange(event) {
     const { name, value, checked } = event.target;
@@ -79,9 +89,8 @@ function ReadingProfile() {
         <p>Please sign up or log in to view your profile.</p>
 
         <div className="profile-auth-actions">
-          <Link to="/?auth=signup">Sign Up</Link>
-          <span> / </span>
-          <Link to="/?auth=login">Login</Link>
+          <button type="button" onClick={handleSignUp}>Sign Up</button>
+          <button type="button" onClick={handleLogin}>Login</button>
         </div>
       </section>
     );
