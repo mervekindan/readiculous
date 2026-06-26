@@ -11,7 +11,6 @@ body,
 #root {
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
   font-family: Roboto, sans-serif;
 }
@@ -73,4 +72,10 @@ main {
 
 footer {
   flex-shrink: 0;
+}
+
+@media (max-width: 750px) {
+  main {
+    padding-bottom: 75px;
+  }
 }
