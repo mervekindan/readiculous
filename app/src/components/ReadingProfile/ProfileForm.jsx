@@ -1,8 +1,23 @@
+import { useState } from "react";
 import { GENRE_CATEGORIES } from "../../utils/genres";
 import { useAuth } from "../../context/AuthContext";
 
-function ProfileForm({ onChange, onSubmit }) {
+function ProfileForm({ onChange, onSubmit, completedToday }) {
   const { user } = useAuth();
+  const [dailyGoalError, setDailyGoalError] = useState("");
+  console.log("completedToday:", completedToday);
+
+  function handleDailyGoalChange(event) {
+    if (completedToday) {
+      setDailyGoalError(
+        "Daily goal can't be changed after today's streak is completed.",
+      );
+      return;
+    }
+
+    setDailyGoalError("");
+    onChange(event);
+  }
 
   return (
     <form className="profile-form" onSubmit={onSubmit}>
@@ -25,10 +40,21 @@ function ProfileForm({ onChange, onSubmit }) {
           min="1"
           max="300"
           value={user.dailyGoalMinutes}
-          onChange={onChange}
+          onChange={handleDailyGoalChange}
+          onFocus={() => {
+            if (completedToday) {
+              setDailyGoalError(
+                "Daily goal can't be changed after today's streak is completed.",
+              );
+            }
+          }}
+          readOnly={completedToday}
+          className={completedToday ? "input-locked" : ""}
           required
         />
       </label>
+
+      {dailyGoalError && <p className="error-message">{dailyGoalError}</p>}
 
       <label>
         Yearly book goal
@@ -42,13 +68,12 @@ function ProfileForm({ onChange, onSubmit }) {
           required
         />
       </label>
+
       <fieldset>
         <legend>Favorite Genres</legend>
-
         {Object.entries(GENRE_CATEGORIES).map(([category, genres]) => (
           <div key={category} className="genre-category">
             <h4>{category}</h4>
-
             <div>
               {genres.map((genre) => (
                 <label key={genre}>

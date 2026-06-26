@@ -5,10 +5,15 @@ import ProfileSummary from "./ProfileSummary.jsx";
 import ProfileForm from "./ProfileForm.jsx";
 import { Link } from "react-router-dom";
 import { sanitizeNumberInput, sanitizeTextInput } from "../../utils/forms.js";
-import ReadingStreak from "../ReadingStreak/ReadingStreak.jsx";
+import { getTodayDate } from "../../utils/date.js";
+import { useBooks } from "../../context/BookContext.jsx";
+import ReadingStreakSummary from "./ReadingStreakSummary.jsx";
 
 function ReadingProfile() {
   const { user, setUser, logout } = useAuth();
+  const today = getTodayDate();
+  const { readingStreak } = useBooks();
+  const completedToday = readingStreak?.lastCompletedDate === today;
 
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState("");
@@ -83,18 +88,20 @@ function ReadingProfile() {
       <h1>Profile</h1>
 
       {!isEditing ? (
-        <>
-          <ProfileSummary
-            message={message}
-            onEdit={handleEdit}
-            onLogout={handleLogout}
-          />
-
-          <ReadingStreak />
-        </>
+        <ProfileSummary
+          message={message}
+          onEdit={handleEdit}
+          onLogout={handleLogout}
+        />
       ) : (
-        <ProfileForm onChange={handleChange} onSubmit={handleSubmit} />
+        <ProfileForm
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          completedToday={completedToday}
+        />
       )}
+
+      <ReadingStreakSummary />
     </section>
   );
 }
