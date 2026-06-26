@@ -5,7 +5,7 @@ import logo from "../../assets/readiculous2.png";
 
 export function Footer() {
   return (
-    <>
+    <div className="footer-wrapper">
       <footer className="footer">
         <div className="footer-description">
           <Link to="/" className="link">
@@ -44,6 +44,6 @@ export function Footer() {
         </div>
       </footer>
       <p className="copyright">&copy; 2026 Readiculous. All rights reserved.</p>
-    </>
+    </div>
   );
 }

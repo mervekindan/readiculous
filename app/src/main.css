@@ -57,7 +57,6 @@ ol {
   width: 100%;
 }
 
-
 .layout {
   display: flex;
   flex-direction: column;
@@ -75,7 +74,7 @@ footer {
 }
 
 @media (max-width: 750px) {
-  main {
-    padding-bottom: 75px;
+  .footer-wrapper {
+    margin-bottom: 50px;
   }
 }
