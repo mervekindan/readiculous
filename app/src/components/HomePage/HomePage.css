@@ -10,7 +10,7 @@
   content: "";
   inset: 0;
   position: absolute;
-  background-color: #f7f7f794;
+  background-color: rgba(247, 247, 247, 0.58);
   z-index: 1;
 }
 
@@ -60,7 +60,7 @@
 
   .hero-content {
     transform: translate(-50%, -55%);
-    padding: 0 2rem;
+    padding: 0 1.5rem;
   }
 
   .hero-content h1 {
@@ -86,13 +86,9 @@
     background-position: bottom;
   }
 
-  .hero::after {
-    background-color: #f7f7f7cc;
-  }
-
   .hero-content {
     transform: translate(-50%, -50%);
-    padding: 0 1.5rem;
+    padding: 0 1rem;
   }
 
   .hero-content h1 {
