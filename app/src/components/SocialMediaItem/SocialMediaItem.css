@@ -1,20 +1,20 @@
 .item {
-    list-style: none;
-    margin-bottom: 16px;
+  list-style: none;
+  transition: all 0.2s ease;
 }
 
 .item:hover {
-    cursor: pointer;
-    text-decoration: underline;
+  cursor: pointer;
+  scale: 1.1;
 }
 
 .link {
-    display: flex;
-    gap: 8px;
-    align-items: center;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
