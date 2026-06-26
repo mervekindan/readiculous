@@ -38,11 +38,6 @@ export default function AboutPage() {
       <div className="about-container">
         <section className="project-intro">
           <h1 className="about-title">About Readiculous</h1>
-          <Link to="/" className="about-logo-link">
-            <div className="logo-container">
-              <img src={logo} alt="Readiculous logo" className="logo" />
-            </div>
-          </Link>
           <p className="project-description">
             This web application is our{" "}
             <strong className="accent-color"> graduation final project</strong>
@@ -59,6 +54,18 @@ export default function AboutPage() {
             help book lovers seamlessly track their reading progress, maintain
             daily streaks, and smash reading challenges.
           </p>
+
+          <div className="project-repo-wrapper">
+            <a
+              href="https://github.com/mervekindan/readiculous/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-repo-button"
+            >
+              <img src={githubIcon} alt="GitHub" className="github-svg-icon" />
+              <span>View Project Repository</span>
+            </a>
+          </div>
         </section>
 
         <section className="team-section">
