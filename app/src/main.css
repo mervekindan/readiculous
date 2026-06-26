@@ -1,3 +1,11 @@
+:root {
+  --background-color: #f7f7f2;
+  --primary-500: #a3b18a;
+  --secondary-500: #2c514c;
+  --accent-500: #773344;
+  --text-color: #020402;
+}
+
 html,
 body,
 #root {
@@ -50,13 +58,6 @@ ol {
   width: 100%;
 }
 
-:root {
-  --background-color: #f7f7f2;
-  --primary-500: #a3b18a;
-  --secondary-500: #2c514c;
-  --accent-500: #773344;
-  --text-color: #020402;
-}
 
 .layout {
   display: flex;

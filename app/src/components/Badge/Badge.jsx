@@ -1,30 +1,52 @@
+import { useState } from "react";
 import "./Badge.css";
 
 export default function Badge({ badge, progress, userGoal }) {
-    const goalValue = typeof badge.goal === "number" ? badge.goal : (userGoal || 1);
-    const unlocked = progress >= goalValue;
-    const percentage = Math.min(100, (progress / goalValue) * 100);
+  const goalValue = typeof badge.goal === "number" ? badge.goal : userGoal || 1;
+  const hasProgress = typeof progress === "number" && progress > 0;
+  const unlocked = hasProgress && progress >= goalValue;
+  const percentage = hasProgress
+    ? Math.min(100, (progress / goalValue) * 100)
+    : 0;
 
-    const progressLabel = unlocked ? "Goal completed! 🎉" : `${progress}/${goalValue}`;
+  const [showTooltip, setShowTooltip] = useState(false);
+  const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
-    return (
-        <div className="badge-card">
-            <div className="badge-tooltip">{badge.description}</div>
-            <img
-                src={badge.icon}
-                alt={badge.title}
-                className={`badge-image ${unlocked ? "unlocked" : "locked"}`}
+  const progressLabel = unlocked
+    ? "Goal completed! 🎉"
+    : `${progress ?? 0}/${goalValue}`;
+
+  return (
+    <div
+      className="badge-card"
+      onClick={() => {
+        if (isTouchDevice) {
+          setShowTooltip(!showTooltip);
+        }
+      }}
+    >
+      <div className={`badge-tooltip ${showTooltip ? "show-tooltip" : ""}`}>
+        {badge.description}
+      </div>
+      <img
+        src={badge.icon}
+        alt={badge.title}
+        className={`badge-image ${hasProgress && unlocked ? "unlocked" : "locked"}`}
+      />
+
+      <h3 className="badge-title">{badge.title}</h3>
+
+      {hasProgress ? (
+        <>
+          <div className="progress-bar">
+            <div
+              className="progress-fill"
+              style={{ width: `${percentage}%` }}
             />
-
-            <h3 className="badge-title">{badge.title}</h3>
-
-            <div className="progress-bar">
-                <div
-                    className="progress-fill"
-                    style={{ width: `${percentage}%` }}
-                />
-            </div>
-            <small>{progressLabel}</small>
-        </div>
-    );
+          </div>
+          <small>{progressLabel}</small>
+        </>
+      ) : null}
+    </div>
+  );
 }

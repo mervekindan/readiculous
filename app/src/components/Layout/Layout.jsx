@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { NavBar } from "../NavBar/NavBar.jsx";
 import { Footer } from "../Footer/Footer.jsx";
 import NotificationPopup from "../NotificationPopup/NotificationPopup.jsx";
+import AuthModal from "../Auth/AuthModal.jsx";
 
 function Layout() {
   return (
@@ -14,6 +15,7 @@ function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <AuthModal />
     </div>
   );
 }
