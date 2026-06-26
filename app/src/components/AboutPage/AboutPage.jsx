@@ -72,51 +72,55 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="about-page-container">
-      <section className="how-it-works-section">
-        <h2>How It Works</h2>
-        <ol className="instructions-list">
-          {instructionsData.map((item, index) => (
-            <li key={index}>
-              <strong>
-                {index + 1}. {item.title}:{" "}
-              </strong>
-              {item.description}
-            </li>
-          ))}
-        </ol>
-      </section>
+    <div className="about-page">
+      <div className="about-page-container">
+        <section className="how-it-works-section">
+          <h2>How It Works</h2>
+          <ol className="instructions-list">
+            {instructionsData.map((item, index) => (
+              <li key={index}>
+                <strong className="accent-color">
+                  {index + 1}. {item.title}:{" "}
+                </strong>
+                {item.description}
+              </li>
+            ))}
+          </ol>
+        </section>
 
-      <hr className="section-divider" />
-
-      <section className="faq-section">
-        <h2>Frequently Asked Questions (FAQ)</h2>
-        <div className="modern-accordion">
-          {faqData.map((item, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <div
-                key={index}
-                className={`accordion-item ${isOpen ? "active" : ""}`}
-              >
+        <section className="faq-section">
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          <div className="modern-accordion">
+            {faqData.map((item, index) => {
+              const isOpen = openIndex === index;
+              return (
                 <div
-                  className="accordion-header"
-                  onClick={() => toggleFAQ(index)}
+                  key={index}
+                  className={`accordion-item ${isOpen ? "active" : ""}`}
                 >
-                  <span className="accordion-question">{item.q}</span>
-                  <span className="accordion-icon">{isOpen ? "−" : "＋"}</span>
-                </div>
+                  <div
+                    className="accordion-header"
+                    onClick={() => toggleFAQ(index)}
+                  >
+                    <span className="accordion-question accent-color">
+                      {item.q}
+                    </span>
+                    <span className="accordion-icon">
+                      {isOpen ? "−" : "＋"}
+                    </span>
+                  </div>
 
-                <div className="accordion-collapse">
-                  <div className="accordion-body">
-                    <p>{item.a}</p>
+                  <div className="accordion-collapse">
+                    <div className="accordion-body">
+                      <p>{item.a}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+              );
+            })}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
