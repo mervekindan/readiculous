@@ -3,7 +3,7 @@ import "./Badge.css";
 
 export default function Badge({ badge, progress, userGoal }) {
   const goalValue = typeof badge.goal === "number" ? badge.goal : userGoal || 1;
-  const hasProgress = typeof progress === "number";
+  const hasProgress = typeof progress === "number" && progress > 0;
   const unlocked = hasProgress && progress >= goalValue;
   const percentage = hasProgress
     ? Math.min(100, (progress / goalValue) * 100)
@@ -12,11 +12,9 @@ export default function Badge({ badge, progress, userGoal }) {
   const [showTooltip, setShowTooltip] = useState(false);
   const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
-  const progressLabel = !hasProgress
-    ? null
-    : unlocked
-      ? "Goal completed! 🎉"
-      : `${progress}/${goalValue}`;
+  const progressLabel = unlocked
+    ? "Goal completed! 🎉"
+    : `${progress ?? 0}/${goalValue}`;
 
   return (
     <div
