@@ -1,0 +1,118 @@
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 24px;
+  background: var(--background-color);
+  box-shadow: 0 10px 25px rgba(44, 81, 76, 0.08);
+}
+
+.profile-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--secondary-500);
+  font-weight: 700;
+}
+
+.profile-form input {
+  padding: 0.85rem 1rem;
+  border: 1px solid #d8e0d4;
+  border-radius: 14px;
+  background: white;
+  transition: 0.2s ease;
+}
+
+.profile-form input:focus {
+  outline: none;
+  border-color: var(--secondary-500);
+  box-shadow: 0 0 0 3px rgba(44, 81, 76, 0.15);
+}
+
+.input-locked {
+  background: #f2f2f2 !important;
+  cursor: not-allowed;
+}
+
+.error-message {
+  margin-top: -0.5rem;
+  color: #c0392b;
+  font-size: 0.9rem;
+}
+
+.profile-form fieldset {
+  border: 1px solid #d8e0d4;
+  border-radius: 18px;
+  padding: 1.25rem;
+}
+
+.profile-form legend {
+  padding: 0 0.5rem;
+  font-weight: 700;
+  color: var(--secondary-500);
+}
+
+.genre-category {
+  margin-bottom: 1.25rem;
+}
+
+.genre-category:last-child {
+  margin-bottom: 0;
+}
+
+.genre-category h4 {
+  margin-bottom: 0.75rem;
+  color: var(--accent-500);
+}
+
+.genre-category > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.75rem;
+}
+
+.genre-category label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  background: white;
+  font-weight: 500;
+}
+
+.genre-category input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+.profile-form button {
+  align-self: flex-end;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--secondary-500);
+  color: white;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.profile-form button:hover {
+  background: #23433f;
+}
+
+@media (max-width: 700px) {
+  .profile-form {
+    padding: 1.25rem;
+  }
+
+  .profile-form button {
+    width: 100%;
+  }
+
+  .genre-category > div {
+    grid-template-columns: 1fr;
+  }
+}

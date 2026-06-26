@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GENRE_CATEGORIES } from "../../utils/genres";
 import { useAuth } from "../../context/AuthContext";
+import "./ProfileForm.css";
 
 function ProfileForm({ onChange, onSubmit, completedToday }) {
   const { user } = useAuth();
