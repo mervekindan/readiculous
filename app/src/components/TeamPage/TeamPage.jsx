@@ -8,7 +8,7 @@ import githubIcon from "../../assets/github.svg";
 
 import logo from "../../assets/readiculous2.png";
 
-export default function AboutPage() {
+export default function TeamPage() {
   const teamMembers = [
     {
       name: "Merve",
