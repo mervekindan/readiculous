@@ -4,16 +4,19 @@ import { useAuth } from "../../context/AuthContext";
 import ProfileSummary from "./ProfileSummary.jsx";
 import ProfileForm from "./ProfileForm.jsx";
 import { useSearchParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { updateUser } from "../../api/authApi.js";
 import { getTodayDate } from "../../utils/date.js";
 import { sanitizeNumberInput, sanitizeTextInput } from "../../utils/forms.js";
+import { useBooks } from "../../context/BookContext.jsx";
+import ReadingStreakSummary from "./ReadingStreakSummary.jsx";
 
 function ReadingProfile() {
   const { user, setUser, logout } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
+  const { readingStreak } = useBooks();
+
   const today = getTodayDate();
-  const completedToday = user?.readingStreak?.lastCompletedDate === today;
+  const completedToday = readingStreak?.lastCompletedDate === today;
 
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState("");
@@ -89,8 +92,12 @@ function ReadingProfile() {
         <p>Please sign up or log in to view your profile.</p>
 
         <div className="profile-auth-actions">
-          <button type="button" onClick={handleSignUp}>Sign Up</button>
-          <button type="button" onClick={handleLogin}>Login</button>
+          <button type="button" onClick={handleSignUp}>
+            Sign Up
+          </button>
+          <button type="button" onClick={handleLogin}>
+            Login
+          </button>
         </div>
       </section>
     );
@@ -113,6 +120,8 @@ function ReadingProfile() {
           completedToday={completedToday}
         />
       )}
+
+      <ReadingStreakSummary />
     </section>
   );
 }

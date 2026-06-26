@@ -70,11 +70,9 @@ function ProfileForm({ onChange, onSubmit, completedToday }) {
 
       <fieldset>
         <legend>Favorite Genres</legend>
-
         {Object.entries(GENRE_CATEGORIES).map(([category, genres]) => (
           <div key={category} className="genre-category">
             <h4>{category}</h4>
-
             <div>
               {genres.map((genre) => (
                 <label key={genre}>
