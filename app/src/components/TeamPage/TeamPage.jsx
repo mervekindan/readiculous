@@ -40,7 +40,7 @@ export default function AboutPage() {
           <h1 className="about-title">About Readiculous</h1>
           <p className="project-description">
             This web application is our{" "}
-            <strong className="accent-color"> graduation final project</strong>
+            <strong className="accent-color"> graduation final project </strong>
             for the intensive 8-month web development program at{" "}
             <a
               href="https://www.hackyourfuture.dk/"
