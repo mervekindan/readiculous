@@ -172,3 +172,12 @@
     grid-template-columns: 1fr;
   }
 }
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+}
+.input-locked {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}

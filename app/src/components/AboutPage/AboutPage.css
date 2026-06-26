@@ -1,8 +1,27 @@
-.about-page-container {
-  max-width: 750px;
+.about-page {
   margin: 0 auto;
-  padding: 60px 20px;
+  padding-block: 2rem;
   line-height: 1.6;
+  background-image: url("../../assets/about-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.about-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  max-width: 800px;
+  border-radius: 8px;
 }
 
 h2 {
@@ -10,6 +29,14 @@ h2 {
   font-weight: 700;
   margin-bottom: 24px;
   letter-spacing: -0.5px;
+  color: var(--accent-500);
+}
+
+.how-it-works-section,
+.faq-section {
+  background-color: var(--background-color);
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 .instructions-list {
@@ -22,12 +49,6 @@ h2 {
 
 .instructions-list li {
   font-size: 16px;
-}
-
-.section-divider {
-  margin: 50px 0;
-  border: 0;
-  border-top: 1px solid #e5e5e5;
 }
 
 .modern-accordion {
@@ -84,4 +105,8 @@ h2 {
   padding-bottom: 20px;
   font-size: 15px;
   opacity: 0.8;
+}
+
+.accent-color {
+  color: var(--secondary-500);
 }

@@ -1,0 +1,246 @@
+.about-us-page {
+  width: 100%;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+}
+
+.about-container {
+  max-width: 1000px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.project-intro,
+.team-section {
+  background-color: var(--background-color);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.project-intro {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-title {
+  color: var(--secondary-500);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-description {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.hyf-link {
+  position: relative;
+  color: var(--accent-500);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0 2px;
+  transition: color 0.2s ease;
+}
+
+.hyf-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -1px;
+  left: 0;
+  background-color: var(--secondary-500);
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.25s ease-out;
+}
+
+.hyf-link:hover {
+  color: var(--secondary-500);
+}
+
+.hyf-link:hover::after {
+  transform: scaleX(1);
+}
+
+.team-section {
+  text-align: center;
+}
+
+.team-title {
+  color: var(--secondary-500);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.member-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  box-shadow: 0 4px 15px rgba(44, 81, 76, 0.1);
+  border: 1px solid rgba(44, 81, 76, 0.08);
+}
+
+.member-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 12px 24px rgba(44, 81, 76, 0.2);
+}
+
+.avatar-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--background-color);
+  margin-bottom: 0.5rem;
+  border: 3px solid var(--primary-500);
+}
+
+.member-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-name {
+  color: var(--text-color);
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.member-role {
+  color: var(--primary-500);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.member-bio {
+  color: #666666;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.github-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--secondary-500);
+  color: var(--background-color);
+  text-decoration: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  width: 100%;
+  justify-content: center;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.github-button:hover {
+  background-color: var(--accent-500);
+}
+
+.github-svg-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+  filter: invert(1);
+
+  transition: transform 0.2s ease;
+}
+
+.github-button:hover .github-svg-icon {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+@media (max-width: 750px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+}
+
+.project-repo-wrapper {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.project-repo-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  background-color: transparent;
+  color: var(--secondary-500);
+  border: 2px solid var(--secondary-500);
+
+  padding: 0.6rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(44, 81, 76, 0.05);
+}
+
+.project-repo-button:hover {
+  background-color: var(--secondary-500);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44, 81, 76, 0.15);
+}
+
+.project-repo-button .github-svg-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
+  filter: invert(27%) sepia(13%) saturate(1682%) hue-rotate(124deg)
+    brightness(96%) contrast(88%);
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.project-repo-button:hover .github-svg-icon {
+  filter: invert(1);
+}

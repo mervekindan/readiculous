@@ -5,7 +5,6 @@ import { useAuth } from "../../context/AuthContext";
 function ProfileForm({ onChange, onSubmit, completedToday }) {
   const { user } = useAuth();
   const [dailyGoalError, setDailyGoalError] = useState("");
-  console.log("completedToday:", completedToday);
 
   function handleDailyGoalChange(event) {
     if (completedToday) {
@@ -33,7 +32,7 @@ function ProfileForm({ onChange, onSubmit, completedToday }) {
       </label>
 
       <label>
-        Daily reading goal
+        Daily reading goal (minutes)
         <input
           name="dailyGoalMinutes"
           type="number"
