@@ -8,7 +8,7 @@ export function Footer() {
     <div className="footer-wrapper">
       <footer className="footer">
         <div className="footer-description">
-          <Link to="/" className="link">
+          <Link to="/">
             <img
               src={logo}
               alt="Readiculous logo"

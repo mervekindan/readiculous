@@ -10,12 +10,9 @@
   flex: 1;
 }
 
-.footer-logo {
-  transition: all 0.2s ease;
-}
-
-.footer-logo:hover {
-  scale: 1.1;
+.footer-description {
+  display: flex;
+  align-items: center;
 }
 
 .footer h3 {

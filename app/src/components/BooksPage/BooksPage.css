@@ -4,7 +4,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  min-height: 100vh;
+  min-height: calc(100vh - 200px);
   overflow: hidden;
 }
 

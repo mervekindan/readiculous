@@ -4,7 +4,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  min-height: 100vh;
+  min-height: calc(100vh - 200px);
   overflow: hidden;
 }
 
@@ -105,16 +105,6 @@
   cursor: pointer;
   border-radius: 4px;
   transition: all 0.2s ease;
-}
-
-.finish-btn {
-  background: #111111;
-  color: var(--background-color);
-  border: 1px solid #111111;
-}
-
-.finish-btn:hover {
-  background: #333333;
 }
 
 .progress-grid {
