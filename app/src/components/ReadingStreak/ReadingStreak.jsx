@@ -49,13 +49,25 @@ function ReadingStreak() {
   if (!user) {
     return (
       <section className="reading-streak">
-        <h1>Daily Reading Streak</h1>
-        <p>Please sign up or log in to track your reading streak.</p>
+        <div className="streak-empty-card">
+          <div className="empty-icon">🔥</div>
 
-        <div className="profile-auth-actions">
-          <Link to="/?auth=signup">Sign Up</Link>
-          <span> / </span>
-          <Link to="/?auth=login">Login</Link>
+          <h1>Daily Reading Streak</h1>
+
+          <p>
+            🔒 Access Restricted. Please log in or create an account to view and
+            track your personal daily streak.
+          </p>
+
+          <div className="profile-auth-actions">
+            <Link className="auth-button" to="/?auth=signup">
+              Sign Up
+            </Link>
+
+            <Link className="auth-button secondary" to="/?auth=login">
+              Log In
+            </Link>
+          </div>
         </div>
       </section>
     );
