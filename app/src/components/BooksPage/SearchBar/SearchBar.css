@@ -36,6 +36,6 @@
 }
 
 .search-button:hover {
-  background: var(--text-color);
-  border-color: var(--text-color);
+  background: var(--accent-500);
+  border-color: var(--accent-500);
 }

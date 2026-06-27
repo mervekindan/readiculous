@@ -95,7 +95,8 @@
 }
 
 .book-card button:not(:disabled):hover {
-  background: var(--secondary-500);
+  background: var(--accent-500);
+  border-color: var(--accent-500);
   color: var(--background-color);
 }
 

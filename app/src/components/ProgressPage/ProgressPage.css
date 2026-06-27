@@ -107,16 +107,6 @@
   transition: all 0.2s ease;
 }
 
-.finish-btn {
-  background: #111111;
-  color: var(--background-color);
-  border: 1px solid #111111;
-}
-
-.finish-btn:hover {
-  background: #333333;
-}
-
 .progress-grid {
   display: flex;
   flex-direction: column;
