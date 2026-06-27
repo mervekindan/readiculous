@@ -4,6 +4,10 @@
   --secondary-500: #2c514c;
   --accent-500: #773344;
   --text-color: #020402;
+
+  --border-color: #dfe8dc;
+  --surface-color: #e8efe4;
+  --card-shadow: rgba(44, 81, 76, 0.08);
 }
 
 html,

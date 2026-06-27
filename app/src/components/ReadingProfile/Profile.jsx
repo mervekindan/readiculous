@@ -1,14 +1,15 @@
 import { useState } from "react";
-import "./Profile.css";
 import { useAuth } from "../../context/AuthContext";
-import ProfileSummary from "./ProfileSummary.jsx";
-import ProfileForm from "./ProfileForm.jsx";
 import { useSearchParams } from "react-router-dom";
 import { updateUser } from "../../api/authApi.js";
 import { getTodayDate } from "../../utils/date.js";
 import { sanitizeNumberInput, sanitizeTextInput } from "../../utils/forms.js";
 import { useBooks } from "../../context/BookContext.jsx";
 import ReadingStreakSummary from "./ReadingStreakSummary.jsx";
+import ProfileSummary from "./ProfileSummary.jsx";
+import ProfileForm from "./ProfileForm.jsx";
+import AuthMessage from "../AuthMessage/AuthMessage.jsx";
+import "./Profile.css";
 
 function ReadingProfile() {
   const { user, setUser, logout } = useAuth();
@@ -87,18 +88,11 @@ function ReadingProfile() {
   if (!user) {
     return (
       <section className="reading-profile">
-        <h1>Profile</h1>
-
-        <p>Please sign up or log in to view your profile.</p>
-
-        <div className="profile-auth-actions">
-          <button type="button" onClick={handleSignUp}>
-            Sign Up
-          </button>
-          <button type="button" onClick={handleLogin}>
-            Login
-          </button>
-        </div>
+        <AuthMessage
+          icon="👤"
+          title="Profile"
+          message="Access Restricted. Please log in or create an account to view your profile."
+        />
       </section>
     );
   }

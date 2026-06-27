@@ -1,0 +1,64 @@
+.auth-message-card {
+  max-width: 620px;
+  margin: 4rem auto;
+  padding: 2.5rem;
+  border-radius: 24px;
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 25px var(--card-shadow);
+  text-align: center;
+}
+
+.auth-message-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--surface-color);
+  font-size: 2rem;
+}
+
+.auth-message-card h1 {
+  margin-bottom: 1rem;
+  color: var(--secondary-500);
+}
+
+.auth-message-card p {
+  max-width: 460px;
+  margin: 0 auto 1.5rem;
+  color: var(--secondary-500);
+  line-height: 1.6;
+}
+
+.auth-message-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.auth-message-button {
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  background: var(--secondary-500);
+  color: white;
+  font-weight: 700;
+}
+
+.auth-message-button.secondary {
+  background: transparent;
+  color: var(--secondary-500);
+  border: 2px solid var(--secondary-500);
+}
+
+@media (max-width: 600px) {
+  .auth-message-card {
+    margin: 2rem auto;
+    padding: 1.5rem;
+  }
+
+  .auth-message-actions {
+    flex-direction: column;
+  }
+}

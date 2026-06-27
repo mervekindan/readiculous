@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useBooks } from "../../context/BookContext";
 import { getTodayDate } from "../../utils/date.js";
+import AuthMessage from "../AuthMessage/AuthMessage.jsx";
 import "./ReadingStreak.css";
 
 function ReadingStreak() {
@@ -49,26 +49,11 @@ function ReadingStreak() {
   if (!user) {
     return (
       <section className="reading-streak">
-        <div className="streak-empty-card">
-          <div className="empty-icon">🔥</div>
-
-          <h1>Daily Reading Streak</h1>
-
-          <p>
-            🔒 Access Restricted. Please log in or create an account to view and
-            track your personal daily streak.
-          </p>
-
-          <div className="profile-auth-actions">
-            <Link className="auth-button" to="/?auth=signup">
-              Sign Up
-            </Link>
-
-            <Link className="auth-button secondary" to="/?auth=login">
-              Log In
-            </Link>
-          </div>
-        </div>
+        <AuthMessage
+          icon="🔥"
+          title="Daily Reading Streak"
+          message="Access Restricted. Please log in or create an account to view and track your personal daily streak."
+        />
       </section>
     );
   }
