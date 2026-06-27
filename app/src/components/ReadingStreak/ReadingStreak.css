@@ -52,12 +52,8 @@
   color: var(--secondary-500);
 }
 
-.streak-card h2 {
-  display: inline-block;
-  margin: 0 0 1.5rem;
-  padding-bottom: 0.5rem;
-  font-size: 1.1rem;
-  border-bottom: 2px solid currentColor;
+.streak-progress-card h2,
+.timer-card h2 {
   color: var(--secondary-500);
 }
 
@@ -66,7 +62,28 @@
 .time-left-card h2 {
   color: var(--secondary-500);
 }
+.card-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+.timer-display-box {
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 1px solid #dfe8dc;
+  color: var(--secondary-500);
+}
 
+.timer-display-box span {
+  font-weight: 700;
+}
+
+.timer-display-box small {
+  color: var(--accent-500);
+  font-weight: 700;
+}
 .streak-number {
   font-size: 4.5rem;
   font-weight: 800;

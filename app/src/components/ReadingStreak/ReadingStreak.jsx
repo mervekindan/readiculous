@@ -3,6 +3,8 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { useBooks } from "../../context/BookContext";
 import { getTodayDate } from "../../utils/date.js";
 import AuthMessage from "../AuthMessage/AuthMessage.jsx";
+import fireIcon from "../../assets/nav-icons/fire.png";
+import bookIcon from "../../assets/nav-icons/book.png";
 import "./ReadingStreak.css";
 
 function ReadingStreak() {
@@ -64,7 +66,9 @@ function ReadingStreak() {
 
       <div className="streak-layout">
         <div className="streak-card streak-progress-card">
-          <div className="card-icon green-icon">🔥</div>
+          <div className="card-icon green-icon">
+            <img src={fireIcon} alt="" />
+          </div>
           <h2>Streak Progress</h2>
 
           <p className="streak-number">{currentStreak}</p>
@@ -107,7 +111,9 @@ function ReadingStreak() {
 
         <div className="right-column">
           <div className="streak-card timer-card">
-            <div className="card-icon blue-icon">📖</div>
+            <div className="card-icon blue-icon">
+              <img src={bookIcon} alt="" />
+            </div>
             <h2>Reading Timer</h2>
 
             <div className="goal-timer-box">
@@ -116,6 +122,12 @@ function ReadingStreak() {
                 <p>Today's reading goal</p>
                 <strong>{goalMinutes} minutes</strong>
               </div>
+            </div>
+
+            <div className="timer-display-box">
+              <span>⏰ Time Left</span>
+              <p className="timer">{formatTime(timeLeft)}</p>
+              <small>minutes</small>
             </div>
 
             <div className="timer-actions">
@@ -140,21 +152,13 @@ function ReadingStreak() {
               </button>
             </div>
 
-            <p className="timer-note">
-              Press Start to begin your reading session.
-            </p>
-          </div>
-
-          <div className="streak-card time-left-card">
-            <div className="card-icon purple-icon">⏰</div>
-            <h2>Time Left</h2>
-
-            <p className="timer">{formatTime(timeLeft)}</p>
-            <p>minutes</p>
-
             <div className="keep-reading-box">
               ⏳ Keep reading and enjoy your progress!
             </div>
+
+            <p className="timer-note">
+              Press Start to begin your reading session.
+            </p>
           </div>
         </div>
       </div>
@@ -166,5 +170,4 @@ function ReadingStreak() {
     </section>
   );
 }
-
 export default ReadingStreak;
