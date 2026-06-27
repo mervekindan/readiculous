@@ -2,7 +2,7 @@
   padding: 2rem;
   border-radius: 24px;
   background: var(--background-color);
-  box-shadow: 0 10px 25px rgba(44, 81, 76, 0.08);
+  box-shadow: 0 10px 25px var(--card-shadow);
 }
 
 .profile-header {
@@ -73,11 +73,24 @@
   padding: 1rem;
   border-radius: 18px;
   background: white;
-  border: 1px solid #e4eadf;
+  border: 1px solid var(--border-color);
 }
 
 .profile-icon {
-  font-size: 1.6rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #eef4ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-icon img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
 .profile-info-card small {
@@ -93,6 +106,33 @@
 
 .profile-genres {
   grid-column: 1 / -1;
+  align-items: flex-start;
+}
+
+.genre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.genre-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background-color: #eef4ea;
+  border: 1px solid #d9e4d4;
+  color: var(--secondary-500);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.no-genres {
+  color: var(--secondary-500);
+  font-weight: 600;
 }
 
 .success-message {

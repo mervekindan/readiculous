@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useBooks } from "../../context/BookContext";
 import { getTodayDate } from "../../utils/date.js";
+import fireIcon from "../../assets/nav-icons/fire.png";
 import "./ReadingStreakSummary.css";
 
 function ReadingStreakSummary() {
@@ -14,16 +15,21 @@ function ReadingStreakSummary() {
     <section className="profile-card streak-summary-card">
       <div className="profile-card-header">
         <div>
-          <p className="profile-label">Reading Habit</p>
           <h2>Reading Streak</h2>
         </div>
 
-        <span className="streak-badge">🔥</span>
+        <div className="streak-badge">
+          <img src={fireIcon} alt="Reading streak" />
+        </div>
       </div>
 
       <div className="streak-highlight">
-        <p className="summary-streak-number">{currentStreak}</p>
-        <span>{currentStreak === 1 ? "day streak" : "days streak"}</span>
+        <div className="streak-count">
+          <span className="summary-streak-number">{currentStreak}</span>
+          <span className="streak-text">
+            {currentStreak === 1 ? "day streak" : "days streak"}
+          </span>
+        </div>
       </div>
 
       <div className="summary-week-progress">

@@ -1,5 +1,8 @@
 import { useAuth } from "../../context/AuthContext";
 import "./ProfileSummary.css";
+import medalIcon from "../../assets/nav-icons/medal.png";
+import bookIcon from "../../assets/nav-icons/book.png";
+import timeIcon from "../../assets/nav-icons/time.png";
 
 function ProfileSummary({ message, onEdit, onLogout }) {
   const { user } = useAuth();
@@ -29,7 +32,9 @@ function ProfileSummary({ message, onEdit, onLogout }) {
 
       <div className="profile-info-grid">
         <div className="profile-info-card">
-          <div className="profile-icon">📖</div>
+          <div className="profile-icon">
+            <img src={timeIcon} alt="Daily goal" />
+          </div>
 
           <div>
             <small>Daily Goal</small>
@@ -41,7 +46,9 @@ function ProfileSummary({ message, onEdit, onLogout }) {
         </div>
 
         <div className="profile-info-card">
-          <div className="profile-icon">🎯</div>
+          <div className="profile-icon">
+            <img src={medalIcon} alt="Yearly goal" />
+          </div>
 
           <div>
             <small>Yearly Goal</small>
@@ -50,16 +57,24 @@ function ProfileSummary({ message, onEdit, onLogout }) {
         </div>
 
         <div className="profile-info-card profile-genres">
-          <div className="profile-icon">❤️</div>
+          <div className="profile-icon">
+            <img src={bookIcon} alt="Favorite genres" />
+          </div>
 
           <div>
             <small>Favorite Genres</small>
 
-            <h3>
-              {user.favoriteGenres?.length
-                ? user.favoriteGenres.join(", ")
-                : "No favorite genres selected"}
-            </h3>
+            <div className="genre-tags">
+              {user.favoriteGenres?.length ? (
+                user.favoriteGenres.map((genre) => (
+                  <span key={genre} className="genre-tag">
+                    {genre}
+                  </span>
+                ))
+              ) : (
+                <span className="no-genres">No favorite genres selected</span>
+              )}
+            </div>
           </div>
         </div>
       </div>
