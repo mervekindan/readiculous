@@ -1,16 +1,16 @@
 .hero {
   position: relative;
   min-height: 75vh;
-  background-image: url("/home/background-horizontal.jpg");
+  background-image: url("/home/background4.jpg");
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
 }
 
 .hero::after {
   content: "";
   inset: 0;
   position: absolute;
-  background-color: rgba(247, 247, 247, 0.58);
+  background-color: var(--image-filter-dark);
   z-index: 1;
 }
 
@@ -20,7 +20,7 @@
   left: 50%;
   transform: translate(-50%, -60%);
   text-align: center;
-  color: var(--text-color);
+  color: rgb(255, 247, 245);
   z-index: 2;
 }
 
@@ -83,9 +83,8 @@
 
 @media (max-width: 480px) {
   .hero {
-    min-height: 60vh;
-    background-image: url("/home/background-vertical.jpg");
-    background-position: bottom;
+    background-image: url("/home/background4-vertical.jpg");
+    background-position: center;
   }
 
   .hero-content {

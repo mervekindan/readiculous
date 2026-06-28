@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useBooks } from "../../context/BookContext";
 import { useAuth } from "../../context/AuthContext";
-import "./ProgressPage.css";
 import BookCard from "../BookCard/BookCard";
+import AuthMessage from "../AuthMessage/AuthMessage";
+import "./ProgressPage.css";
 
 export default function ProgressPage() {
   const { inProgressBooks, finishedBooks, finishBook, removeFromProgress } =
@@ -14,15 +15,17 @@ export default function ProgressPage() {
 
   if (!user) {
     return (
-      <div className="progress-page">
-        <div className="progress-page-container">
-          <h2 className="page-title progress-title">Reading Progress</h2>
-          <div className="login-prompt-banner">
-            🔒 Access Restricted. Please log in or create an account to view and
-            track your personal reading progress and statistics.
+      <>
+        <div className="progress-page">
+          <div className="progress-page-card">
+            <AuthMessage
+              icon="📊"
+              title="Reading Progress"
+              message="Access Restricted. Please log in or create an account to view and track your personal reading progress and statistics."
+            />
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
