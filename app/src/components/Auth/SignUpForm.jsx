@@ -59,8 +59,6 @@ function SignUpForm() {
 
   return (
     <form className="auth-form" onSubmit={handleSubmit}>
-      <h2>Sign Up</h2>
-
       <label>
         Name
         <input

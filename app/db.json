@@ -140,6 +140,28 @@
         ]
       },
       "id": "WAv1noOQYl4"
+    },
+    {
+      "name": "Tim",
+      "email": "tim@gmail.com",
+      "password": "tim1234567",
+      "dailyGoalMinutes": 1,
+      "yearlyGoalBooks": 10,
+      "favoriteGenres": [],
+      "readingStreak": {
+        "currentStreak": 0,
+        "lastCompletedDate": "",
+        "currentWeekProgress": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "id": "HO-w2nP2bIQ"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

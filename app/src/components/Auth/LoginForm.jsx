@@ -60,8 +60,6 @@ function LoginForm() {
 
   return (
     <form className="auth-form" onSubmit={handleSubmit}>
-      <h2>Login</h2>
-
       <label>
         Email
         <input
