@@ -26,7 +26,13 @@ export function NavBar() {
     { to: "/progress", label: "Progress", iconSrc: progressIcon },
     { to: "/daily-streak", label: "Streak", iconSrc: streakIcon },
     { to: "/challenges", label: "Challenges", iconSrc: challengesIcon },
+    { to: "/team", label: "About Us", hideOnDesktop: true },
+    { to: "/about", label: "FAQ", hideOnDesktop: true },
   ];
+
+  const mobileBottomLinks = navigationLinks.filter(
+    (link) => !link.hideOnDesktop,
+  );
 
   return (
     <>
@@ -50,7 +56,9 @@ export function NavBar() {
             <NavLink
               key={link.to}
               to={link.to}
-              className={({ isActive }) => (isActive ? "link active" : "link")}
+              className={({ isActive }) =>
+                `link ${link.hideOnDesktop ? "desktop-hide" : ""} ${isActive ? "active" : ""}`
+              }
               onClick={closeMenu}
             >
               {link.label}
@@ -60,7 +68,7 @@ export function NavBar() {
       </nav>
 
       <nav className="nav-bar-bottom">
-        {navigationLinks.map((link) => (
+        {mobileBottomLinks.map((link) => (
           <NavLink
             key={link.to}
             to={link.to}

@@ -47,6 +47,10 @@
   position: relative;
 }
 
+.link.desktop-hide {
+  display: none;
+}
+
 .link::after {
   content: "";
   position: absolute;
@@ -135,8 +139,18 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   }
 
+  .nav-links .link.desktop-hide {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--background-color);
+    padding: 10px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    width: 100%;
+    margin: 0 auto;
+  }
+
   .nav-links.open {
-    max-height: 300px;
+    max-height: 440px;
     padding: 1rem;
   }
 
