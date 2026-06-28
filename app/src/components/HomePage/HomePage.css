@@ -83,7 +83,6 @@
 
 @media (max-width: 480px) {
   .hero {
-    min-height: 60vh;
     background-image: url("/home/background-vertical.jpg");
     background-position: bottom;
   }
