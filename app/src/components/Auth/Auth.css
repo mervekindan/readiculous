@@ -50,7 +50,10 @@
   background: #ccd5d4;
   color: var(--text-color);
   font-size: 0.95rem;
-  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
   touch-action: manipulation;
 }
 
@@ -111,8 +114,15 @@
   cursor: pointer;
 }
 .error-message {
-  color: red;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: #fff3f3;
+  border: 1px solid #f3c2c2;
+  color: #b42318;
   font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 @media (max-width: 420px) {

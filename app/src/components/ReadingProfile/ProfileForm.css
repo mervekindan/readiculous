@@ -35,10 +35,16 @@
   cursor: not-allowed;
 }
 
-.error-message {
-  margin-top: -0.5rem;
-  color: #c0392b;
+.profile-form .error-message {
+  margin-top: -0.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: #fff3f3;
+  border: 1px solid #f3c2c2;
+  color: #b42318;
   font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .profile-form fieldset {
