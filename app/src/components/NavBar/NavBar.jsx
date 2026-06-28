@@ -1,46 +1,92 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/readiculous2.png";
 import "./NavBar.css";
 
-export function NavBar() {
-  return (
-    <nav className="nav-bar">
-      <Link to="/" className="link">
-        <img src={logo} alt="Readiculous logo" className="logo" />
-      </Link>
+import profileIcon from "../../assets/nav-icons/user.png";
+import libraryIcon from "../../assets/nav-icons/book.png";
+import progressIcon from "../../assets/nav-icons/progress.png";
+import streakIcon from "../../assets/nav-icons/fire.png";
+import challengesIcon from "../../assets/nav-icons/medal.png";
 
-      <div className="nav-links">
-        <NavLink
-          to="/profile"
-          className={({ isActive }) => (isActive ? "link active" : "link")}
+export function NavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
+  const navigationLinks = [
+    { to: "/profile", label: "Profile", iconSrc: profileIcon },
+    { to: "/library", label: "Library", iconSrc: libraryIcon },
+    { to: "/progress", label: "Progress", iconSrc: progressIcon },
+    { to: "/daily-streak", label: "Streak", iconSrc: streakIcon },
+    { to: "/challenges", label: "Challenges", iconSrc: challengesIcon },
+    { to: "/team", label: "About Us", hideOnDesktop: true },
+    { to: "/about", label: "FAQ", hideOnDesktop: true },
+  ];
+
+  const mobileBottomLinks = navigationLinks.filter(
+    (link) => !link.hideOnDesktop,
+  );
+
+  return (
+    <>
+      <nav className="nav-bar">
+        <Link to="/" className="logo-link">
+          <img src={logo} alt="Readiculous logo" className="logo" />
+        </Link>
+
+        <button
+          className={`burger-menu ${isOpen ? "open" : ""}`}
+          onClick={toggleMenu}
+          aria-label="Toggle navigation"
         >
-          Profile
-        </NavLink>
-        <NavLink
-          to="/library"
-          className={({ isActive }) => (isActive ? "link active" : "link")}
-        >
-          Library
-        </NavLink>
-        <NavLink
-          to="/progress"
-          className={({ isActive }) => (isActive ? "link active" : "link")}
-        >
-          Progress
-        </NavLink>
-        <NavLink
-          to="/daily-streak"
-          className={({ isActive }) => (isActive ? "link active" : "link")}
-        >
-          Daily Streak
-        </NavLink>
-        <NavLink
-          to="/challenges"
-          className={({ isActive }) => (isActive ? "link active" : "link")}
-        >
-          Challenges
-        </NavLink>
-      </div>
-    </nav>
+          <span className="burger-bar"></span>
+          <span className="burger-bar"></span>
+          <span className="burger-bar"></span>
+        </button>
+
+        <div className={`nav-links ${isOpen ? "open" : ""}`}>
+          {navigationLinks.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `link ${link.hideOnDesktop ? "desktop-hide" : ""} ${isActive ? "active" : ""}`
+              }
+              onClick={closeMenu}
+            >
+              {link.label}
+            </NavLink>
+          ))}
+        </div>
+      </nav>
+
+      <nav className="nav-bar-bottom">
+        {mobileBottomLinks.map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            className={({ isActive }) =>
+              isActive ? "mobile-icon-link active" : "mobile-icon-link"
+            }
+          >
+            <img
+              src={link.iconSrc}
+              alt={`${link.label} icon`}
+              className="mobile-nav-icon"
+            />
+            <span className="mobile-nav-text">{link.label}</span>
+          </NavLink>
+        ))}
+      </nav>
+
+      {isOpen && <div className="nav-overlay" onClick={closeMenu}></div>}
+    </>
   );
 }

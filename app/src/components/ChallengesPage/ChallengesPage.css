@@ -1,24 +1,60 @@
 .challenges-page {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .challenges-header {
-    text-align: center;
-    margin-bottom: 2rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--secondary-500);
 }
 
 .challenges-header h1 {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.challenges-header p {
-    color: black;
+.challenges-description {
+  color: var(--text-color);
+}
+
+.login-prompt {
+  text-align: center;
+  margin: 1.5rem 0;
+  color: #ffffff;
+  background-color: var(--accent-500);
+  padding: 12px 16px;
+  border-radius: 8px;
 }
 
 .badges-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .challenges-page {
+    padding: 1.5rem;
+  }
+
+  .badges-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .challenges-page {
+    padding: 1rem;
+  }
+
+  .challenges-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .badges-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }

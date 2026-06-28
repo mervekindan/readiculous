@@ -1,9 +1,22 @@
+:root {
+  --background-color: #f7f7f2;
+  --primary-500: #a3b18a;
+  --secondary-500: #2c514c;
+  --accent-500: #773344;
+  --text-color: #020402;
+
+  --border-color: #dfe8dc;
+  --surface-color: #e8efe4;
+  --card-shadow: rgba(44, 81, 76, 0.08);
+  --image-filter-dark: rgba(5, 5, 5, 0.3);
+  --image-filter-light: rgba(247, 247, 247, 0.2);
+}
+
 html,
 body,
 #root {
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
   font-family: Roboto, sans-serif;
 }
@@ -12,10 +25,6 @@ body,
 *::after,
 *::before {
   box-sizing: border-box;
-}
-
-body {
-  margin: 0;
 }
 
 h1,
@@ -34,6 +43,7 @@ li {
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 button,
@@ -47,20 +57,34 @@ input {
 ul,
 ol {
   list-style: none;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
-:root {
-    --background-color: #f7f7f2;
-    --primary-500: #a3b18a;
-    --secondary-500: #2c514c;
-    --accent-500: #773344;
-    --text-color: #020402;
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
 }
 
 main {
   width: 100%;
+  flex-grow: 1;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+@media (max-width: 750px) {
+  .footer-wrapper {
+    display: none;
+  }
+
+  main {
+    margin-bottom: 60px;
+  }
 }

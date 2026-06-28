@@ -7,7 +7,23 @@
       "password": "password123",
       "dailyGoalMinutes": 30,
       "yearlyGoalBooks": 12,
-      "favoriteGenres": ["fantasy", "mystery"]
+      "favoriteGenres": [
+        "fantasy",
+        "mystery"
+      ],
+      "readingStreak": {
+        "currentStreak": 1,
+        "lastCompletedDate": "2026-06-24",
+        "currentWeekProgress": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false
+        ]
+      }
     },
     {
       "id": "user-2",
@@ -16,7 +32,23 @@
       "password": "password123",
       "dailyGoalMinutes": 60,
       "yearlyGoalBooks": 25,
-      "favoriteGenres": ["science fiction", "technology"]
+      "favoriteGenres": [
+        "science fiction",
+        "technology"
+      ],
+      "readingStreak": {
+        "currentStreak": 1,
+        "lastCompletedDate": "2026-06-24",
+        "currentWeekProgress": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false
+        ]
+      }
     },
     {
       "id": "user-3",
@@ -25,7 +57,112 @@
       "password": "password123",
       "dailyGoalMinutes": 15,
       "yearlyGoalBooks": 6,
-      "favoriteGenres": ["romance", "historical fiction"]
+      "favoriteGenres": [
+        "romance",
+        "historical fiction"
+      ],
+      "readingStreak": {
+        "currentStreak": 0,
+        "lastCompletedDate": "",
+        "currentWeekProgress": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "Tim",
+      "email": "tim@gmail.com",
+      "password": "tim1234567",
+      "dailyGoalMinutes": 10,
+      "yearlyGoalBooks": 20,
+      "favoriteGenres": [],
+      "readingStreak": {
+        "currentStreak": 1,
+        "lastCompletedDate": "2026-06-24",
+        "currentWeekProgress": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      "id": "LCOeTs0fchY"
+    },
+    {
+      "name": "ledam",
+      "email": "ledam27874@dyleris.com",
+      "password": "ledam27874",
+      "dailyGoalMinutes": 10,
+      "yearlyGoalBooks": 20,
+      "favoriteGenres": [],
+      "readingStreak": {
+        "currentStreak": 1,
+        "lastCompletedDate": "2026-06-24",
+        "currentWeekProgress": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      "id": "mCEl4mvNZfQ"
+    },
+    {
+      "name": "kevin",
+      "email": "kevin@gmail.com",
+      "password": "pas1234567",
+      "dailyGoalMinutes": 1,
+      "yearlyGoalBooks": 10,
+      "favoriteGenres": [],
+      "readingStreak": {
+        "currentStreak": 1,
+        "lastCompletedDate": "2026-06-24",
+        "currentWeekProgress": [
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false
+        ]
+      },
+      "id": "WAv1noOQYl4"
+    },
+    {
+      "name": "Tim",
+      "email": "tim@gmail.com",
+      "password": "tim1234567",
+      "dailyGoalMinutes": 1,
+      "yearlyGoalBooks": 10,
+      "favoriteGenres": [],
+      "readingStreak": {
+        "currentStreak": 0,
+        "lastCompletedDate": "",
+        "currentWeekProgress": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      "id": "HO-w2nP2bIQ"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

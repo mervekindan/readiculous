@@ -15,6 +15,7 @@ function LoginForm() {
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -32,16 +33,12 @@ function LoginForm() {
     event.preventDefault();
     setError("");
     setSuccess("");
+    setIsLoading(true);
 
     try {
       const savedUser = await getUserByEmail(
         sanitizeEmailInput(formData.email),
       );
-
-      if (!savedUser) {
-        setError("No account found. Please sign up first.");
-        return;
-      }
 
       if (savedUser.password !== formData.password) {
         setError("Incorrect password.");
@@ -55,13 +52,13 @@ function LoginForm() {
       setError(
         "Oops! No account found with this email. Please create an account first.",
       );
+    } finally {
+      isLoading(false);
     }
   }
 
   return (
     <form className="auth-form" onSubmit={handleSubmit}>
-      <h2>Login</h2>
-
       <label>
         Email
         <input
@@ -84,7 +81,9 @@ function LoginForm() {
         />
       </label>
 
-      <button type="submit">Login</button>
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? "Signing In..." : "Login"}
+      </button>
 
       {error && (
         <p className="error-message">

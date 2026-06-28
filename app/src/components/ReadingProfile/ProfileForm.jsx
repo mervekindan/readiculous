@@ -1,15 +1,22 @@
+import { useState } from "react";
 import { GENRE_CATEGORIES } from "../../utils/genres";
 import { useAuth } from "../../context/AuthContext";
+import "./ProfileForm.css";
 
-function ProfileForm({ onChange, onSubmit }) {
+function ProfileForm({ onChange, onSubmit, completedToday }) {
   const { user } = useAuth();
-  function minutesToTime(minutes) {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
+  const [dailyGoalError, setDailyGoalError] = useState("");
 
-    return `${hours.toString().padStart(2, "0")}:${mins
-      .toString()
-      .padStart(2, "0")}`;
+  function handleDailyGoalChange(event) {
+    if (completedToday) {
+      setDailyGoalError(
+        "Daily goal can't be changed after today's streak is completed.",
+      );
+      return;
+    }
+
+    setDailyGoalError("");
+    onChange(event);
   }
 
   return (
@@ -26,15 +33,28 @@ function ProfileForm({ onChange, onSubmit }) {
       </label>
 
       <label>
-        Daily reading goal
+        Daily reading goal (minutes)
         <input
           name="dailyGoalMinutes"
-          type="time"
-          value={minutesToTime(user.dailyGoalMinutes)}
-          onChange={onChange}
+          type="number"
+          min="1"
+          max="300"
+          value={user.dailyGoalMinutes}
+          onChange={handleDailyGoalChange}
+          onFocus={() => {
+            if (completedToday) {
+              setDailyGoalError(
+                "Daily goal can't be changed after today's streak is completed.",
+              );
+            }
+          }}
+          readOnly={completedToday}
+          className={completedToday ? "input-locked" : ""}
           required
         />
       </label>
+
+      {dailyGoalError && <p className="error-message">{dailyGoalError}</p>}
 
       <label>
         Yearly book goal
@@ -48,13 +68,12 @@ function ProfileForm({ onChange, onSubmit }) {
           required
         />
       </label>
+
       <fieldset>
         <legend>Favorite Genres</legend>
-
         {Object.entries(GENRE_CATEGORIES).map(([category, genres]) => (
           <div key={category} className="genre-category">
             <h4>{category}</h4>
-
             <div>
               {genres.map((genre) => (
                 <label key={genre}>
