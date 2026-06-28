@@ -161,6 +161,10 @@
     font-size: 1.1rem;
   }
 
+  .nav-links .link.desktop-hide:hover {
+    color: var(--primary-500);
+  }
+
   .link::after {
     display: none;
   }
