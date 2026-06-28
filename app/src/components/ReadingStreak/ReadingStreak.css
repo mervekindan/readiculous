@@ -2,13 +2,14 @@
   max-width: 950px;
   margin: 2rem auto;
   padding: 1rem;
-  color: #1f2937;
+  color: var(--text-color);
 }
 
 .reading-streak h1 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 2rem;
+  color: var(--secondary-500);
 }
 
 .streak-layout {
@@ -24,12 +25,12 @@
 }
 
 .streak-card {
-  background-color: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
+  background-color: var(--background-color);
+  border: 1px solid #dfe8dc;
+  border-radius: 18px;
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 25px rgba(44, 81, 76, 0.08);
 }
 
 .card-icon {
@@ -41,51 +42,59 @@
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
+  background-color: #e8efe4;
 }
 
-.green-icon {
-  background-color: #dcfce7;
-}
-
-.blue-icon {
-  background-color: #dbeafe;
-}
-
+.green-icon,
+.blue-icon,
 .purple-icon {
-  background-color: #ede9fe;
+  background-color: #e8efe4;
+  color: var(--secondary-500);
 }
 
-.streak-card h2 {
-  display: inline-block;
-  margin: 0 0 1.5rem;
-  padding-bottom: 0.5rem;
-  font-size: 1.1rem;
-  border-bottom: 2px solid currentColor;
-}
-
-.streak-progress-card h2 {
-  color: #15803d;
-}
-
+.streak-progress-card h2,
 .timer-card h2 {
-  color: #2563eb;
+  color: var(--secondary-500);
 }
 
+.streak-progress-card h2,
+.timer-card h2,
 .time-left-card h2 {
-  color: #7e22ce;
+  color: var(--secondary-500);
+}
+.card-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+.timer-display-box {
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 1px solid #dfe8dc;
+  color: var(--secondary-500);
 }
 
+.timer-display-box span {
+  font-weight: 700;
+}
+
+.timer-display-box small {
+  color: var(--accent-500);
+  font-weight: 700;
+}
 .streak-number {
   font-size: 4.5rem;
   font-weight: 800;
-  color: #15803d;
+  color: var(--secondary-500);
   margin: 0;
 }
 
 .streak-label {
   margin-top: 0.25rem;
   font-weight: 600;
-  color: #4b5563;
+  color: var(--secondary-500);
 }
 
 .status-box,
@@ -93,16 +102,19 @@
 .goal-timer-box,
 .keep-reading-box,
 .bottom-message {
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 1rem;
   margin-top: 1.2rem;
 }
 
 .status-box,
-.goal-box {
-  background-color: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  color: #15803d;
+.goal-box,
+.goal-timer-box,
+.keep-reading-box,
+.bottom-message {
+  background-color: #fff;
+  border: 1px solid #dfe8dc;
+  color: var(--secondary-500);
 }
 
 .weekly-section {
@@ -113,6 +125,7 @@
 .weekly-section h3 {
   font-size: 1rem;
   margin-bottom: 1rem;
+  color: var(--secondary-500);
 }
 
 .week-progress {
@@ -128,12 +141,13 @@
   gap: 0.45rem;
   font-weight: 600;
   font-size: 0.85rem;
+  color: var(--secondary-500);
 }
 
 .day-circle {
   width: 32px;
   height: 32px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--primary-500);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -142,8 +156,8 @@
 }
 
 .day-circle.completed {
-  background-color: #15803d;
-  border-color: #15803d;
+  background-color: var(--secondary-500);
+  border-color: var(--secondary-500);
 }
 
 .goal-box {
@@ -153,12 +167,10 @@
 
 .goal-box p {
   margin: 0.25rem 0 0;
-  color: #4b5563;
+  color: var(--text-color);
 }
 
 .goal-timer-box {
-  background-color: #eff6ff;
-  border: 1px solid #bfdbfe;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -168,11 +180,11 @@
 .goal-timer-box p {
   margin: 0;
   font-size: 0.85rem;
-  color: #374151;
+  color: var(--text-color);
 }
 
 .goal-timer-box strong {
-  color: #1e40af;
+  color: var(--secondary-500);
 }
 
 .timer-actions {
@@ -185,16 +197,18 @@
 
 .timer-actions button {
   padding: 0.7rem 1.1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
+  border: 1px solid #dfe8dc;
+  border-radius: 999px;
   background-color: #fff;
   cursor: pointer;
   font-weight: 600;
+  color: var(--secondary-500);
 }
 
 .timer-actions button:first-child {
-  border-color: #60a5fa;
-  color: #2563eb;
+  background-color: var(--secondary-500);
+  border-color: var(--secondary-500);
+  color: #fff;
 }
 
 .timer-actions button:disabled {
@@ -205,28 +219,24 @@
 .timer-note {
   margin-top: 1rem;
   font-size: 0.85rem;
-  color: #6b7280;
+  color: var(--secondary-500);
 }
 
 .timer {
   font-size: 4rem;
   font-weight: 800;
   margin: 0;
-  color: #7e22ce;
+  color: var(--accent-500);
 }
 
 .keep-reading-box {
-  background-color: #faf5ff;
-  border: 1px solid #e9d5ff;
-  color: #7e22ce;
+  color: var(--accent-500);
   font-weight: 600;
   font-size: 0.9rem;
 }
 
 .bottom-message {
-  background-color: #eff6ff;
-  border: 1px solid #bfdbfe;
-  color: #2563eb;
+  color: var(--secondary-500);
   font-size: 0.9rem;
 }
 
@@ -242,5 +252,70 @@
   .timer,
   .streak-number {
     font-size: 3.5rem;
+  }
+}
+
+.streak-empty-card {
+  max-width: 620px;
+  margin: 4rem auto;
+  padding: 2.5rem;
+  border-radius: 24px;
+  background: var(--background-color);
+  border: 1px solid #dfe8dc;
+  box-shadow: 0 10px 25px rgba(44, 81, 76, 0.08);
+  text-align: center;
+}
+
+.empty-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e8efe4;
+  font-size: 2rem;
+}
+
+.streak-empty-card h1 {
+  margin-bottom: 1rem;
+  color: var(--secondary-500);
+}
+
+.streak-empty-card p {
+  max-width: 460px;
+  margin: 0 auto 1.5rem;
+  color: var(--secondary-500);
+  line-height: 1.6;
+}
+
+.profile-auth-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.auth-button {
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  background: var(--secondary-500);
+  color: white;
+  font-weight: 700;
+}
+
+.auth-button.secondary {
+  background: transparent;
+  color: var(--secondary-500);
+  border: 2px solid var(--secondary-500);
+}
+
+@media (max-width: 600px) {
+  .streak-empty-card {
+    margin: 2rem auto;
+    padding: 1.5rem;
+  }
+
+  .profile-auth-actions {
+    flex-direction: column;
   }
 }
