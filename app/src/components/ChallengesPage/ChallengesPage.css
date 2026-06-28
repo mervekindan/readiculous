@@ -7,6 +7,7 @@
 .challenges-header {
   text-align: center;
   margin-bottom: 2.5rem;
+  color: var(--secondary-500);
 }
 
 .challenges-header h1 {
@@ -21,7 +22,7 @@
   text-align: center;
   margin: 1.5rem 0;
   color: #ffffff;
-  background-color: var(--secondary-500);
+  background-color: var(--accent-500);
   padding: 12px 16px;
   border-radius: 8px;
 }
