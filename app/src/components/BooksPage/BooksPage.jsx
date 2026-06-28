@@ -47,7 +47,7 @@ export default function BooksPage() {
       <div className="books-page-container">
         {!user && (
           <div className="login-prompt-banner">
-            💡 Log in to add books to your reading progress.
+            Log in to add books to your reading progress.
           </div>
         )}
 
