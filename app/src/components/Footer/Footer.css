@@ -65,30 +65,3 @@
   color: var(--text-color);
   padding: 0.25rem;
 }
-
-@media (width < 500px) {
-  .footer {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 1.5rem 1rem;
-    gap: 1rem;
-  }
-
-  .footer-description {
-    display: none;
-  }
-
-  .footer h3 {
-    display: none;
-  }
-
-  .contact-us {
-    justify-self: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-links {
-    justify-self: center;
-    align-items: center;
-  }
-}

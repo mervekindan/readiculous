@@ -137,7 +137,11 @@
   color: var(--secondary-500);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 700px) {
+  .progress-page {
+    min-height: 100vh;
+  }
+
   .progress-page-container {
     width: 90%;
   }

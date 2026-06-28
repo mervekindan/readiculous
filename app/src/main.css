@@ -79,6 +79,10 @@ footer {
 
 @media (max-width: 750px) {
   .footer-wrapper {
-    margin-bottom: 64px;
+    display: none;
+  }
+
+  main {
+    margin-bottom: 60px;
   }
 }

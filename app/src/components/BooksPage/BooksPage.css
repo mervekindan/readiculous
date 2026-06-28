@@ -56,3 +56,27 @@
   opacity: 0.85;
   background-color: rgba(255, 255, 255, 0.65);
 }
+
+@media (max-width: 700px) {
+  .books-page {
+    min-height: calc(100vh - 100px);
+  }
+}
+
+@media (max-width: 400px) {
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .search-button {
+    max-width: 100px;
+  }
+}
