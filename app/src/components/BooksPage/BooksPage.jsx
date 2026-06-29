@@ -77,7 +77,9 @@ export default function BooksPage() {
                 );
               })
             ) : (
-              <p>No books found. Try another search.</p>
+              <p className="loading-text">
+                No books found. Try another search.
+              </p>
             )}
           </div>
         )}

@@ -21,6 +21,7 @@ function SignUpForm() {
   });
 
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -33,7 +34,7 @@ function SignUpForm() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+    setIsLoading(true);
     const newUser = {
       name: sanitizeTextInput(formData.name),
       email: sanitizeEmailInput(formData.email),
@@ -54,6 +55,8 @@ function SignUpForm() {
       navigate("/profile");
     } catch (error) {
       setMessage("Unable to create your account. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -120,8 +123,8 @@ function SignUpForm() {
         />
       </label>
 
-      <button type="submit" className="auth-submit-button">
-        Create Account
+      <button type="submit" className="auth-submit-button" disabled={isLoading}>
+        {isLoading ? "Creating Account..." : "Create Account"}
       </button>
 
       {message && <p className="success-message">{message}</p>}
