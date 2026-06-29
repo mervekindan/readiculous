@@ -82,10 +82,12 @@ function LoginForm() {
         />
       </label>
 
-      <button type="submit">Login</button>
+      <button type="submit" className="auth-submit-button">
+        Login
+      </button>
 
       {error && (
-        <p className="error-message">
+        <p className="auth-error-message">
           {error}
 
           {error.includes("No account found") && (

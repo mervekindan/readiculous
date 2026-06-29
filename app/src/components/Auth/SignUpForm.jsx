@@ -120,7 +120,9 @@ function SignUpForm() {
         />
       </label>
 
-      <button type="submit">Create Account</button>
+      <button type="submit" className="auth-submit-button">
+        Create Account
+      </button>
 
       {message && <p className="success-message">{message}</p>}
     </form>

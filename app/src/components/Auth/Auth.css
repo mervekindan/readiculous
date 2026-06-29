@@ -7,12 +7,8 @@
   overflow-y: auto;
   max-width: 500px;
   padding: 2rem 1rem 1rem;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  background: #fff;
+  margin: auto;
+  background: var(--background-color);
   color: var(--text-color);
 }
 
@@ -47,9 +43,6 @@
   width: 100%;
   border-radius: 12px;
   border: 1px solid transparent;
-  background: #ccd5d4;
-  color: var(--text-color);
-  font-size: 0.95rem;
   transition:
     border-color 0.2s ease,
     background-color 0.2s ease,
@@ -57,18 +50,49 @@
   touch-action: manipulation;
 }
 
+.auth-tabs button {
+  background: var(--secondary-200);
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
 .auth-tabs button:hover,
 .auth-form button:hover,
 .auth-tabs button:active,
 .auth-form button:active {
-  background: #a4b4b2;
+  background: var(--secondary-300);
+}
+
+.auth-submit-button {
+  background: var(--accent-500);
+  color: var(--background-color);
+  border: none;
+  font-weight: 600;
+  border-radius: 12px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.auth-submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-submit-button:hover:not(:disabled) {
+  background: var(--secondary-500);
 }
 
 .auth-tabs .active-tab {
   font-weight: bold;
   background: var(--secondary-500);
-  color: #fff;
+  color: var(--background-color);
   border-color: transparent;
+  cursor: default;
+}
+
+.auth-tabs .active-tab:hover {
+  background: var(--secondary-500);
 }
 
 .auth-form {
@@ -88,7 +112,7 @@
   padding: 0.75rem 1rem;
   border: 1px solid rgba(44, 81, 76, 0.16);
   border-radius: 12px;
-  background: #ffffff;
+  background: var(--background-color);
   color: var(--text-color);
 }
 
@@ -101,6 +125,9 @@
 .success-message {
   color: green;
   font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
 }
 
 .profile-actions {
@@ -113,22 +140,26 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
-.error-message {
-  margin-top: 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  background: #fff3f3;
-  border: 1px solid #f3c2c2;
+.auth-error-message {
   color: #b42318;
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.4;
+  text-align: center;
 }
 
 @media (max-width: 420px) {
   .auth-dialog {
     width: 95vw;
     padding: 1.5rem 0.75rem 1rem;
+  }
+
+  .auth-form {
+    gap: 0.75rem;
+  }
+
+  .auth-form input {
+    padding: 0.65rem 0.75rem;
   }
 
   .close-button {
