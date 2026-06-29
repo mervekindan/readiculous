@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  min-height: 75vh;
+  min-height: 100dvh;
   background-image: url("/home/background4.jpg");
   background-size: cover;
   background-position: center;
