@@ -1,13 +1,30 @@
 .challenges-page {
+  background-image: url("../../assets/challenges-bg.jpg");
+  color: var(--text-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: calc(100vh - 200px);
+  overflow: hidden;
+}
+
+.challenges-page-container {
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
 }
 
 .challenges-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   color: var(--secondary-500);
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .challenges-header h1 {
