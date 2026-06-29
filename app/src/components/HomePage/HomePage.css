@@ -50,7 +50,7 @@
 }
 
 .hero button:hover {
-  background-color: #471e28;
+  background-color: var(--primary-500);
 }
 
 @media (max-width: 768px) {
