@@ -129,7 +129,6 @@
     background-color: var(--secondary-500);
     flex-direction: column;
     gap: 0;
-    padding: 0;
 
     max-height: 0;
     overflow: hidden;
@@ -141,12 +140,12 @@
 
   .nav-links .link.desktop-hide {
     display: block;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--background-color);
-    padding: 10px 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 10px 6px;
     width: 100%;
-    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: left;
   }
 
   .nav-links.open {
@@ -157,8 +156,14 @@
   .link {
     width: 100%;
     text-align: center;
-    padding: 12px 0;
+    padding: 12px 6px;
     font-size: 1.1rem;
+  }
+
+  .nav-links .link.desktop-hide:nth-of-type(6) {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: 0.5rem;
+    padding-top: 1rem;
   }
 
   .nav-links .link.desktop-hide:hover {
