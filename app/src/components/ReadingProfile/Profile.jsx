@@ -14,7 +14,7 @@ import "./Profile.css";
 
 function ReadingProfile() {
   const { user, setUser, logout } = useAuth();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
   const { readingStreak } = useBooks();
 
   const today = getTodayDate();
@@ -22,14 +22,6 @@ function ReadingProfile() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState("");
-
-  function handleSignUp() {
-    setSearchParams({ auth: "signup" });
-  }
-
-  function handleLogin() {
-    setSearchParams({ auth: "login" });
-  }
 
   function handleChange(event) {
     const { name, value, checked } = event.target;
@@ -100,39 +92,43 @@ function ReadingProfile() {
 
   return (
     <section className="reading-profile">
-      <h1>Profile</h1>
-
-      <ProfileSummary
-        message={message}
-        onEdit={handleEdit}
-        onLogout={handleLogout}
-      />
-
-      {isEditing && (
-        <div className="profile-modal-overlay">
-          <div className="profile-modal">
-            <div className="profile-modal-header">
-              <h2>Edit Profile</h2>
-
-              <button
-                type="button"
-                className="profile-modal-close"
-                onClick={() => setIsEditing(false)}
-              >
-                ×
-              </button>
-            </div>
-
-            <ProfileForm
-              onChange={handleChange}
-              onSubmit={handleSubmit}
-              completedToday={completedToday}
-            />
-          </div>
+      <div className="reading-profile-container">
+        <div className="reading-profile-header">
+          <h1>Profile</h1>
         </div>
-      )}
 
-      <ReadingStreakSummary />
+        <ProfileSummary
+          message={message}
+          onEdit={handleEdit}
+          onLogout={handleLogout}
+        />
+
+        {isEditing && (
+          <div className="profile-modal-overlay">
+            <div className="profile-modal">
+              <div className="profile-modal-header">
+                <h2>Edit Profile</h2>
+
+                <button
+                  type="button"
+                  className="profile-modal-close"
+                  onClick={() => setIsEditing(false)}
+                >
+                  ×
+                </button>
+              </div>
+
+              <ProfileForm
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+                completedToday={completedToday}
+              />
+            </div>
+          </div>
+        )}
+
+        <ReadingStreakSummary />
+      </div>
     </section>
   );
 }

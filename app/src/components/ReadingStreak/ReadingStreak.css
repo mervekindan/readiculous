@@ -1,15 +1,30 @@
 .reading-streak {
-  max-width: 950px;
-  margin: 2rem auto;
-  padding: 1rem;
+  background-image: url("../../assets/streak-bg.jpg");
   color: var(--text-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: calc(100vh - 200px);
+  overflow: hidden;
 }
 
-.reading-streak h1 {
+.reading-streak-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.reading-streak-header {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-size: 2rem;
   color: var(--secondary-500);
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .streak-description {
@@ -236,7 +251,7 @@
   gap: 0.4rem;
   padding: 0.7rem 1.1rem;
   border: 1px solid var(--border-color);
-  border-radius: 999px;
+  border-radius: 8px;
   background-color: #fff;
   cursor: pointer;
   font-weight: 600;
@@ -286,6 +301,10 @@
 }
 
 @media (max-width: 700px) {
+  .reading-streak {
+    padding: 1.5rem;
+  }
+
   .streak-layout {
     grid-template-columns: 1fr;
   }
@@ -297,5 +316,11 @@
   .timer,
   .streak-number {
     font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .reading-streak {
+    padding: 1rem;
   }
 }

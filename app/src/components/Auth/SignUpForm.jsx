@@ -123,7 +123,7 @@ function SignUpForm() {
         />
       </label>
 
-      <button type="submit" disabled={isLoading}>
+      <button type="submit" className="auth-submit-button" disabled={isLoading}>
         {isLoading ? "Creating Account..." : "Create Account"}
       </button>
 

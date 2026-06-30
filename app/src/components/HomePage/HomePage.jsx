@@ -1,11 +1,18 @@
 import "./HomePage.css";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const { user } = useAuth();
 
   const handleCTAButtonClick = () => {
-    setSearchParams({ auth: "signup" });
+    if (!user) {
+      setSearchParams({ auth: "signup" });
+    } else {
+      navigate("/library");
+    }
   };
 
   return (
@@ -17,7 +24,7 @@ function HomePage() {
           One chapter today can change where you'll be tomorrow.
         </p>
         <button onClick={handleCTAButtonClick}>
-          Start building a habit
+          {!user ? "Start building a habit" : "Browse your library"}
         </button>
       </div>
     </section>
