@@ -142,10 +142,6 @@
     min-height: 100vh;
   }
 
-  .progress-page-container {
-    width: 90%;
-  }
-
   .progress-tabs {
     display: flex;
   }
