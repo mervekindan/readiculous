@@ -183,12 +183,18 @@
   align-items: center;
   width: 100%;
   padding: 0;
+
+  min-width: 0;
 }
 
 .book-card.mini-card .book-details-text {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+
+  min-width: 0;
+  flex-grow: 1;
+  margin-right: 4px;
 }
 
 .book-card.mini-card h3 {
@@ -197,7 +203,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;
+  width: 100%;
+  display: block;
 }
 
 .book-card.mini-card p {
@@ -214,6 +221,7 @@
   padding: 0.35rem 0.6rem;
   font-size: 0.75rem;
   width: auto;
+  white-space: nowrap;
 }
 
 .book-card.mini-card .completed-badge {
@@ -290,6 +298,7 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  gap: 4px;
 }
 
 .book-dates-wrapper {
@@ -304,18 +313,24 @@
   width: 100%;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 1000px) {
   .book-card.mini-card {
     height: auto;
     min-height: 100px;
     align-items: flex-start;
     padding: 0.5rem;
+
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .book-card.mini-card .book-cover-wrapper {
     width: 60px;
     height: 94px;
     align-self: center;
+
+    flex-shrink: 0;
   }
 
   .book-card.mini-card .book-card-info {
@@ -324,10 +339,16 @@
     justify-content: flex-start;
     gap: 0.5rem;
     width: 100%;
+
+    min-width: 0;
   }
 
   .book-details-text {
     width: 100%;
+
+    min-width: 0;
+    box-sizing: border-box;
+    padding-right: 20px;
   }
 
   .book-card.mini-card .finish-btn,

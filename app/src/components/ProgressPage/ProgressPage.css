@@ -6,11 +6,14 @@
   background-attachment: fixed;
   min-height: calc(100vh - 200px);
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .progress-page-container {
+  width: calc(100% - 2rem);
   max-width: 1200px;
-  margin: 2rem auto;
+  margin: 2rem 1rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -36,6 +39,11 @@
 
 .analytics-section h3 {
   margin: 0 0 1rem 0;
+  color: var(--text-color);
+}
+
+.analytics-section p {
+  color: var(--text-color);
 }
 
 .chart-container {
@@ -62,12 +70,12 @@
 
 .progress-columns {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .progress-column {
   flex: 1;
-  min-width: 280px;
+  min-width: 0;
 }
 
 .column-title {
