@@ -1,15 +1,29 @@
 .reading-streak {
-  max-width: 950px;
-  margin: 2rem auto;
-  padding: 1rem;
+  background-image: url("../../assets/streak-bg.jpg");
   color: var(--text-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: calc(100vh - 200px);
+  overflow: hidden;
 }
 
-.reading-streak h1 {
+.reading-streak-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.reading-streak-header {
   text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
+  margin-bottom: 2rem;
   color: var(--secondary-500);
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .streak-layout {
@@ -241,6 +255,10 @@
 }
 
 @media (max-width: 700px) {
+  .reading-streak {
+    padding: 1.5rem;
+  }
+
   .streak-layout {
     grid-template-columns: 1fr;
   }
@@ -310,6 +328,10 @@
 }
 
 @media (max-width: 600px) {
+  .reading-streak {
+    padding: 1rem;
+  }
+
   .streak-empty-card {
     margin: 2rem auto;
     padding: 1.5rem;

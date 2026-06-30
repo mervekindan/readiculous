@@ -81,12 +81,12 @@ function LoginForm() {
         />
       </label>
 
-      <button type="submit" disabled={isLoading}>
+      <button type="submit" className="auth-submit-button" disabled={isLoading}>
         {isLoading ? "Signing In..." : "Login"}
       </button>
 
       {error && (
-        <p className="error-message">
+        <p className="auth-error-message">
           {error}
 
           {error.includes("No account found") && (

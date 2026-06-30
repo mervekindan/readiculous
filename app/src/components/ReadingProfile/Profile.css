@@ -1,12 +1,29 @@
 .reading-profile {
-  max-width: 920px;
-  margin: 3rem auto;
-  padding: 1rem;
+  background-image: url("../../assets/profile-bg.jpg");
+  color: var(--text-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: calc(100vh - 200px);
+  overflow: hidden;
 }
 
-.reading-profile h1 {
-  color: var(--secondary-500);
+.reading-profile-container {
+  max-width: 920px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.reading-profile-header {
+  text-align: left;
   margin-bottom: 2rem;
+  color: var(--secondary-500);
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .profile-auth-actions {
@@ -23,4 +40,16 @@
   color: var(--background-color);
   cursor: pointer;
   font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .reading-profile {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reading-profile {
+    padding: 1rem;
+  }
 }

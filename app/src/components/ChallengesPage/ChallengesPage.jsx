@@ -28,42 +28,44 @@ export default function ChallengesPage() {
 
   return (
     <div className="challenges-page">
-      <div className="challenges-header">
-        <h1>Challenges</h1>
-        <p className="challenges-description">
-          Complete reading challenges and earn badges along the way.
-        </p>
+      <div className="challenges-page-container">
         {!user && (
           <p className="login-prompt">Log in to start earning badges.</p>
         )}
-      </div>
+        <div className="challenges-header">
+          <h1>Challenges</h1>
+          <p className="challenges-description">
+            Complete reading challenges and earn badges along the way.
+          </p>
+        </div>
 
-      <div className="badges-grid">
-        {BADGES.map((badge) => {
-          let userGoalForBadge;
-          if (badge.type === "annual_goal_match") {
-            userGoalForBadge = user ? goalBooks : undefined;
-          }
+        <div className="badges-grid">
+          {BADGES.map((badge) => {
+            let userGoalForBadge;
+            if (badge.type === "annual_goal_match") {
+              userGoalForBadge = user ? goalBooks : undefined;
+            }
 
-          return (
-            <Badge
-              key={badge.id}
-              badge={badge}
-              progress={
-                user
-                  ? getBadgeProgress(
-                      badge,
-                      inProgressBooks,
-                      finishedBooks,
-                      user,
-                      goalBooks,
-                    )
-                  : null
-              }
-              userGoal={userGoalForBadge}
-            />
-          );
-        })}
+            return (
+              <Badge
+                key={badge.id}
+                badge={badge}
+                progress={
+                  user
+                    ? getBadgeProgress(
+                        badge,
+                        inProgressBooks,
+                        finishedBooks,
+                        user,
+                        goalBooks,
+                      )
+                    : null
+                }
+                userGoal={userGoalForBadge}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

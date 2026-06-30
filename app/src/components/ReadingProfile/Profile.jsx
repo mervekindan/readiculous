@@ -99,23 +99,26 @@ function ReadingProfile() {
 
   return (
     <section className="reading-profile">
-      <h1>Profile</h1>
+      <div className="reading-profile-container">
+        <div className="reading-profile-header">
+          <h1>Profile</h1>
+        </div>
+        {!isEditing ? (
+          <ProfileSummary
+            message={message}
+            onEdit={handleEdit}
+            onLogout={handleLogout}
+          />
+        ) : (
+          <ProfileForm
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            completedToday={completedToday}
+          />
+        )}
 
-      {!isEditing ? (
-        <ProfileSummary
-          message={message}
-          onEdit={handleEdit}
-          onLogout={handleLogout}
-        />
-      ) : (
-        <ProfileForm
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          completedToday={completedToday}
-        />
-      )}
-
-      <ReadingStreakSummary />
+        <ReadingStreakSummary />
+      </div>
     </section>
   );
 }
