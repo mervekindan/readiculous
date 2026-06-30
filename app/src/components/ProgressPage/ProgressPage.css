@@ -87,7 +87,7 @@
 }
 
 .empty-text {
-  color: #888888;
+  color: var(--background-color);
   font-style: italic;
 }
 
@@ -140,6 +140,10 @@
 @media (max-width: 700px) {
   .progress-page {
     min-height: 100vh;
+  }
+
+  .progress-page-card {
+    margin-inline: 1rem;
   }
 
   .progress-tabs {
