@@ -9,6 +9,7 @@ import ReadingStreakSummary from "./ReadingStreakSummary.jsx";
 import ProfileSummary from "./ProfileSummary.jsx";
 import ProfileForm from "./ProfileForm.jsx";
 import AuthMessage from "../AuthMessage/AuthMessage.jsx";
+import userIcon from "../../assets/nav-icons/user.png";
 import "./Profile.css";
 
 function ReadingProfile() {
@@ -89,7 +90,7 @@ function ReadingProfile() {
     return (
       <section className="reading-profile">
         <AuthMessage
-          icon="👤"
+          icon={userIcon}
           title="Profile"
           message="Access Restricted. Please log in or create an account to view your profile."
         />
@@ -101,18 +102,34 @@ function ReadingProfile() {
     <section className="reading-profile">
       <h1>Profile</h1>
 
-      {!isEditing ? (
-        <ProfileSummary
-          message={message}
-          onEdit={handleEdit}
-          onLogout={handleLogout}
-        />
-      ) : (
-        <ProfileForm
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          completedToday={completedToday}
-        />
+      <ProfileSummary
+        message={message}
+        onEdit={handleEdit}
+        onLogout={handleLogout}
+      />
+
+      {isEditing && (
+        <div className="profile-modal-overlay">
+          <div className="profile-modal">
+            <div className="profile-modal-header">
+              <h2>Edit Profile</h2>
+
+              <button
+                type="button"
+                className="profile-modal-close"
+                onClick={() => setIsEditing(false)}
+              >
+                ×
+              </button>
+            </div>
+
+            <ProfileForm
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+              completedToday={completedToday}
+            />
+          </div>
+        </div>
       )}
 
       <ReadingStreakSummary />

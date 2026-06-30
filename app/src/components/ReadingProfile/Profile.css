@@ -24,3 +24,50 @@
   cursor: pointer;
   font-weight: 700;
 }
+
+.profile-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 1rem;
+  background: rgba(2, 4, 2, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-modal {
+  width: min(96vw, 760px);
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  background: var(--background-color);
+  box-shadow: 0 20px 60px rgba(2, 4, 2, 0.25);
+}
+
+.profile-modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 1.25rem 1.5rem;
+  background: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-modal-header h2 {
+  color: var(--secondary-500);
+}
+
+.profile-modal-close {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: var(--secondary-500);
+  font-size: 1.5rem;
+  cursor: pointer;
+}

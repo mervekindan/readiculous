@@ -2,7 +2,7 @@
   max-width: 620px;
   margin: 4rem auto;
   padding: 2.5rem;
-  border-radius: 24px;
+  border-radius: 8px;
   background: var(--background-color);
   border: 1px solid var(--border-color);
   box-shadow: 0 10px 25px var(--card-shadow);
@@ -14,8 +14,8 @@
   height: 72px;
   margin: 0 auto 1rem;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
   background: var(--surface-color);
   font-size: 2rem;
 }
@@ -35,12 +35,32 @@
 .auth-message-actions {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
+  margin-top: 2rem;
+}
+.auth-message-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--surface-color);
+  overflow: hidden;
+}
+
+.auth-message-icon-image {
+  display: block;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .auth-message-button {
   padding: 0.8rem 1.8rem;
-  border-radius: 999px;
+  border-radius: 8px;
   background: var(--secondary-500);
   color: white;
   font-weight: 700;
@@ -56,9 +76,5 @@
   .auth-message-card {
     margin: 2rem auto;
     padding: 1.5rem;
-  }
-
-  .auth-message-actions {
-    flex-direction: column;
   }
 }
