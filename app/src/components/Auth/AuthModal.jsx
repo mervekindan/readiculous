@@ -18,7 +18,7 @@ function AuthModal() {
     setSearchParams({ auth: tab });
   }
 
-  const handleClose = () => { 
+  const handleClose = () => {
     dialogRef.current?.close();
     setSearchParams({});
   };
@@ -41,28 +41,32 @@ function AuthModal() {
 
   return (
     <dialog ref={dialogRef} className="auth-dialog" onClose={handleClose}>
-        <button className="close-button" onClick={handleClose}>
-          &times;
+      <button className="close-button" onClick={handleClose}>
+        &times;
+      </button>
+      <div className="auth-tabs">
+        <button
+          type="button"
+          onClick={() => handleTabChange("signup")}
+          className={activeTab === "signup" ? "active-tab" : ""}
+        >
+          Sign Up
         </button>
-        <div className="auth-tabs">
-          <button
-            type="button"
-            onClick={() => handleTabChange("signup")}
-            className={activeTab === "signup" ? "active-tab" : ""}
-          >
-            Sign Up
-          </button>
 
-          <button
-            type="button"
-            onClick={() => handleTabChange("login")}
-            className={activeTab === "login" ? "active-tab" : ""}
-          >
-            Login
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={() => handleTabChange("login")}
+          className={activeTab === "login" ? "active-tab" : ""}
+        >
+          Login
+        </button>
+      </div>
 
-      {activeTab === "signup" ? <SignUpForm /> : <LoginForm />}
+      {activeTab === "signup" ? (
+        <SignUpForm key="signup" />
+      ) : (
+        <LoginForm key="login" />
+      )}
     </dialog>
   );
 }

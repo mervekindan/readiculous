@@ -104,8 +104,6 @@ function ReadingStreak() {
             )}
 
             <div className="weekly-section">
-              <h3>Weekly Progress</h3>
-
               <div className="week-progress">
                 {["M", "T", "W", "T", "F", "S", "S"].map((day, index) => (
                   <div key={day + index} className="day-item">
@@ -130,7 +128,6 @@ function ReadingStreak() {
               <p>Read every day to keep your streak going!</p>
             </div>
           </div>
-
           <div className="right-column">
             <div className="streak-card timer-card">
               <div className="card-icon">
@@ -149,22 +146,20 @@ function ReadingStreak() {
               </div>
 
               <div className="timer-display-box">
-                {!completedToday && isRunning && (
-                  <span className="timer-status-dot running" />
-                )}
-
-                {!completedToday && !isRunning && timeLeft !== initialTime && (
-                  <span className="timer-status-dot paused" />
-                )}
-
                 <div className="timer-title">
-                  <img src={timeIcon} alt="" className="inline-icon" />
-                  <span>Time Left</span>
+                  <div className="timer-title-text">
+                    <img src={timeIcon} alt="" className="inline-icon" />
+                    <span>Time Left</span>
+                  </div>
+
+                  {!completedToday && timeLeft !== initialTime && (
+                    <span
+                      className={`timer-status-dot ${isRunning ? "running" : "paused"}`}
+                    />
+                  )}
                 </div>
 
                 <p className="timer">{formatTime(timeLeft)}</p>
-
-                <small>minutes</small>
               </div>
 
               <div className="timer-actions">

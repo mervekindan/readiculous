@@ -130,8 +130,6 @@ export function BookProvider({ children }) {
       await updateUser(user.id, {
         readingStreak: updatedReadingStreak,
       });
-
-      showPopup("Today's reading goal completed!", "success");
     } catch (error) {
       showPopup("Unable to save reading streak. Please try again.", "error");
     }

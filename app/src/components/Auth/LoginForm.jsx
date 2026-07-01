@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserByEmail } from "../../api/authApi.js";
 import { useAuth } from "../../context/AuthContext.jsx";
@@ -12,6 +12,15 @@ function LoginForm() {
     email: "",
     password: "",
   });
+  useEffect(() => {
+    setFormData({
+      email: "",
+      password: "",
+    });
+    setError("");
+    setSuccess("");
+    setIsLoading(false);
+  }, []);
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -47,13 +56,14 @@ function LoginForm() {
 
       setUser(savedUser);
       setSuccess("Logged in successfully!");
+      setFormData({ email: "", password: "" });
       navigate("/profile");
     } catch (error) {
       setError(
         "Oops! No account found with this email. Please create an account first.",
       );
     } finally {
-      isLoading(false);
+      setIsLoading(false);
     }
   }
 

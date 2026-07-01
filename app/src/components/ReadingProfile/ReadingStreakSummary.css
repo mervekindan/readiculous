@@ -81,17 +81,9 @@
 }
 
 .streak-status {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.45rem 0.85rem;
-  border-radius: 8px;
   background: white;
   border: 1px solid var(--border-color);
   color: var(--accent-500);
-  font-size: 0.9rem;
-  font-weight: 700;
-  margin: 0;
 }
 
 .streak-status.done {
@@ -99,23 +91,23 @@
 }
 
 .profile-link-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0.65rem 1.15rem;
-
-  border-radius: 8px;
-
   background: var(--secondary-500);
   color: white;
-
-  font-size: 0.9rem;
-  font-weight: 700;
-
   text-decoration: none;
 
   transition: 0.2s ease;
+}
+.streak-status,
+.profile-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; /* add this */
+  padding: 0.65rem 1.15rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 8px;
+  width: 180px;
+  height: 40px;
 }
 
 .profile-link-button:hover {
