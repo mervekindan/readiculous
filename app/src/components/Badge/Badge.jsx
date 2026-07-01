@@ -1,7 +1,12 @@
-import { useState } from "react";
 import "./Badge.css";
 
-export default function Badge({ badge, progress, userGoal }) {
+export default function Badge({
+  badge,
+  progress,
+  userGoal,
+  isTooltipOpen = false,
+  onToggleTooltip,
+}) {
   const goalValue = typeof badge.goal === "number" ? badge.goal : userGoal || 1;
   const hasProgress = typeof progress === "number" && progress > 0;
   const unlocked = hasProgress && progress >= goalValue;
@@ -9,23 +14,22 @@ export default function Badge({ badge, progress, userGoal }) {
     ? Math.min(100, (progress / goalValue) * 100)
     : 0;
 
-  const [showTooltip, setShowTooltip] = useState(false);
-  const isTouchDevice = window.matchMedia("(hover: none)").matches;
+  const isTouchDevice =
+    typeof window !== "undefined" && window.matchMedia("(hover: none)").matches;
 
   const progressLabel = unlocked
     ? "Goal completed! 🎉"
     : `${progress ?? 0}/${goalValue}`;
 
+  const handleClick = () => {
+    if (isTouchDevice && typeof onToggleTooltip === "function") {
+      onToggleTooltip(badge.id);
+    }
+  };
+
   return (
-    <div
-      className="badge-card"
-      onClick={() => {
-        if (isTouchDevice) {
-          setShowTooltip(!showTooltip);
-        }
-      }}
-    >
-      <div className={`badge-tooltip ${showTooltip ? "show-tooltip" : ""}`}>
+    <div className="badge-card" onClick={handleClick}>
+      <div className={`badge-tooltip ${isTouchDevice && isTooltipOpen ? "show-tooltip" : ""}`}>
         {badge.description}
       </div>
       <img

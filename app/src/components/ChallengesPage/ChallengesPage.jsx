@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Badge from "../Badge/Badge";
 import { BADGES } from "../../utils/badges";
 import { useBooks } from "../../context/BookContext";
@@ -25,6 +26,11 @@ export default function ChallengesPage() {
   const { inProgressBooks, finishedBooks } = useBooks();
   const { user } = useAuth();
   const goalBooks = Number(user?.yearlyGoalBooks) || 0;
+  const [activeTooltipId, setActiveTooltipId] = useState(null);
+
+  const handleTooltipToggle = (badgeId) => {
+    setActiveTooltipId((currentId) => (currentId === badgeId ? null : badgeId));
+  };
 
   return (
     <div className="challenges-page">
@@ -62,6 +68,8 @@ export default function ChallengesPage() {
                     : null
                 }
                 userGoal={userGoalForBadge}
+                isTooltipOpen={activeTooltipId === badge.id}
+                onToggleTooltip={handleTooltipToggle}
               />
             );
           })}
