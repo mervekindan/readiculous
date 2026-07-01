@@ -70,6 +70,7 @@ function SignUpForm() {
           onChange={handleChange}
           maxLength={50}
           required
+          placeholder="Your name"
         />
       </label>
 
@@ -81,6 +82,7 @@ function SignUpForm() {
           value={formData.email}
           onChange={handleChange}
           required
+          placeholder="Your email"
         />
       </label>
 
@@ -93,6 +95,7 @@ function SignUpForm() {
           value={formData.password}
           onChange={handleChange}
           required
+          placeholder="Set a password (min 6 characters)"
         />
       </label>
 
@@ -117,6 +120,7 @@ function SignUpForm() {
           type="number"
           min="1"
           max="100"
+          placeholder="Set your yearly book goal"
           value={formData.yearlyGoalBooks}
           onChange={handleChange}
           required
