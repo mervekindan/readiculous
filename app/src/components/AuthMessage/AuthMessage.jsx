@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import "./AuthMessage.css";
 
-function AuthMessage({ title, message, icon = "🔒" }) {
+function AuthMessage({ title, message, icon }) {
   return (
     <section className="auth-message-card">
-      <div className="auth-message-icon">{icon}</div>
+      {icon && (
+        <div className="auth-message-icon">
+          <img src={icon} alt={title} className="auth-message-icon-image" />
+        </div>
+      )}
 
       <h1>{title}</h1>
 

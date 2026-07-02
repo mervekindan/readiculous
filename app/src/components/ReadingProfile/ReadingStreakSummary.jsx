@@ -47,13 +47,15 @@ function ReadingStreakSummary() {
         ))}
       </div>
 
-      <p className={completedToday ? "streak-status done" : "streak-status"}>
-        {completedToday ? "Completed today ✅" : "Not completed yet"}
-      </p>
+      <div className="streak-summary-actions">
+        <p className={completedToday ? "streak-status done" : "streak-status"}>
+          {completedToday ? "Completed today ✅" : "Not completed yet"}
+        </p>
 
-      <Link to="/daily-streak" className="profile-link-button">
-        Continue Reading
-      </Link>
+        <Link to="/daily-streak" className="profile-link-button">
+          Continue Reading
+        </Link>
+      </div>
     </section>
   );
 }

@@ -5,6 +5,12 @@ import { getTodayDate } from "../../utils/date.js";
 import AuthMessage from "../AuthMessage/AuthMessage.jsx";
 import fireIcon from "../../assets/nav-icons/fire.png";
 import bookIcon from "../../assets/nav-icons/book.png";
+import timeIcon from "../../assets/nav-icons/time.png";
+import targetIcon from "../../assets/streak-icons/target.png";
+import playIcon from "../../assets/streak-icons/play.png";
+import pauseIcon from "../../assets/streak-icons/pause-button.png";
+import resetIcon from "../../assets/streak-icons/undo.png";
+import checkIcon from "../../assets/streak-icons/check-mark.png";
 import "./ReadingStreak.css";
 
 function ReadingStreak() {
@@ -45,17 +51,24 @@ function ReadingStreak() {
   function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
+
     return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+  }
+
+  function formatMinutes(minutes) {
+    return `${minutes} ${minutes === 1 ? "minute" : "minutes"}`;
   }
 
   if (!user) {
     return (
       <section className="reading-streak">
-        <AuthMessage
-          icon="🔥"
-          title="Daily Reading Streak"
-          message="Access Restricted. Please log in or create an account to view and track your personal daily streak."
-        />
+        <div className="reading-streak-auth-container">
+          <AuthMessage
+            icon={fireIcon}
+            title="Daily Reading Streak"
+            message="Access Restricted. Please log in or create an account to view and track your personal daily streak."
+          />
+        </div>
       </section>
     );
   }
@@ -65,27 +78,34 @@ function ReadingStreak() {
       <div className="reading-streak-container">
         <div className="reading-streak-header">
           <h1>Daily Reading Streak</h1>
+
+          <p className="streak-description">
+            Complete your daily goal to build your streak and become a better
+            reader every day.
+          </p>
         </div>
+
         <div className="streak-layout">
           <div className="streak-card streak-progress-card">
-            <div className="card-icon green-icon">
-              <img src={fireIcon} alt="" />
+            <div className="card-icon">
+              <img src={fireIcon} alt="Fire icon" />
             </div>
+
             <h2>Streak Progress</h2>
 
             <p className="streak-number">{currentStreak}</p>
+
             <p className="streak-label">
               {currentStreak === 1 ? "day streak" : "days streak"}
             </p>
 
-            <div className="status-box">
-              <strong>Status:</strong>{" "}
-              {completedToday ? "Completed today ✅" : "Not completed yet"}
-            </div>
+            {completedToday && (
+              <div className="status-text status-completed">
+                <strong>Status:</strong> Today's Goal Completed
+              </div>
+            )}
 
             <div className="weekly-section">
-              <h3>Weekly Progress</h3>
-
               <div className="week-progress">
                 {["M", "T", "W", "T", "F", "S", "S"].map((day, index) => (
                   <div key={day + index} className="day-item">
@@ -106,60 +126,77 @@ function ReadingStreak() {
             </div>
 
             <div className="goal-box">
-              <strong>Daily Goal:</strong> {goalMinutes} minutes
+              <strong>Daily Goal:</strong> {formatMinutes(goalMinutes)}
               <p>Read every day to keep your streak going!</p>
             </div>
           </div>
-
           <div className="right-column">
             <div className="streak-card timer-card">
-              <div className="card-icon blue-icon">
-                <img src={bookIcon} alt="" />
+              <div className="card-icon">
+                <img src={bookIcon} alt="Book icon" />
               </div>
+
               <h2>Reading Timer</h2>
 
               <div className="goal-timer-box">
-                <span>🎯</span>
+                <img src={targetIcon} alt="" className="inline-icon" />
+
                 <div>
                   <p>Today's reading goal</p>
-                  <strong>{goalMinutes} minutes</strong>
+                  <strong>{formatMinutes(goalMinutes)}</strong>
                 </div>
               </div>
 
               <div className="timer-display-box">
-                <span>⏰ Time Left</span>
+                <div className="timer-title">
+                  <div className="timer-title-text">
+                    <img src={timeIcon} alt="" className="inline-icon" />
+                    <span>Time Left</span>
+                  </div>
+                </div>
+
                 <p className="timer">{formatTime(timeLeft)}</p>
-                <small>minutes</small>
               </div>
 
               <div className="timer-actions">
                 <button
+                  className={
+                    !isRunning && !completedToday ? "active-button" : ""
+                  }
                   onClick={() => setIsRunning(true)}
                   disabled={isRunning || completedToday}
                 >
-                  ▶ Start
+                  <img src={playIcon} alt="" className="button-icon" />
+                  Start
                 </button>
 
                 <button
+                  className={isRunning ? "active-button" : ""}
                   onClick={() => setIsRunning(false)}
                   disabled={!isRunning}
                 >
-                  ⏸ Pause
+                  <img src={pauseIcon} alt="" className="button-icon" />
+                  Pause
                 </button>
 
                 <button
+                  className={completedToday ? "active-button" : ""}
                   onClick={() => {
                     setIsRunning(false);
                     setTimeLeft(initialTime);
                   }}
                 >
-                  ↻ Reset
+                  <img src={resetIcon} alt="" className="button-icon" />
+                  Reset
                 </button>
               </div>
 
-              <div className="keep-reading-box">
-                ⏳ Keep reading and enjoy your progress!
-              </div>
+              {completedToday && (
+                <div className="keep-reading-box">
+                  <img src={checkIcon} alt="" className="status-icon" />
+                  Great job! You completed today's reading goal.
+                </div>
+              )}
 
               <p className="timer-note">
                 Press Start to begin your reading session.
@@ -167,11 +204,6 @@ function ReadingStreak() {
             </div>
           </div>
         </div>
-
-        <p className="bottom-message">
-          ℹ Complete your daily goal to build your streak and become a better
-          reader every day!
-        </p>
       </div>
     </section>
   );
