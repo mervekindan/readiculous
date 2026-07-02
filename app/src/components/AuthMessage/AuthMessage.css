@@ -95,10 +95,39 @@
   }
 
   .auth-message-button {
-    width: 110px;
-    min-height: 58px;
-    display: inline-flex;
+    flex: 1;
+    max-width: 130px;
+    min-height: 56px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    white-space: nowrap;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+}
+@media (max-width: 700px) {
+  .profile-auth-container,
+  .progress-page-card,
+  .reading-streak-auth-container {
+    width: 100%;
+    min-height: calc(100dvh - 150px);
+    display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem 1rem 6rem;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 700px) {
+  .reading-profile,
+  .progress-page,
+  .reading-streak {
+    min-height: 100dvh;
+    overflow-y: auto;
+    background-attachment: scroll;
   }
 }
