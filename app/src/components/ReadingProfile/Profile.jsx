@@ -59,6 +59,7 @@ function ReadingProfile() {
       dailyGoalMinutes: sanitizeNumberInput(user.dailyGoalMinutes),
       yearlyGoalBooks: sanitizeNumberInput(user.yearlyGoalBooks),
       favoriteGenres: user.favoriteGenres || [],
+      avatar: user.avatar || null,
     };
 
     try {

@@ -3,6 +3,18 @@ import { GENRE_CATEGORIES } from "../../utils/genres";
 import { useAuth } from "../../context/AuthContext";
 import "./ProfileForm.css";
 
+import bunnyImg from "../../assets/avatar/bunny.jpg";
+import foxImg from "../../assets/avatar/foxy.jpg";
+import owlImg from "../../assets/avatar/owl.jpg";
+import bearImg from "../../assets/avatar/bear.jpg";
+
+const AVATAR_PRESETS = [
+  { id: "bunny", src: bunnyImg, alt: "Bunny" },
+  { id: "foxy", src: foxImg, alt: "Fox" },
+  { id: "owl", src: owlImg, alt: "Owl" },
+  { id: "bear", src: bearImg, alt: "Bear" },
+];
+
 function ProfileForm({ onChange, onSubmit, completedToday }) {
   const { user } = useAuth();
   const [dailyGoalError, setDailyGoalError] = useState("");
@@ -19,8 +31,44 @@ function ProfileForm({ onChange, onSubmit, completedToday }) {
     onChange(event);
   }
 
+  function handleAvatarSelect(avatarSrc) {
+    onChange({
+      target: {
+        name: "avatar",
+        value: avatarSrc,
+      },
+    });
+  }
+
   return (
     <form className="profile-form" onSubmit={onSubmit}>
+      <div className="avatar-selection-wrapper">
+        <span className="avatar-selection-label">Choose your avatar</span>
+
+        <div className="avatar-presets-grid">
+          <div
+            className={`preset-item ${!user.avatar ? "active-preset" : ""}`}
+            onClick={() => handleAvatarSelect(null)}
+            title="Default Initial"
+          >
+            <div className="preset-letter-placeholder">
+              {user.name ? user.name.charAt(0).toUpperCase() : "A"}
+            </div>
+          </div>
+
+          {AVATAR_PRESETS.map((preset) => (
+            <div
+              key={preset.id}
+              className={`preset-item ${user.avatar === preset.src ? "active-preset" : ""}`}
+              onClick={() => handleAvatarSelect(preset.src)}
+              title={preset.alt}
+            >
+              <img src={preset.src} alt={preset.alt} className="preset-img" />
+            </div>
+          ))}
+        </div>
+      </div>
+
       <label>
         Name
         <input
