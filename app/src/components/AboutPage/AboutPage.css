@@ -24,9 +24,7 @@
   border-radius: 8px;
 }
 
-h2 {
-  font-size: 28px;
-  font-weight: 700;
+.faq-title {
   margin-bottom: 24px;
   letter-spacing: -0.5px;
   color: var(--accent-500);

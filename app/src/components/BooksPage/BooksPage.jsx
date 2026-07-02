@@ -52,7 +52,7 @@ export default function BooksPage() {
         )}
 
         <div className="title-container">
-          <h2 className="page-title">Book Catalog</h2>
+          <h1 className="page-title">Book Catalog</h1>
           <SearchBar onSearch={fetchBooks} />
           {error && <p style={{ color: "red" }}>Error: {error}</p>}
         </div>
