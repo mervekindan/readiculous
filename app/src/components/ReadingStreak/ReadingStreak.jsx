@@ -62,11 +62,13 @@ function ReadingStreak() {
   if (!user) {
     return (
       <section className="reading-streak">
-        <AuthMessage
-          icon={fireIcon}
-          title="Daily Reading Streak"
-          message="Access Restricted. Please log in or create an account to view and track your personal daily streak."
-        />
+        <div className="reading-streak-auth-container">
+          <AuthMessage
+            icon={fireIcon}
+            title="Daily Reading Streak"
+            message="Access Restricted. Please log in or create an account to view and track your personal daily streak."
+          />
+        </div>
       </section>
     );
   }
@@ -151,12 +153,6 @@ function ReadingStreak() {
                     <img src={timeIcon} alt="" className="inline-icon" />
                     <span>Time Left</span>
                   </div>
-
-                  {!completedToday && timeLeft !== initialTime && (
-                    <span
-                      className={`timer-status-dot ${isRunning ? "running" : "paused"}`}
-                    />
-                  )}
                 </div>
 
                 <p className="timer">{formatTime(timeLeft)}</p>

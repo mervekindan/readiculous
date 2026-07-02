@@ -28,6 +28,11 @@
 
   background-color: var(--background-color);
 }
+.progress-page-card {
+  width: calc(100% - 2rem);
+  max-width: 620px;
+  margin: 4rem auto;
+}
 
 .analytics-section {
   margin-bottom: 2rem;

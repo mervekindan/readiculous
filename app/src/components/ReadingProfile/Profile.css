@@ -54,6 +54,11 @@
   align-items: center;
   justify-content: center;
 }
+.profile-auth-container {
+  width: calc(100% - 2rem);
+  max-width: 620px;
+  margin: 4rem auto;
+}
 
 .profile-modal {
   width: min(96vw, 760px);

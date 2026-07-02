@@ -19,7 +19,11 @@
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
 }
-
+.reading-streak-auth-container {
+  width: calc(100% - 2rem);
+  max-width: 620px;
+  margin: 4rem auto;
+}
 .reading-streak-header {
   background: var(--background-color);
   border-radius: 8px;
@@ -210,21 +214,6 @@
   color: var(--secondary-500);
 }
 
-.timer-status-dot {
-  position: absolute;
-  right: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-}
-
-.timer-status-dot.running {
-  background: var(--secondary-500);
-}
-
-.timer-status-dot.paused {
-  background: var(--accent-500);
-}
 .timer-title-text {
   display: flex;
   align-items: center;
@@ -232,7 +221,6 @@
 }
 
 .timer-title {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

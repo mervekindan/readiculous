@@ -81,11 +81,13 @@ function ReadingProfile() {
   if (!user) {
     return (
       <section className="reading-profile">
-        <AuthMessage
-          icon={userIcon}
-          title="Profile"
-          message="Access Restricted. Please log in or create an account to view your profile."
-        />
+        <div className="profile-auth-container">
+          <AuthMessage
+            icon={userIcon}
+            title="Profile"
+            message="Access Restricted. Please log in or create an account to view your profile."
+          />
+        </div>
       </section>
     );
   }
