@@ -20,9 +20,12 @@
   border-radius: 8px;
 }
 .reading-streak-auth-container {
-  width: calc(100% - 2rem);
   max-width: 620px;
-  margin: 4rem auto;
+  margin: auto;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .reading-streak-header {
   background: var(--background-color);
