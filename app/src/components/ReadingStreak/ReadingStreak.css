@@ -1,15 +1,50 @@
 .reading-streak {
-  max-width: 950px;
-  margin: 2rem auto;
-  padding: 1rem;
+  background-image: url("../../assets/streak-bg.jpg");
   color: var(--text-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: calc(100vh - 200px);
+  overflow: auto;
+  display: flex;
+  justify-content: center;
 }
 
-.reading-streak h1 {
+.reading-streak-container {
+  width: calc(100% - 2rem);
+  max-width: 1200px;
+  margin: 2rem 1rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+.reading-streak-auth-container {
+  max-width: 620px;
+  margin: auto;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reading-streak-header {
+  background: var(--background-color);
+  border-radius: 8px;
+  padding: 1rem;
   text-align: center;
   margin-bottom: 1.5rem;
-  font-size: 2rem;
+}
+
+.reading-streak-header h1 {
+  margin: 0;
   color: var(--secondary-500);
+}
+
+.streak-description {
+  margin: 0.5rem 0 0;
+  color: var(--secondary-500);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .streak-layout {
@@ -26,11 +61,16 @@
 
 .streak-card {
   background-color: var(--background-color);
-  border: 1px solid #dfe8dc;
+  border: 1px solid var(--border-color);
   border-radius: 18px;
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(44, 81, 76, 0.08);
+  box-shadow: 0 10px 25px var(--card-shadow);
+}
+.timer-card {
+  height: auto;
+  min-height: unset;
+  overflow: visible;
 }
 
 .card-icon {
@@ -41,15 +81,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
-  background-color: #e8efe4;
+  background-color: var(--surface-color);
 }
 
-.green-icon,
-.blue-icon,
-.purple-icon {
-  background-color: #e8efe4;
-  color: var(--secondary-500);
+.card-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .streak-progress-card h2,
@@ -57,63 +95,39 @@
   color: var(--secondary-500);
 }
 
-.streak-progress-card h2,
-.timer-card h2,
-.time-left-card h2 {
-  color: var(--secondary-500);
-}
-.card-icon img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-}
-.timer-display-box {
-  margin-top: 1.2rem;
-  padding: 1.2rem;
-  border-radius: 12px;
-  background-color: #fff;
-  border: 1px solid #dfe8dc;
-  color: var(--secondary-500);
-}
-
-.timer-display-box span {
-  font-weight: 700;
-}
-
-.timer-display-box small {
-  color: var(--accent-500);
-  font-weight: 700;
-}
 .streak-number {
   font-size: 4.5rem;
   font-weight: 800;
   color: var(--secondary-500);
-  margin: 0;
+  margin-bottom: 0.35rem;
 }
 
 .streak-label {
+  margin-bottom: 1rem;
   margin-top: 0.25rem;
   font-weight: 600;
   color: var(--secondary-500);
 }
 
-.status-box,
-.goal-box,
-.goal-timer-box,
-.keep-reading-box,
-.bottom-message {
-  border-radius: 12px;
-  padding: 1rem;
-  margin-top: 1.2rem;
+.status-text {
+  margin-top: 0.5rem;
+  color: var(--secondary-500);
+  font-weight: 700;
+}
+
+.status-completed {
+  color: var(--secondary-500);
 }
 
 .status-box,
 .goal-box,
 .goal-timer-box,
-.keep-reading-box,
-.bottom-message {
+.keep-reading-box {
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1.4rem;
   background-color: #fff;
-  border: 1px solid #dfe8dc;
+  border: 1px solid var(--border-color);
   color: var(--secondary-500);
 }
 
@@ -187,6 +201,47 @@
   color: var(--secondary-500);
 }
 
+.inline-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.timer-display-box {
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  color: var(--secondary-500);
+}
+
+.timer-title-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.timer-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+
+.timer-display-box small {
+  color: var(--accent-500);
+  font-weight: 700;
+}
+
+.timer {
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0.75rem 0 0.25rem;
+  color: var(--accent-500);
+}
+
 .timer-actions {
   display: flex;
   justify-content: center;
@@ -196,24 +251,53 @@
 }
 
 .timer-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   padding: 0.7rem 1.1rem;
-  border: 1px solid #dfe8dc;
-  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
   background-color: #fff;
   cursor: pointer;
   font-weight: 600;
   color: var(--secondary-500);
 }
 
-.timer-actions button:first-child {
-  background-color: var(--secondary-500);
-  border-color: var(--secondary-500);
-  color: #fff;
-}
-
 .timer-actions button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.active-button {
+  background: var(--secondary-500) !important;
+  border-color: var(--secondary-500) !important;
+  color: white !important;
+}
+
+.button-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.keep-reading-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  color: var(--accent-500);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.status-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .timer-note {
@@ -222,100 +306,134 @@
   color: var(--secondary-500);
 }
 
-.timer {
-  font-size: 4rem;
-  font-weight: 800;
-  margin: 0;
-  color: var(--accent-500);
-}
-
-.keep-reading-box {
-  color: var(--accent-500);
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.bottom-message {
-  color: var(--secondary-500);
-  font-size: 0.9rem;
-}
-
 @media (max-width: 700px) {
+  .reading-streak {
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 1rem 1rem 7rem;
+    background-attachment: scroll;
+  }
+
+  .reading-streak-container {
+    width: 100%;
+    margin: 1rem auto;
+    padding: 0.75rem;
+  }
+
+  .reading-streak-header {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .reading-streak-header h1 {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .streak-description {
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
   .streak-layout {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .streak-card {
-    padding: 1.25rem;
+    padding: 1.1rem;
+    border-radius: 12px;
   }
 
-  .timer,
-  .streak-number {
-    font-size: 3.5rem;
+  .card-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .card-icon img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .streak-number,
+  .timer {
+    font-size: 3.25rem;
+  }
+
+  .weekly-section {
+    margin-top: 1rem;
+  }
+
+  .goal-box,
+  .goal-timer-box,
+  .timer-display-box,
+  .keep-reading-box {
+    margin-top: 0.9rem;
+    padding: 0.85rem;
+  }
+
+  .timer-actions {
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .timer-actions button {
+    padding: 0.65rem 0.8rem;
   }
 }
 
-.streak-empty-card {
-  max-width: 620px;
-  margin: 4rem auto;
-  padding: 2.5rem;
-  border-radius: 24px;
-  background: var(--background-color);
-  border: 1px solid #dfe8dc;
-  box-shadow: 0 10px 25px rgba(44, 81, 76, 0.08);
-  text-align: center;
-}
-
-.empty-icon {
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 1rem;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: #e8efe4;
-  font-size: 2rem;
-}
-
-.streak-empty-card h1 {
-  margin-bottom: 1rem;
-  color: var(--secondary-500);
-}
-
-.streak-empty-card p {
-  max-width: 460px;
-  margin: 0 auto 1.5rem;
-  color: var(--secondary-500);
-  line-height: 1.6;
-}
-
-.profile-auth-actions {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.auth-button {
-  padding: 0.8rem 1.8rem;
-  border-radius: 999px;
-  background: var(--secondary-500);
-  color: white;
-  font-weight: 700;
-}
-
-.auth-button.secondary {
-  background: transparent;
-  color: var(--secondary-500);
-  border: 2px solid var(--secondary-500);
-}
-
-@media (max-width: 600px) {
-  .streak-empty-card {
-    margin: 2rem auto;
-    padding: 1.5rem;
+@media (max-width: 390px), (max-height: 700px) {
+  .reading-streak {
+    padding-bottom: 8rem;
   }
 
-  .profile-auth-actions {
-    flex-direction: column;
+  .reading-streak-container {
+    margin: 0.75rem auto;
+    padding: 0.6rem;
+  }
+
+  .reading-streak-header {
+    padding: 0.85rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .reading-streak-header h1 {
+    font-size: 1.7rem;
+  }
+
+  .streak-description {
+    font-size: 0.85rem;
+  }
+
+  .streak-card {
+    padding: 0.9rem;
+  }
+
+  .streak-progress-card h2,
+  .timer-card h2 {
+    font-size: 1.45rem;
+  }
+
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0.5rem;
+  }
+
+  .streak-number,
+  .timer {
+    font-size: 2.8rem;
+  }
+
+  .day-circle {
+    width: 28px;
+    height: 28px;
+  }
+
+  .goal-box,
+  .goal-timer-box,
+  .timer-display-box,
+  .keep-reading-box {
+    padding: 0.75rem;
   }
 }

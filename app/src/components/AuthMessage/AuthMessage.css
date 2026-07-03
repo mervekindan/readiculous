@@ -1,23 +1,18 @@
 .auth-message-card {
-  max-width: 620px;
-  margin: 4rem auto;
-  padding: 2.5rem;
-  border-radius: 24px;
+  width: min(100%, 460px);
+  min-height: 420px;
+  padding: 2rem;
+  border-radius: 8px;
   background: var(--background-color);
   border: 1px solid var(--border-color);
   box-shadow: 0 10px 25px var(--card-shadow);
   text-align: center;
-}
 
-.auth-message-icon {
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 1rem;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--surface-color);
-  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
 .auth-message-card h1 {
@@ -31,16 +26,42 @@
   color: var(--secondary-500);
   line-height: 1.6;
 }
+.reading-streak-auth-container,
+.reading-streak-auth-container,
+.progress-page-card {
+  width: 100%;
+  max-width: 620px;
+}
 
 .auth-message-actions {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
+  margin-top: 2rem;
+}
+.auth-message-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--surface-color);
+  overflow: hidden;
+}
+
+.auth-message-icon-image {
+  display: block;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .auth-message-button {
   padding: 0.8rem 1.8rem;
-  border-radius: 999px;
+  border-radius: 8px;
   background: var(--secondary-500);
   color: white;
   font-weight: 700;
@@ -54,11 +75,60 @@
 
 @media (max-width: 600px) {
   .auth-message-card {
-    margin: 2rem auto;
+    width: min(100%, 320px);
+    min-height: 460px;
     padding: 1.5rem;
   }
 
+  .auth-message-card h1 {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .auth-message-card p {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
   .auth-message-actions {
-    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .auth-message-button {
+    flex: 1;
+    max-width: 130px;
+    min-height: 56px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    white-space: nowrap;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+}
+@media (max-width: 700px) {
+  .profile-auth-container,
+  .progress-page-card,
+  .reading-streak-auth-container {
+    width: 100%;
+    min-height: calc(100dvh - 150px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem 6rem;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 700px) {
+  .reading-profile,
+  .progress-page,
+  .reading-streak {
+    min-height: 100dvh;
+    overflow-y: auto;
+    background-attachment: scroll;
   }
 }

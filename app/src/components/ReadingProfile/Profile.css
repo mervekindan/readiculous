@@ -1,12 +1,29 @@
 .reading-profile {
-  max-width: 920px;
-  margin: 3rem auto;
-  padding: 1rem;
+  background-image: url("../../assets/profile-bg.jpg");
+  color: var(--text-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: calc(100vh - 200px);
+  overflow: hidden;
 }
 
-.reading-profile h1 {
-  color: var(--secondary-500);
+.reading-profile-container {
+  max-width: 920px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.reading-profile-header {
+  text-align: left;
   margin-bottom: 2rem;
+  color: var(--secondary-500);
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 .profile-auth-actions {
@@ -23,4 +40,73 @@
   color: var(--background-color);
   cursor: pointer;
   font-weight: 700;
+}
+
+/* ---------- Profile Modal ---------- */
+
+.profile-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 1rem;
+  background: rgba(2, 4, 2, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-auth-container {
+  max-width: 620px;
+  margin: auto;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-modal {
+  width: min(96vw, 760px);
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  background: var(--background-color);
+  box-shadow: 0 20px 60px rgba(2, 4, 2, 0.25);
+}
+
+.profile-modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 1.25rem 1.5rem;
+  background: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-modal-header h2 {
+  color: var(--secondary-500);
+}
+
+.profile-modal-close {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: var(--secondary-500);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .reading-profile {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reading-profile {
+    padding: 1rem;
+  }
 }

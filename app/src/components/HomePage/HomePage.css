@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  min-height: 75vh;
+  min-height: calc(100vh - 200px);
   background-image: url("/home/background4.jpg");
   background-size: cover;
   background-position: center;
@@ -50,12 +50,13 @@
 }
 
 .hero button:hover {
-  background-color: #471e28;
+  background-color: var(--primary-500);
 }
 
 @media (max-width: 768px) {
   .hero {
     background-position: center;
+    min-height: calc(100vh - 130px);
   }
 
   .hero-content {

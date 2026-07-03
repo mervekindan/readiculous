@@ -11,7 +11,15 @@ function ProfileSummary({ message, onEdit, onLogout }) {
     <section className="profile-card">
       <div className="profile-header">
         <div className="profile-avatar">
-          {user.name?.charAt(0).toUpperCase()}
+          {user.avatar ? (
+            <img
+              src={user.avatar}
+              alt={`${user.name}'s avatar`}
+              className="profile-avatar-img"
+            />
+          ) : (
+            user.name?.charAt(0).toUpperCase()
+          )}
         </div>
 
         <div className="profile-user">

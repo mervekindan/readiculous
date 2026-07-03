@@ -16,12 +16,20 @@
   width: 88px;
   height: 88px;
   border-radius: 50%;
+  overflow: hidden;
   background: var(--secondary-500);
   color: var(--background-color);
   display: grid;
   place-items: center;
   font-size: 2.5rem;
   font-weight: 700;
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .profile-label {
@@ -47,7 +55,7 @@
 .profile-buttons button {
   padding: 0.75rem 1.2rem;
   border: none;
-  border-radius: 999px;
+  border-radius: 8px;
   background: var(--secondary-500);
   color: white;
   font-weight: 700;
@@ -71,7 +79,7 @@
   gap: 0.9rem;
   align-items: center;
   padding: 1rem;
-  border-radius: 18px;
+  border-radius: 8px;
   background: white;
   border: 1px solid var(--border-color);
 }
@@ -121,7 +129,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.45rem 0.9rem;
-  border-radius: 999px;
+  border-radius: 8px;
   background-color: #eef4ea;
   border: 1px solid #d9e4d4;
   color: var(--secondary-500);

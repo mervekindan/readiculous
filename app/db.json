@@ -7,23 +7,13 @@
       "password": "password123",
       "dailyGoalMinutes": 30,
       "yearlyGoalBooks": 12,
-      "favoriteGenres": [
-        "fantasy",
-        "mystery"
-      ],
+      "favoriteGenres": ["fantasy", "mystery"],
       "readingStreak": {
         "currentStreak": 1,
         "lastCompletedDate": "2026-06-24",
-        "currentWeekProgress": [
-          false,
-          false,
-          false,
-          true,
-          false,
-          false,
-          false
-        ]
-      }
+        "currentWeekProgress": [false, false, false, true, false, false, false]
+      },
+      "avatar": null
     },
     {
       "id": "user-2",
@@ -32,23 +22,13 @@
       "password": "password123",
       "dailyGoalMinutes": 60,
       "yearlyGoalBooks": 25,
-      "favoriteGenres": [
-        "science fiction",
-        "technology"
-      ],
+      "favoriteGenres": ["science fiction", "technology"],
       "readingStreak": {
         "currentStreak": 1,
         "lastCompletedDate": "2026-06-24",
-        "currentWeekProgress": [
-          false,
-          false,
-          false,
-          true,
-          false,
-          false,
-          false
-        ]
-      }
+        "currentWeekProgress": [false, false, false, true, false, false, false]
+      },
+      "avatar": null
     },
     {
       "id": "user-3",
@@ -57,23 +37,13 @@
       "password": "password123",
       "dailyGoalMinutes": 15,
       "yearlyGoalBooks": 6,
-      "favoriteGenres": [
-        "romance",
-        "historical fiction"
-      ],
+      "favoriteGenres": ["romance", "historical fiction"],
       "readingStreak": {
         "currentStreak": 0,
         "lastCompletedDate": "",
-        "currentWeekProgress": [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false
-        ]
-      }
+        "currentWeekProgress": [false, false, false, false, false, false, false]
+      },
+      "avatar": null
     },
     {
       "name": "Tim",
@@ -85,17 +55,10 @@
       "readingStreak": {
         "currentStreak": 1,
         "lastCompletedDate": "2026-06-24",
-        "currentWeekProgress": [
-          false,
-          false,
-          false,
-          true,
-          false,
-          false,
-          false
-        ]
+        "currentWeekProgress": [false, false, false, true, false, false, false]
       },
-      "id": "LCOeTs0fchY"
+      "id": "LCOeTs0fchY",
+      "avatar": null
     },
     {
       "name": "ledam",
@@ -107,15 +70,7 @@
       "readingStreak": {
         "currentStreak": 1,
         "lastCompletedDate": "2026-06-24",
-        "currentWeekProgress": [
-          false,
-          false,
-          false,
-          true,
-          false,
-          false,
-          false
-        ]
+        "currentWeekProgress": [false, false, false, true, false, false, false]
       },
       "id": "mCEl4mvNZfQ"
     },
@@ -129,17 +84,10 @@
       "readingStreak": {
         "currentStreak": 1,
         "lastCompletedDate": "2026-06-24",
-        "currentWeekProgress": [
-          false,
-          false,
-          false,
-          true,
-          false,
-          false,
-          false
-        ]
+        "currentWeekProgress": [false, false, false, true, false, false, false]
       },
-      "id": "WAv1noOQYl4"
+      "id": "WAv1noOQYl4",
+      "avatar": null
     },
     {
       "name": "Tim",
@@ -151,15 +99,7 @@
       "readingStreak": {
         "currentStreak": 0,
         "lastCompletedDate": "",
-        "currentWeekProgress": [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false
-        ]
+        "currentWeekProgress": [false, false, false, false, false, false, false]
       },
       "id": "HO-w2nP2bIQ"
     }

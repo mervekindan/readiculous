@@ -75,7 +75,7 @@ export default function AboutPage() {
     <div className="about-page">
       <div className="about-page-container">
         <section className="how-it-works-section">
-          <h2>How It Works</h2>
+          <h1 className="about-title">How It Works</h1>
           <ol className="instructions-list">
             {instructionsData.map((item, index) => (
               <li key={index}>
@@ -89,7 +89,7 @@ export default function AboutPage() {
         </section>
 
         <section className="faq-section">
-          <h2>Frequently Asked Questions (FAQ)</h2>
+          <h2 className="faq-title">Frequently Asked Questions (FAQ)</h2>
           <div className="modern-accordion">
             {faqData.map((item, index) => {
               const isOpen = openIndex === index;

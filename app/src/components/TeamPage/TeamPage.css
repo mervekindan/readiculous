@@ -31,7 +31,6 @@
 
 .about-title {
   color: var(--secondary-500);
-  font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
@@ -155,7 +154,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background-color: var(--secondary-500);
+  background-color: var(--accent-500);
   color: var(--background-color);
   text-decoration: none;
   padding: 0.7rem 1.2rem;
@@ -170,7 +169,7 @@
 }
 
 .github-button:hover {
-  background-color: var(--accent-500);
+  background-color: var(--primary-500);
 }
 
 .github-svg-icon {
@@ -191,10 +190,6 @@
   .team-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-
-  .about-title {
-    font-size: 2rem;
   }
 }
 

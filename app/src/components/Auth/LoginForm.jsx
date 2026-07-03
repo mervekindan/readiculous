@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserByEmail } from "../../api/authApi.js";
 import { useAuth } from "../../context/AuthContext.jsx";
@@ -12,6 +12,15 @@ function LoginForm() {
     email: "",
     password: "",
   });
+  useEffect(() => {
+    setFormData({
+      email: "",
+      password: "",
+    });
+    setError("");
+    setSuccess("");
+    setIsLoading(false);
+  }, []);
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -47,13 +56,14 @@ function LoginForm() {
 
       setUser(savedUser);
       setSuccess("Logged in successfully!");
+      setFormData({ email: "", password: "" });
       navigate("/profile");
     } catch (error) {
       setError(
         "Oops! No account found with this email. Please create an account first.",
       );
     } finally {
-      isLoading(false);
+      setIsLoading(false);
     }
   }
 
@@ -67,6 +77,7 @@ function LoginForm() {
           value={formData.email}
           onChange={handleChange}
           required
+          placeholder="Enter your email"
         />
       </label>
 
@@ -78,21 +89,22 @@ function LoginForm() {
           value={formData.password}
           onChange={handleChange}
           required
+          placeholder="Enter your password"
         />
       </label>
 
-      <button type="submit" disabled={isLoading}>
+      <button type="submit" className="auth-submit-button" disabled={isLoading}>
         {isLoading ? "Signing In..." : "Login"}
       </button>
 
       {error && (
-        <p className="error-message">
+        <p className="auth-error-message">
           {error}
 
           {error.includes("No account found") && (
             <>
               {" "}
-              <Link to="/?auth=signup">Sign Up</Link>
+              <Link to="?auth=signup">Sign Up</Link>
             </>
           )}
         </p>

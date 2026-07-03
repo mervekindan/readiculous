@@ -1,10 +1,10 @@
 .badge-card {
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
   text-align: center;
   position: relative;
-  background: white;
+  background: var(--background-color);
   transition: box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -63,8 +63,8 @@
   left: 50%;
   transform: translateX(-50%);
   width: 220px;
-  background: var(--primary-500);
-  color: var(--text-color);
+  background: var(--accent-500);
+  color: var(--background-color);
   padding: 0.75rem;
   border-radius: 8px;
   opacity: 0;
@@ -123,9 +123,6 @@
 
     opacity: 0;
     visibility: hidden;
-
-    background: var(--accent-500);
-    color: white;
   }
 
   .show-tooltip {

@@ -3,6 +3,7 @@ import { useBooks } from "../../context/BookContext";
 import { useAuth } from "../../context/AuthContext";
 import BookCard from "../BookCard/BookCard";
 import AuthMessage from "../AuthMessage/AuthMessage";
+import progressIcon from "../../assets/nav-icons/progress.png";
 import "./ProgressPage.css";
 
 export default function ProgressPage() {
@@ -19,7 +20,7 @@ export default function ProgressPage() {
         <div className="progress-page">
           <div className="progress-page-card">
             <AuthMessage
-              icon="📊"
+              icon={progressIcon}
               title="Reading Progress"
               message="Access Restricted. Please log in or create an account to view and track your personal reading progress and statistics."
             />
@@ -36,10 +37,10 @@ export default function ProgressPage() {
   return (
     <div className="progress-page">
       <div className="progress-page-container">
-        <h2 className="page-title progress-title">Reading Progress</h2>
+        <h1 className="page-title progress-title">Reading Progress</h1>
 
         <div className="analytics-section">
-          <h3>Statistics</h3>
+          <h2>Statistics</h2>
           <p>Total books added: {totalBooks}</p>
           <p>
             Finished books: {finishedBooks.length} of {totalBooks}

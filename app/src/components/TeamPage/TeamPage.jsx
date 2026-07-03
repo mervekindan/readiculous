@@ -15,21 +15,21 @@ export default function TeamPage() {
       role: "Frontend / UI Developer",
       github: "https://github.com/mervekindan/",
       avatar: mervePhoto,
-      bio: "Home page with popups for forms, Challenges logic and design, navigation and styles.",
+      bio: "Home page with popups for forms, Challenges logic and design. Responsiveness, mobile adjustments. Deployment: frontend - Vercel, mock backend - onRender.",
     },
     {
       name: "Nina",
       role: "Frontend / UI Developer",
       github: "https://github.com/codebynina",
       avatar: ninaPhoto,
-      bio: "Registration and Login form, authentication (mockAPI), user profile, streak and timer.",
+      bio: "Registration (Sign in) and Login form design and logic. Authentication (mockAPI). User profile, streak and timer logic and design with mobile adjustments.",
     },
     {
       name: "Anastasia",
       role: "Frontend / UI Developer",
       github: "https://github.com/nastiasolo",
       avatar: anastasiaPhoto,
-      bio: "Library (external API - OpenLibrary, Progress page logic, design, responsiveness, mobile adjustments",
+      bio: "Library page (external API - OpenLibrary). Progress page logic and design. Responsiveness, mobile adjustments: bottom NavBar.",
     },
   ];
 

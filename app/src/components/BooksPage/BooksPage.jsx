@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar/SearchBar";
 import BookCard from "../BookCard/BookCard";
 import "./BooksPage.css";
@@ -47,12 +48,17 @@ export default function BooksPage() {
       <div className="books-page-container">
         {!user && (
           <div className="login-prompt-banner">
-            Log in to add books to your reading progress.
+            <span>
+              <Link className="login-prompt-link" to="?auth=login">
+                Log in
+              </Link>{" "}
+              to add books to your reading progress.
+            </span>
           </div>
         )}
 
         <div className="title-container">
-          <h2 className="page-title">Book Catalog</h2>
+          <h1 className="page-title">Book Catalog</h1>
           <SearchBar onSearch={fetchBooks} />
           {error && <p style={{ color: "red" }}>Error: {error}</p>}
         </div>
