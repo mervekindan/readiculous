@@ -42,7 +42,7 @@
   background: var(--background-color);
 }
 
-.analytics-section h3 {
+.analytics-section h2 {
   margin: 0 0 1rem 0;
   color: var(--text-color);
 }

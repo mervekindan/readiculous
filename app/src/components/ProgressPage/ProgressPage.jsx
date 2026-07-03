@@ -37,10 +37,10 @@ export default function ProgressPage() {
   return (
     <div className="progress-page">
       <div className="progress-page-container">
-        <h2 className="page-title progress-title">Reading Progress</h2>
+        <h1 className="page-title progress-title">Reading Progress</h1>
 
         <div className="analytics-section">
-          <h3>Statistics</h3>
+          <h2>Statistics</h2>
           <p>Total books added: {totalBooks}</p>
           <p>
             Finished books: {finishedBooks.length} of {totalBooks}
