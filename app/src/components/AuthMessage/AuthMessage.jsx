@@ -15,11 +15,11 @@ function AuthMessage({ title, message, icon }) {
       <p>{message}</p>
 
       <div className="auth-message-actions">
-        <Link className="auth-message-button" to="/?auth=signup">
+        <Link className="auth-message-button" to="?auth=signup">
           Sign Up
         </Link>
 
-        <Link className="auth-message-button secondary" to="/?auth=login">
+        <Link className="auth-message-button secondary" to="?auth=login">
           Log In
         </Link>
       </div>
