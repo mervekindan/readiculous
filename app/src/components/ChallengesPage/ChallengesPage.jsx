@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Badge from "../Badge/Badge";
 import { BADGES } from "../../utils/badges";
 import { useBooks } from "../../context/BookContext";
@@ -36,7 +37,14 @@ export default function ChallengesPage() {
     <div className="challenges-page">
       <div className="challenges-page-container">
         {!user && (
-          <p className="login-prompt">Log in to start earning badges.</p>
+          <div className="login-prompt-banner">
+            <span>
+              <Link className="login-prompt-link" to="?auth=login">
+                Log in
+              </Link>{" "}
+              to add books to your reading progress.
+            </span>
+          </div>
         )}
         <div className="challenges-header">
           <h1>Challenges</h1>
