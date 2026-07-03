@@ -55,7 +55,16 @@
   border-radius: 8px;
   text-align: center;
   background-color: var(--accent-500);
-  color: #ffffff;
+  color: var(--background-color);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.login-prompt-link {
+  color: var(--background-color);
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 @media (max-width: 700px) {
