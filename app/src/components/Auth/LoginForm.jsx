@@ -104,7 +104,7 @@ function LoginForm() {
           {error.includes("No account found") && (
             <>
               {" "}
-              <Link to="/?auth=signup">Sign Up</Link>
+              <Link to="?auth=signup">Sign Up</Link>
             </>
           )}
         </p>
