@@ -6,6 +6,8 @@ import foxImg from "../../assets/avatar/foxy.jpg";
 import owlImg from "../../assets/avatar/owl.jpg";
 import bearImg from "../../assets/avatar/bear.jpg";
 
+import logo from "../../assets/readiculous2.png";
+
 export default function Loader() {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -47,7 +49,7 @@ export default function Loader() {
           <img src={bearImg} alt="bear" className="floating-pet pet-4" />
         </div>
 
-        <h2 className="loader-text">Opening your library...</h2>
+        <h2 className="loader-text">Loading something readiculous...</h2>
       </div>
     </div>
   );
