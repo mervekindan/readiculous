@@ -50,6 +50,11 @@
   text-decoration: underline;
 }
 
+.login-prompt-link:hover {
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
 .badges-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));

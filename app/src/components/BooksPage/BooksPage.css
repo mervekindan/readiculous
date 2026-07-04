@@ -67,6 +67,11 @@
   text-decoration: underline;
 }
 
+.login-prompt-link:hover {
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
 @media (max-width: 700px) {
   .books-page {
     min-height: calc(100vh - 100px);
