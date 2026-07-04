@@ -14,7 +14,7 @@
 .books-page-container {
   max-width: 1200px;
   width: 100%;
-  margin: 2rem 1rem;
+  margin: 2rem auto;
   padding: 1rem;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
@@ -70,6 +70,15 @@
 @media (max-width: 700px) {
   .books-page {
     min-height: calc(100vh - 100px);
+    padding: 1rem;
+  }
+
+  .books-page-container {
+    margin: 0.75rem auto;
+  }
+
+  .page-title {
+    font-size: 1.7rem;
   }
 }
 

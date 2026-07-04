@@ -11,9 +11,9 @@
 }
 
 .progress-page-container {
-  width: calc(100% - 2rem);
+  width: 100%;
   max-width: 1200px;
-  margin: 2rem 1rem;
+  margin: 2rem auto;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@
 }
 
 .progress-title {
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 8px;
 
   background-color: var(--background-color);
@@ -154,8 +154,17 @@
 }
 
 @media (max-width: 700px) {
+  .progress-title {
+    font-size: 1.7rem;
+  }
+
   .progress-page {
     min-height: 100vh;
+    padding: 1rem;
+  }
+
+  .progress-page-container {
+    margin: 0.75rem auto;
   }
 
   .progress-page-card {
