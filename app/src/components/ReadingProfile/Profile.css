@@ -109,4 +109,12 @@
   .reading-profile {
     padding: 1rem;
   }
+
+  .reading-profile-container {
+    margin: 0.75rem auto;
+  }
+
+  .reading-profile-header h1 {
+    font-size: 1.7rem;
+  }
 }

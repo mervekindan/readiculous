@@ -108,3 +108,13 @@
 .accent-color {
   color: var(--secondary-500);
 }
+
+@media (max-width: 768px) {
+  .about-page {
+    padding: 1rem;
+  }
+
+  .about-page-container {
+    margin: 0.75rem auto;
+  }
+}

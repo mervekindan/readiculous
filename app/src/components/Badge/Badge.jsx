@@ -8,7 +8,7 @@ export default function Badge({
   onToggleTooltip,
 }) {
   const goalValue = typeof badge.goal === "number" ? badge.goal : userGoal || 1;
-  const hasProgress = typeof progress === "number" && progress > 0;
+  const hasProgress = typeof progress === "number";
   const unlocked = hasProgress && progress >= goalValue;
   const percentage = hasProgress
     ? Math.min(100, (progress / goalValue) * 100)
@@ -29,7 +29,9 @@ export default function Badge({
 
   return (
     <div className="badge-card" onClick={handleClick}>
-      <div className={`badge-tooltip ${isTouchDevice && isTooltipOpen ? "show-tooltip" : ""}`}>
+      <div
+        className={`badge-tooltip ${isTouchDevice && isTooltipOpen ? "show-tooltip" : ""}`}
+      >
         {badge.description}
       </div>
       <img
