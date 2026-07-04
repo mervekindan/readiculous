@@ -6,8 +6,6 @@
   background-attachment: fixed;
   min-height: calc(100vh - 200px);
   overflow: hidden;
-  display: flex;
-  justify-content: center;
 }
 
 .progress-page-container {
@@ -160,15 +158,12 @@
 
   .progress-page {
     min-height: 100vh;
-    padding: 1rem;
+    overflow-y: auto;
+    padding: 1rem 1rem;
   }
 
   .progress-page-container {
     margin: 0.75rem auto;
-  }
-
-  .progress-page-card {
-    margin-inline: 1rem;
   }
 
   .progress-tabs {
