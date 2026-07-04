@@ -50,6 +50,11 @@
   text-decoration: underline;
 }
 
+.login-prompt-link:hover {
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
 .badges-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -58,7 +63,7 @@
 
 @media (max-width: 768px) {
   .challenges-page {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .badges-grid {
@@ -68,12 +73,12 @@
 }
 
 @media (max-width: 480px) {
-  .challenges-page {
-    padding: 1rem;
+  .challenges-page-container {
+    margin: 0.75rem auto;
   }
 
   .challenges-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 
   .badges-grid {
